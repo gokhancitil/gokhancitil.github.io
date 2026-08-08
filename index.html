@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Gökhan ÇİTİL - Yazılım ve Yapay Zeka Geliştiricisi. Modern sistem mimarileri ve otomasyon çözümleri.">
@@ -82,6 +81,50 @@
         .shape2 { width: 400px; height: 400px; background: rgba(138, 43, 226, 0.05); bottom: 10%; right: 10%; animation-delay: -5s; }
 
         @keyframes float { 0% { transform: translateY(0) translateX(0); } 100% { transform: translateY(-40px) translateX(40px); } }
+
+        /* --- MOBİL UYUM (RESPONSIVE) AYARLARI BURADAN BAŞLIYOR --- */
+        @media screen and (max-width: 768px) {
+            body {
+                height: auto; 
+                min-height: 100vh;
+            }
+            
+            header {
+                padding: 20px 15px;
+                flex-direction: column;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            main {
+                margin-top: 20px;
+                padding: 20px 0;
+            }
+
+            h1 {
+                font-size: 2.8rem; /* Mobildeki devasa yazıyı küçülttük */
+                padding: 0 15px;
+            }
+
+            .center-visual {
+                margin-top: 20px;
+            }
+
+            .bottom-text {
+                position: relative; /* Sola sabitlenmekten kurtardık */
+                bottom: auto;
+                left: auto;
+                text-align: center;
+                margin: 40px auto;
+                padding: 0 20px;
+            }
+        }
     </style>
 </head>
 <body>
