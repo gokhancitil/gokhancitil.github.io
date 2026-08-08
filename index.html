@@ -53,9 +53,18 @@
 
         h1 { font-size: 5.5rem; font-weight: 900; line-height: 1.1; margin: 0; letter-spacing: -2px; z-index: 2; }
 
+        /* GÖRSEL AYARLARI (SİYAH-BEYAZ VE HOVER EFEKTİ EKLENDİ) */
         .center-visual {
             margin-top: 30px; max-width: 550px; width: 90%;
-            border-radius: 15px; box-shadow: 0 10px 40px rgba(0, 150, 255, 0.15); z-index: 1;
+            border-radius: 15px; 
+            box-shadow: 0 10px 40px rgba(255, 255, 255, 0.05); /* Gölge rengi de temaya uygun grileştirildi */
+            z-index: 1;
+            filter: grayscale(100%); /* Resmi %100 Siyah-Beyaz Yapar */
+            transition: filter 0.6s ease; /* Efektin yumuşak geçişi için */
+        }
+
+        .center-visual:hover {
+            filter: grayscale(0%); /* Fare üzerine gelince orijinal rengine döner */
         }
 
         .bottom-text {
@@ -85,7 +94,6 @@
             <span>AI & SOFTWARE</span>
         </a>
         
-        <!-- Üst Menü (Artık gerçek sayfalara gidiyor) -->
         <nav class="nav-links">
             <a href="hakkimda.html">Hakkımda</a>
             <a href="uzmanliklar.html">Uzmanlıklar</a>
@@ -102,6 +110,7 @@
 
     <main>
         <h1>Fikirlerinizi Koda<br>Dönüştürüyoruz.</h1>
+        <!-- Görsel Dosyası Buradan Çekiliyor -->
         <img src="gokhancitil-yapay-zeka.jpg" alt="Yapay Zeka" class="center-visual">
     </main>
 
