@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gökhan ÇİTİL - İnönü Üniversitesi İşletme mezunu ve Yazılım Geliştiricisi.">
+    <title>Hakkımda | Gökhan ÇİTİL</title>
+    
+    <!-- YAPAY ZEKA VE GOOGLE BOTLARI İÇİN KİMLİK KARTI (SCHEMA.ORG) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Gökhan Çitil",
+      "jobTitle": "Yazılım Geliştiricisi",
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "İnönü Üniversitesi"
+      },
+      "url": "https://gokhancitil.com",
+      "description": "İnönü Üniversitesi İşletme mezunu ve 2023 yılından itibaren yazılım ve yapay zeka alanında çalışmalarını sürdüren geliştirici."
+    }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
+        
+        body {
+            margin: 0; padding: 0; background-color: #080808; color: #ffffff;
+            font-family: 'Inter', sans-serif; overflow-x: hidden;
+            min-height: 100vh; display: flex; flex-direction: column;
+        }
+
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 30px 50px; z-index: 10; flex-wrap: wrap; gap: 20px;
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 700; letter-spacing: 2px; text-align: center; text-decoration: none; color: #ffffff; }
+        .logo span { font-weight: 300; font-size: 0.8rem; display: block; letter-spacing: 4px; color: #888; }
+
+        .nav-links { display: flex; gap: 40px; }
+        .nav-links a { color: #dddddd; text-decoration: none; font-size: 0.85rem; font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.3s; }
+        .nav-links a:hover { color: #ffffff; }
+        .nav-links a.active { color: #ffffff; font-weight: 700; border-bottom: 2px solid #fff; padding-bottom: 5px; }
+
+        .social-icons { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+        .social-icons a { color: #ffffff; text-decoration: none; font-size: 0.85rem; border: 1px solid #333; padding: 8px 20px; border-radius: 20px; transition: all 0.3s; letter-spacing: 1px; }
+        .social-icons a:hover { background: #fff; color: #000; border-color: #fff; }
+
+        /* Sayfa İçeriği Merkezi Kutu */
+        main {
+            flex-grow: 1; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; z-index: 5; padding: 40px 20px;
+        }
+
+        .content-box {
+            background: rgba(20, 20, 25, 0.9); padding: 50px;
+            border: 1px solid rgba(255,255,255,0.1); width: 100%; max-width: 700px;
+            border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+        }
+
+        .content-box h1 { margin-top: 0; font-size: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; margin-bottom: 30px; font-weight: 700; }
+        
+        .personal-info {
+            display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px;
+            font-size: 1rem; color: #a0aab2; background: rgba(255,255,255,0.03);
+            padding: 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05);
+        }
+        .personal-info span { color: #fff; font-weight: 700; margin-right: 10px; }
+
+        .content-box p { color: #d1d5db; line-height: 1.8; font-size: 1.05rem; margin-bottom: 20px; }
+
+        .floating-shape { position: absolute; border-radius: 50%; filter: blur(80px); z-index: 0; animation: float 10s infinite ease-in-out alternate; }
+        .shape1 { width: 300px; height: 300px; background: rgba(30, 144, 255, 0.1); top: 10%; left: 20%; }
+        .shape2 { width: 400px; height: 400px; background: rgba(138, 43, 226, 0.05); bottom: 10%; right: 10%; animation-delay: -5s; }
+        @keyframes float { 0% { transform: translateY(0) translateX(0); } 100% { transform: translateY(-40px) translateX(40px); } }
+    </style>
+</head>
+<body>
+
+    <div class="floating-shape shape1"></div>
+    <div class="floating-shape shape2"></div>
+
+    <header>
+        <a href="index.html" class="logo">
+            GÖKHAN ÇİTİL
+            <span>AI & SOFTWARE</span>
+        </a>
+        
+        <nav class="nav-links">
+            <a href="hakkimda.html" class="active">Hakkımda</a>
+            <a href="uzmanliklar.html">Uzmanlıklar</a>
+        </nav>
+
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/gokhancitil" target="_blank">LinkedIn</a>
+            <a href="https://medium.com/@gokhancitil" target="_blank">Medium</a>
+            <a href="https://x.com/gokhancitil" target="_blank">Twitter</a>
+            <a href="https://instagram.com/gokhancitil" target="_blank">Instagram</a>
+            <a href="mailto:gokhancitil@gmail.com">İletişim</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="content-box">
+            <h1>Hakkımda</h1>
+            
+            <div class="personal-info">
+                <div><span>🎓 Eğitim:</span> İnönü Üniversitesi İşletme Mezunu</div>
+                <div><span>💻 Odak Alanı:</span> Yazılım ve Yapay Zeka (2023 - Günümüz)</div>
+            </div>
+
+            <p>Gökhan ÇİTİL, İnönü Üniversitesi İşletme mezunu olup Ayakkabı Delisiyim markasında Sosyal Medya Direktörü olarak çalışmıştır.</p>
+            
+            <p>2019-2022 yılları arasında Jandarma Genel Komutanlığı bünyesinde Astsubay olarak görev yapmış, burada edindiği üst düzey disiplin ve stratejik yönetim becerilerini sivil kariyerine entegre etmiştir.</p>
+
+            <p>2023 yılından itibaren kariyer rotasını teknolojiye çevirerek yazılım alanında çalışmalarını sürdürmekte; modern sistem mimarileri ve yapay zeka odaklı projeler üretmektedir.</p>
+        </div>
+    </main>
+
+</body>
+</html>
