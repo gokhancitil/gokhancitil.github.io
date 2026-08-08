@@ -3,26 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gökhan ÇİTİL | Sosyal Medya Direktörü & Teknoloji Uzmanı</title>
+    <meta name="description" content="Gökhan ÇİTİL - Yazılım ve Yapay Zeka Geliştiricisi. Modern sistem mimarileri ve otomasyon çözümleri.">
+    <title>Gökhan ÇİTİL | AI & Software Developer</title>
+    
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f9; color: #333; text-align: center; padding: 50px 20px; }
-        .container { max-width: 600px; margin: 0 auto; background: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; }
-        p { line-height: 1.6; color: #555; }
-        .links a { display: inline-block; margin: 10px; padding: 10px 20px; color: white; background-color: #3498db; text-decoration: none; border-radius: 5px; }
-        .links a:hover { background-color: #2980b9; }
+        /* Genel Siyah Tema ve Font Ayarları */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
+        
+        body {
+            margin: 0; padding: 0; background-color: #080808; color: #ffffff;
+            font-family: 'Inter', sans-serif; overflow-x: hidden;
+            height: 100vh; display: flex; flex-direction: column;
+        }
+
+        /* Üst Menü (Navbar) */
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 30px 50px; z-index: 10; flex-wrap: wrap; gap: 20px;
+        }
+
+        .logo { 
+            font-size: 1.5rem; font-weight: 700; letter-spacing: 2px; 
+            text-align: center; text-decoration: none; color: #ffffff;
+        }
+        .logo span { font-weight: 300; font-size: 0.8rem; display: block; letter-spacing: 4px; color: #888; }
+
+        .nav-links { display: flex; gap: 40px; }
+        .nav-links a {
+            color: #dddddd; text-decoration: none; font-size: 0.85rem;
+            font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: #ffffff; }
+
+        .social-icons { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+        .social-icons a {
+            color: #ffffff; text-decoration: none; font-size: 0.85rem;
+            border: 1px solid #333; padding: 8px 20px; border-radius: 20px;
+            transition: all 0.3s; letter-spacing: 1px;
+        }
+        .social-icons a:hover { background: #fff; color: #000; border-color: #fff; }
+
+        /* Ana İçerik */
+        main {
+            flex-grow: 1; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            position: relative; z-index: 5; margin-top: -30px;
+        }
+
+        h1 { font-size: 5.5rem; font-weight: 900; line-height: 1.1; margin: 0; letter-spacing: -2px; z-index: 2; }
+
+        .center-visual {
+            margin-top: 30px; max-width: 550px; width: 90%;
+            border-radius: 15px; box-shadow: 0 10px 40px rgba(0, 150, 255, 0.15); z-index: 1;
+        }
+
+        .bottom-text {
+            position: absolute; bottom: 40px; left: 50px; max-width: 400px;
+            text-align: left; color: #999999; font-size: 0.95rem; line-height: 1.6; font-weight: 300;
+        }
+
+        /* Uçuşan Objeler */
+        .floating-shape {
+            position: absolute; border-radius: 50%; filter: blur(80px);
+            z-index: 0; animation: float 10s infinite ease-in-out alternate;
+        }
+        .shape1 { width: 300px; height: 300px; background: rgba(30, 144, 255, 0.1); top: 10%; left: 20%; }
+        .shape2 { width: 400px; height: 400px; background: rgba(138, 43, 226, 0.05); bottom: 10%; right: 10%; animation-delay: -5s; }
+
+        @keyframes float { 0% { transform: translateY(0) translateX(0); } 100% { transform: translateY(-40px) translateX(40px); } }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Gökhan ÇİTİL</h1>
-        <p>Sosyal Medya Direktörü | AI ve Yazılım Süreçleri | Sistem Optimizasyonu</p>
-        <p>Dijital dönüşüm, otomasyon çözümleri ve yüksek performanslı sistem altyapıları üzerine çalışmalar yürütüyorum. Yakında burada daha fazla içerik olacak!</p>
-        <div class="links">
-            <a href="https://linkedin.com/in/gokhancitil" target="_blank">LinkedIn</a>
+
+    <div class="floating-shape shape1"></div>
+    <div class="floating-shape shape2"></div>
+
+    <header>
+        <a href="https://gokhancitil.com" class="logo">
+            GÖKHAN ÇİTİL
+            <span>AI & SOFTWARE</span>
+        </a>
+        
+        <!-- Üst Menü (Artık gerçek sayfalara gidiyor) -->
+        <nav class="nav-links">
+            <a href="hakkimda.html">Hakkımda</a>
+            <a href="uzmanliklar.html">Uzmanlıklar</a>
+        </nav>
+
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/gokhancitil" target="_blank">LinkedIn</a>
             <a href="https://medium.com/@gokhancitil" target="_blank">Medium</a>
-            <a href="https://github.com/gokhancitil" target="_blank">GitHub</a>
+            <a href="https://x.com/gokhancitil" target="_blank">Twitter</a>
+            <a href="https://instagram.com/gokhancitil" target="_blank">Instagram</a>
+            <a href="mailto:gokhancitil@gmail.com">İletişim</a>
         </div>
+    </header>
+
+    <main>
+        <h1>Fikirlerinizi Koda<br>Dönüştürüyoruz.</h1>
+        <img src="gokhancitil-yapay-zeka.jpg" alt="Yapay Zeka" class="center-visual">
+    </main>
+
+    <div class="bottom-text">
+        Yapay zeka modelleri, modern yazılım mimarileri ve otomasyon 
+        çözümlerimizle dijital sistemleri geleceğe hazırlıyoruz. 
+        Temiz kod ile fikirleriniz gerçeğe dönüşsün!
     </div>
+
 </body>
 </html>
