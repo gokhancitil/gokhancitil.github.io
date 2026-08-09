@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gökhan ÇİTİL - Sunduğum Hizmetler ve Kullandığım Teknolojiler">
+    <title>Hizmetlerimiz | Gökhan ÇİTİL</title>
+    
+    <link rel="icon" type="image/png" href="gokhancitil_logo.png">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+        
+        body {
+            margin: 0; padding: 0; background-color: #080808; color: #ffffff;
+            font-family: 'Inter', sans-serif; overflow-x: hidden;
+            min-height: 100vh; display: flex; flex-direction: column;
+            cursor: url('imlec.png'), auto;
+        }
+
+        header {
+            display: flex; justify-content: flex-start; align-items: center;
+            padding: 30px 50px; z-index: 10; position: relative;
+        }
+
+        .logo-container { position: relative; display: flex; justify-content: flex-start; align-items: center; }
+        .logo-link { position: absolute; width: 100%; height: 100%; z-index: 10; }
+        .logo-img { width: 450px; image-rendering: -webkit-optimize-contrast; pointer-events: none; display: block; position: relative; z-index: 5; }
+
+        .nav-links { 
+            display: flex; gap: 40px; 
+            position: absolute; left: 50%; transform: translateX(-50%);
+        }
+        .nav-links a { color: #dddddd; text-decoration: none; font-size: 0.85rem; font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.3s; }
+        .nav-links a:hover { color: #ffffff; }
+        .nav-links a.active { color: #ffffff; font-weight: 700; border-bottom: 2px solid #fff; padding-bottom: 5px; }
+
+        main {
+            flex-grow: 1; display: flex; flex-direction: column;
+            align-items: center; z-index: 5; padding: 40px 20px;
+        }
+
+        /* YENİ: VİTRİN HİZMET KARTLARI (Görseldeki Kısım) */
+        .showcase-section {
+            text-align: center; margin-bottom: 70px; width: 100%; max-width: 1100px; z-index: 5;
+            background: rgba(20, 20, 25, 0.4); padding: 50px; border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px);
+        }
+        .showcase-section h1 { font-size: 2.2rem; font-weight: 700; margin: 0 0 15px 0; }
+        .showcase-subtitle { color: #a0aab2; font-size: 1.05rem; line-height: 1.6; max-width: 800px; margin: 0 auto 40px auto; }
+        
+        .showcase-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;
+        }
+        .showcase-card {
+            background: rgba(30, 30, 35, 0.5); padding: 35px 25px;
+            border: 1px solid rgba(255,255,255,0.05); border-radius: 15px;
+            text-align: left; transition: all 0.3s ease;
+            display: flex; flex-direction: column;
+        }
+        .showcase-card:hover {
+            transform: translateY(-5px); border-color: rgba(255,255,255,0.2);
+            background: rgba(40, 40, 45, 0.8);
+        }
+        .showcase-card h3 { color: #fff; margin: 0 0 15px 0; font-size: 1.25rem; font-weight: 700; }
+        .showcase-card p { color: #8892b0; font-size: 0.95rem; line-height: 1.7; margin: 0 0 25px 0; flex-grow: 1; }
+        
+        .link-blue { color: #3b82f6; text-decoration: none; font-size: 0.9rem; font-weight: 700; transition: opacity 0.3s; }
+        .link-orange { color: #f97316; text-decoration: none; font-size: 0.9rem; font-weight: 700; transition: opacity 0.3s; }
+        .link-green { color: #22c55e; text-decoration: none; font-size: 0.9rem; font-weight: 700; transition: opacity 0.3s; }
+        .showcase-card a:hover { opacity: 0.7; }
+
+        /* TEKNOLOJİ BÖLÜMÜ */
+        .tech-section {
+            text-align: center; width: 100%; max-width: 900px; z-index: 5;
+            padding-top: 20px;
+        }
+        .tech-subtitle {
+            color: #ff6b00; font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; 
+            text-transform: uppercase; margin-bottom: 10px; display: inline-block;
+        }
+        .tech-section h2 { font-size: 2.5rem; margin: 0 0 15px 0; font-weight: 700; }
+        .tech-desc { color: #a0aab2; font-size: 1.05rem; margin-bottom: 40px; }
+        
+        .tech-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+        .tech-badge {
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 12px 25px; border-radius: 10px; font-size: 0.95rem; font-weight: 600; color: #d1d5db;
+            transition: all 0.3s ease; cursor: default;
+        }
+        .tech-badge:hover {
+            background: rgba(var(--tech-color), 0.15); border-color: rgba(var(--tech-color), 0.5);
+            color: #ffffff; transform: translateY(-4px); box-shadow: 0 8px 20px rgba(var(--tech-color), 0.2);
+        }
+
+        /* Uçuşan Objeler */
+        .floating-shape { position: absolute; border-radius: 50%; filter: blur(80px); z-index: 0; animation: float 10s infinite ease-in-out alternate; }
+        .shape1 { width: 300px; height: 300px; background: rgba(30, 144, 255, 0.1); top: 10%; left: 20%; }
+        .shape2 { width: 400px; height: 400px; background: rgba(138, 43, 226, 0.05); bottom: 10%; right: 10%; animation-delay: -5s; }
+        @keyframes float { 0% { transform: translateY(0) translateX(0); } 100% { transform: translateY(-40px) translateX(40px); } }
+
+        footer {
+            width: 100%; padding: 25px 50px; box-sizing: border-box;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex; justify-content: space-between; align-items: center;
+            background-color: #050505; color: #888; font-size: 0.85rem;
+            z-index: 10; margin-top: auto; 
+        }
+        .footer-left { font-weight: 300; }
+        .footer-left strong { color: #fff; font-weight: 700; }
+        .footer-right { display: flex; gap: 20px; }
+        .footer-right a { color: #888; text-decoration: none; transition: color 0.3s; }
+        .footer-right a:hover { color: #ffffff; }
+
+        /* Mobil Uyum */
+        @media screen and (max-width: 768px) {
+            header { padding: 20px 15px; flex-direction: column; justify-content: center; gap: 15px; }
+            .logo-container { width: 100%; justify-content: center; }
+            .logo-img { width: 360px; max-width: 95%; }
+            .nav-links { position: relative; left: 0; transform: none; gap: 15px; flex-wrap: wrap; justify-content: center; }
+            
+            main { padding: 30px 15px; }
+            
+            .showcase-section { padding: 30px 20px; margin-bottom: 50px; }
+            .showcase-section h1 { font-size: 1.8rem; }
+            .showcase-subtitle { font-size: 0.95rem; margin-bottom: 30px; }
+            
+            .tech-section h2 { font-size: 1.8rem; }
+            .tech-desc { font-size: 0.95rem; margin-bottom: 25px; padding: 0 10px; }
+            .tech-badge { padding: 10px 18px; font-size: 0.85rem; }
+            
+            footer { flex-direction: column; text-align: center; gap: 15px; padding: 20px; }
+            .footer-right { justify-content: center; flex-wrap: wrap; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="floating-shape shape1"></div>
+    <div class="floating-shape shape2"></div>
+
+    <header>
+        <div class="logo-container">
+            <a href="https://gokhancitil.com" class="logo-link"></a>
+            <img src="gokhancitil.com.png" alt="Gökhan Çitil AI & Software" class="logo-img">
+        </div>
+        
+        <nav class="nav-links">
+            <a href="hakkimda.html">Hakkımda</a>
+            <a href="uzmanliklar.html">Uzmanlıklar</a>
+            <a href="hizmetlerimiz.html" class="active">Hizmetlerimiz</a>
+            <a href="iletisim.html">İletişim</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- GÖRSELDEN ALINAN 3'LÜ KART YAPISI -->
+        <div class="showcase-section">
+            <h1>Profesyonel Web Tasarım & Web Sitesi Yaptırma Hizmeti</h1>
+            <p class="showcase-subtitle">Malatya merkezli, Türkiye genelinde kurumsal web tasarım, e-ticaret sitesi yapımı ve web sitesi yenileme hizmeti sunuyorum. Her proje özel tasarım, mobil uyumlu ve SEO/GEO altyapılı.</p>
+            
+            <div class="showcase-grid">
+                <!-- Kart 1 -->
+                <div class="showcase-card">
+                    <h3>Kurumsal Web Tasarım</h3>
+                    <p>İşletmenize özel kurumsal web sitesi tasarlıyorum. Modern görünüm, hızlı açılma, mobil uyumluluk ve SEO/GEO altyapısı standart. Yönetim paneli ile içeriklerinizi kolayca güncelleyin.</p>
+                    <a href="iletisim.html" class="link-blue">Tüm Hizmetler &rarr;</a>
+                </div>
+                
+                <!-- Kart 2 -->
+                <div class="showcase-card">
+                    <h3>E-Ticaret Sitesi Yapımı</h3>
+                    <p>Online satış yapmanız için e-ticaret sitesi kuruyorum. Ürün yönetimi, sanal POS, kargo entegrasyonu, kampanya sistemi -- anahtar teslim e-ticaret çözümü.</p>
+                    <a href="iletisim.html" class="link-orange">Yazılım Hizmeti &rarr;</a>
+                </div>
+
+                <!-- Kart 3 -->
+                <div class="showcase-card">
+                    <h3>Google SEO/GEO Uyumlu Siteler</h3>
+                    <p>Yaptığım her web sitesi SEO/GEO altyapısına sahip. Schema markup, sitemap, hız optimizasyonu, meta tag yapılandırması -- Google'da üst sıralara çıkmaya hazır.</p>
+                    <a href="iletisim.html" class="link-green">SEO/GEO Hizmeti &rarr;</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- TEKNOLOJİ BÖLÜMÜ -->
+        <div class="tech-section">
+            <div class="tech-subtitle">TEKNOLOJİ</div>
+            <h2>Kullandığım Teknolojiler</h2>
+            <p class="tech-desc">Projelerinizde en güncel ve güvenilir teknolojileri kullanıyorum.</p>
+            
+            <div class="tech-grid">
+                <div class="tech-badge" style="--tech-color: 239, 68, 68;">Laravel 12</div>
+                <div class="tech-badge" style="--tech-color: 139, 92, 246;">PHP 8.3</div>
+                <div class="tech-badge" style="--tech-color: 56, 189, 248;">Tailwind CSS</div>
+                <div class="tech-badge" style="--tech-color: 45, 212, 191;">Alpine.js</div>
+                <div class="tech-badge" style="--tech-color: 244, 114, 182;">Livewire</div>
+                <div class="tech-badge" style="--tech-color: 251, 146, 60;">Filament</div>
+                <div class="tech-badge" style="--tech-color: 229, 231, 235;">Next.js</div>
+                <div class="tech-badge" style="--tech-color: 59, 130, 246;">MySQL</div>
+                <div class="tech-badge" style="--tech-color: 99, 102, 241;">PostgreSQL</div>
+                <div class="tech-badge" style="--tech-color: 220, 38, 38;">Redis</div>
+                <div class="tech-badge" style="--tech-color: 34, 197, 94;">Nginx</div>
+                <div class="tech-badge" style="--tech-color: 239, 68, 68;">Hetzner</div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-left">
+            &copy; 2026 <strong>Gökhan ÇİTİL</strong>. Tüm hakları saklıdır.
+        </div>
+        <div class="footer-right">
+            <a href="gizlilik.html">Gizlilik Politikası</a>
+            <a href="kvkk.html">KVKK</a>
+            <a href="kullanim.html">Kullanım Koşulları</a>
+        </div>
+    </footer>
+
+</body>
+</html>
