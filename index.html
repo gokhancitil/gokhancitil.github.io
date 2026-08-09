@@ -22,7 +22,7 @@
             cursor: url('imlec.png'), auto;
         }
 
-        /* Üst Menü (Navbar) */
+        /* Üst Menü (Navbar) - Sadeleştirildi */
         header {
             display: flex; justify-content: space-between; align-items: center;
             padding: 30px 50px; z-index: 10; flex-wrap: wrap; gap: 20px;
@@ -48,17 +48,6 @@
             transition: color 0.3s;
         }
         .nav-links a:hover { color: #ffffff; }
-
-        /* Sosyal Medya İkonları */
-        .social-icons { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; position: relative; z-index: 50; }
-        .social-icons a {
-            color: #ffffff; text-decoration: none; font-size: 0.7rem; 
-            border: 1px solid #333; padding: 6px 14px; border-radius: 20px; 
-            transition: all 0.3s; letter-spacing: 0.8px;
-            display: inline-flex; align-items: center; gap: 6px; 
-        }
-        .social-icons a:hover { background: #fff; color: #000; border-color: #fff; }
-        .social-icons a:hover svg { fill: #000; }
 
         /* Ana İçerik */
         main {
@@ -89,16 +78,12 @@
         
         .line-1 {
             width: 0;
-            animation: 
-                typing1 1.5s steps(18, end) forwards,
-                blink 0.5s step-end 3; 
+            animation: typing1 1.5s steps(18, end) forwards, blink 0.5s step-end 3; 
         }
         
         .line-2 {
             width: 0;
-            animation: 
-                typing2 1.5s steps(15, end) 1.5s forwards,
-                blink 0.5s step-end 1.5s 3; 
+            animation: typing2 1.5s steps(15, end) 1.5s forwards, blink 0.5s step-end 1.5s 3; 
         }
         
         @keyframes typing1 { from { width: 0; } to { width: 18ch; } }
@@ -112,10 +97,24 @@
         }
         .center-visual:hover { filter: grayscale(0%); }
 
+        /* Sol Alt Metin ve İçine Taşınan Sosyal Medya İkonları */
         .bottom-text {
-            position: absolute; bottom: 90px; left: 50px; max-width: 400px;
-            text-align: left; color: #999999; font-size: 0.95rem; line-height: 1.6; font-weight: 300;
+            position: absolute; bottom: 90px; left: 50px; max-width: 440px;
+            text-align: left; color: #999999; font-size: 0.95rem; font-weight: 300;
         }
+        .bottom-text p {
+            line-height: 1.6; margin-top: 0; margin-bottom: 20px;
+        }
+
+        .social-icons { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-start; position: relative; z-index: 50; }
+        .social-icons a {
+            color: #ffffff; text-decoration: none; font-size: 0.7rem; 
+            border: 1px solid #333; padding: 6px 14px; border-radius: 20px; 
+            transition: all 0.3s; letter-spacing: 0.8px;
+            display: inline-flex; align-items: center; gap: 6px; 
+        }
+        .social-icons a:hover { background: #fff; color: #000; border-color: #fff; }
+        .social-icons a:hover svg { fill: #000; }
 
         /* Uçuşan Objeler */
         .floating-shape {
@@ -136,10 +135,7 @@
         }
         .footer-left { font-weight: 300; display: flex; align-items: center; } 
         .footer-left strong { color: #fff; font-weight: 700; }
-        
-        /* FOOTER İÇİNDEKİ LOGONUN CSS AYARI */
         .footer-logo { height: 14px; margin: 0 6px; margin-top: -2px; }
-
         .footer-right { display: flex; gap: 20px; }
         .footer-right a { color: #888; text-decoration: none; transition: color 0.3s; }
         .footer-right a:hover { color: #ffffff; }
@@ -155,6 +151,7 @@
             .typewriter-text { font-size: 2.2rem !important; }
             .center-visual { margin-top: 20px; }
             .bottom-text { position: relative; bottom: auto; left: auto; text-align: center; margin: 30px auto; padding: 0 20px; }
+            .social-icons { justify-content: center; } /* Mobilde sosyal ikonlar ortalansın */
             footer { flex-direction: column; text-align: center; gap: 15px; padding: 20px; }
             .footer-left { justify-content: center; } 
             .footer-right { justify-content: center; flex-wrap: wrap; }
@@ -178,7 +175,26 @@
             <a href="hizmetlerimiz.html">Hizmetlerimiz</a>
             <a href="iletisim.html">İletişim</a>
         </nav>
+    </header>
 
+    <main>
+        <!-- HACKER TYPEWRITER EFEKTİ UYGULANAN BÖLÜM -->
+        <div class="typewriter-container">
+            <div class="typewriter-text line-1">Fikirlerinizi Koda</div>
+            <div class="typewriter-text line-2">Dönüştürüyoruz.</div>
+        </div>
+        
+        <img src="gokhancitil-yapay-zeka.jpg" alt="Yapay Zeka" class="center-visual">
+    </main>
+
+    <!-- METİN VE SOSYAL MEDYA İKONLARI BURADA BİRLEŞTİRİLDİ -->
+    <div class="bottom-text">
+        <p>
+            Yapay zeka modelleri, modern yazılım mimarileri ve otomasyon 
+            çözümlerimizle dijital sistemleri geleceğe hazırlıyoruz. 
+            Temiz kod ile fikirleriniz gerçeğe dönüşsün!
+        </p>
+        
         <div class="social-icons">
             <a href="https://www.linkedin.com/in/gokhancitil" target="_blank">
                 <svg viewBox="0 0 24 24" width="13" height="13" fill="#ffffff"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
@@ -197,28 +213,11 @@
                 Instagram
             </a>
         </div>
-    </header>
-
-    <main>
-        <!-- HACKER TYPEWRITER EFEKTİ UYGULANAN BÖLÜM -->
-        <div class="typewriter-container">
-            <div class="typewriter-text line-1">Fikirlerinizi Koda</div>
-            <div class="typewriter-text line-2">Dönüştürüyoruz.</div>
-        </div>
-        
-        <img src="gokhancitil-yapay-zeka.jpg" alt="Yapay Zeka" class="center-visual">
-    </main>
-
-    <div class="bottom-text">
-        Yapay zeka modelleri, modern yazılım mimarileri ve otomasyon 
-        çözümlerimizle dijital sistemleri geleceğe hazırlıyoruz. 
-        Temiz kod ile fikirleriniz gerçeğe dönüşsün!
     </div>
 
     <!-- ALT BİLGİ (FOOTER) -->
     <footer>
         <div class="footer-left">
-            <!-- DOSYA ADI DÜZELTİLDİ: gokhancitil_logo.png -->
             &copy; 2026 <img src="gokhancitil_logo.png" alt="Gökhan Çitil Logo" class="footer-logo"> <strong>Gökhan ÇİTİL</strong>. Tüm hakları saklıdır.
         </div>
         <div class="footer-right">
