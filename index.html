@@ -10,9 +10,11 @@
         /* Genel Siyah Tema ve Font Ayarları */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
         
-        body {
+        /* MOBİL SAĞA KAYMA DÜZELTİLDİ: html ve body için genişlik kilitlendi */
+        html, body {
             margin: 0; padding: 0; background-color: #080808; color: #ffffff;
-            font-family: 'Inter', sans-serif; overflow-x: hidden;
+            font-family: 'Inter', sans-serif; overflow-x: hidden; 
+            width: 100%; max-width: 100vw; 
             height: 100vh; display: flex; flex-direction: column;
             cursor: url('imlec.png'), auto;
         }
@@ -23,7 +25,21 @@
             padding: 30px 50px; z-index: 10; flex-wrap: wrap; gap: 20px;
         }
 
-        /* Tıklama çakışmalarını önlemek için Z-index eklendi */
+        /* --- LOGO AYARLARI --- */
+        .logo-container {
+            position: relative; width: 240px; height: 50px; 
+            display: flex; justify-content: flex-start; align-items: center;
+        }
+        .logo-link {
+            position: absolute; width: 100%; height: 100%; z-index: 10;
+        }
+        .logo-img {
+            width: 260px; transform: scale(1.5); transform-origin: left center; 
+            image-rendering: -webkit-optimize-contrast; pointer-events: none; 
+            display: block; position: relative; z-index: 5;
+        }
+
+        /* Menü Linkleri */
         .nav-links { display: flex; gap: 40px; position: relative; z-index: 50; } 
         .nav-links a {
             color: #dddddd; text-decoration: none; font-size: 0.85rem;
@@ -86,13 +102,21 @@
         .footer-right a { color: #888; text-decoration: none; transition: color 0.3s; }
         .footer-right a:hover { color: #ffffff; }
 
-        /* Mobil Uyum */
+        /* MOBİL UYUM (TÜM KAYMA HATALARI BURADA ÇÖZÜLDÜ) */
         @media screen and (max-width: 768px) {
             body { height: auto; min-height: 100vh; }
-            header { padding: 20px 15px; flex-direction: column; justify-content: center; gap: 30px; }
+            header { padding: 20px 15px; flex-direction: column; justify-content: center; gap: 25px; }
+            
+            /* Logo mobilde ekrandan taşmasın diye küçültülüp merkeze alındı */
+            .logo-container { width: 100%; justify-content: center; height: auto; }
+            .logo-img { width: 220px; transform: scale(1); transform-origin: center center; }
+            
             .nav-links { gap: 15px; flex-wrap: wrap; justify-content: center; }
             main { margin-top: 20px; padding: 20px 0; }
-            h1 { font-size: 2.8rem; padding: 0 15px; }
+            
+            /* Uzun kelime ekrandan taşmasın diye boyut düşürüldü ve kırma eklendi */
+            h1 { font-size: 2.2rem; padding: 0 15px; word-break: break-word; }
+            
             .center-visual { margin-top: 20px; }
             .bottom-text { position: relative; bottom: auto; left: auto; text-align: center; margin: 40px auto; padding: 0 20px; }
             
@@ -107,11 +131,9 @@
     <div class="floating-shape shape2"></div>
 
     <header>
-        <!-- TERTEMİZ, HİLESİZ, ŞEFFAF PNG LOGO ALANI -->
-        <div style="position: relative; width: 240px; height: 50px; display: flex; justify-content: flex-start; align-items: center;">
-            <a href="https://gokhancitil.com" style="position: absolute; width: 100%; height: 100%; z-index: 10;"></a>
-            
-            <img src="gokhancitil.com.png" alt="Gökhan Çitil AI & Software" style="width: 260px; transform: scale(1.5); transform-origin: left center; pointer-events: none; display: block; position: relative; z-index: 5;">
+        <div class="logo-container">
+            <a href="https://gokhancitil.com" class="logo-link"></a>
+            <img src="gokhancitil.com.png" alt="Gökhan Çitil AI & Software" class="logo-img">
         </div>
         
         <nav class="nav-links">
