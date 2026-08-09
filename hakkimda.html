@@ -52,15 +52,17 @@
         .nav-links a:hover { color: #ffffff; }
         .nav-links a.active { color: #ffffff; font-weight: 700; border-bottom: 2px solid #fff; padding-bottom: 5px; }
 
+        /* HİZALAMA SORUNU BURADA ÇÖZÜLDÜ */
         main {
             flex-grow: 1; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; z-index: 5; padding: 40px 20px;
+            justify-content: flex-start; /* Yazıların ortada asılı kalmasını engeller, yukarı çeker */
+            align-items: center; z-index: 5; 
+            padding: 80px 20px 40px 20px; /* Yukarıdan ideal boşluğu bırakır */
         }
 
-        /* DİKKAT: VİTRİN/KUTU KALDIRILDI, SADECE İÇERİK KALDI */
         .content-box {
             width: 100%; max-width: 800px;
-            padding: 0 20px; /* Sadece yanlardan biraz boşluk */
+            padding: 0 20px; 
             box-sizing: border-box; 
         }
         
@@ -68,7 +70,7 @@
         
         .personal-info {
             display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px;
-            font-size: 1rem; color: #a0aab2; background: rgba(255,255,255,0.03); /* Eğitim kutusu hafif belli olsun diye bırakıldı */
+            font-size: 1rem; color: #a0aab2; background: rgba(255,255,255,0.03); 
             padding: 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05);
         }
         .personal-info span { color: #fff; font-weight: 700; margin-right: 10px; }
@@ -93,7 +95,9 @@
             .logo-container { width: 100%; justify-content: center; }
             .logo-img { width: 360px; max-width: 95%; }
             .nav-links { position: relative; left: 0; transform: none; gap: 15px; flex-wrap: wrap; justify-content: center; }
-            main { padding: 20px 15px; }
+            
+            main { padding: 40px 15px 40px 15px; } /* Mobilde üst boşluk biraz azaltıldı */
+            
             .content-box { padding: 0; }
             .content-box h1 { font-size: 2rem; }
             .personal-info { font-size: 0.9rem; padding: 15px; }
