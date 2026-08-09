@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Gökhan ÇİTİL - İnönü Üniversitesi İşletme mezunu ve Yazılım Geliştiricisi.">
+    <meta name="description" content="Gökhan ÇİTİL - İnönü Üniversitesi İşletme mezunu ve Yazılım Geliştiricisi. Profesyonel Web, E-Ticaret ve Yapay Zeka Çözümleri.">
     <title>Hakkımda | Gökhan ÇİTİL</title>
     
     <link rel="icon" type="image/png" href="gokhancitil_logo.png">
@@ -24,7 +24,7 @@
     </script>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
         
         body {
             margin: 0; padding: 0; background-color: #080808; color: #ffffff;
@@ -43,7 +43,7 @@
         .logo-img { width: 450px; image-rendering: -webkit-optimize-contrast; pointer-events: none; display: block; position: relative; z-index: 5; }
 
         .nav-links { 
-            display: flex; gap: 30px; 
+            display: flex; gap: 40px; 
             position: absolute; left: 50%; transform: translateX(-50%);
         }
         .nav-links a { color: #dddddd; text-decoration: none; font-size: 0.85rem; font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.3s; }
@@ -52,56 +52,119 @@
 
         main {
             flex-grow: 1; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; z-index: 5; padding: 40px 20px;
+            align-items: center; z-index: 5; padding: 40px 20px;
         }
 
+        /* 1. HAKKIMDA KUTUSU */
         .content-box {
             background: rgba(20, 20, 25, 0.9); padding: 50px;
-            border: 1px solid rgba(255,255,255,0.1); width: 100%; max-width: 700px;
+            border: 1px solid rgba(255,255,255,0.1); width: 100%; max-width: 800px;
             border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
             backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-            box-sizing: border-box; 
+            box-sizing: border-box; margin-bottom: 70px;
         }
-
-        .content-box h1 { margin-top: 0; font-size: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; margin-bottom: 30px; font-weight: 700; }
-        
+        .content-box h1 { margin-top: 0; font-size: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; margin-bottom: 30px; font-weight: 700; text-align: center; }
         .personal-info {
             display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px;
             font-size: 1rem; color: #a0aab2; background: rgba(255,255,255,0.03);
             padding: 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05);
         }
         .personal-info span { color: #fff; font-weight: 700; margin-right: 10px; }
+        .content-box p { color: #d1d5db; line-height: 1.8; font-size: 1.05rem; margin-bottom: 20px; text-align: justify; }
 
-        .content-box p { color: #d1d5db; line-height: 1.8; font-size: 1.05rem; margin-bottom: 20px; }
+        /* 2. VİTRİN HİZMET KARTLARI */
+        .showcase-section {
+            text-align: center; margin-bottom: 70px; width: 100%; max-width: 1100px;
+            background: rgba(20, 20, 25, 0.4); padding: 50px; border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px);
+        }
+        .showcase-section h2 { font-size: 2.2rem; font-weight: 700; margin: 0 0 15px 0; }
+        .showcase-subtitle { color: #a0aab2; font-size: 1.05rem; line-height: 1.6; max-width: 800px; margin: 0 auto 40px auto; }
+        
+        .showcase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .showcase-card {
+            background: rgba(30, 30, 35, 0.5); padding: 35px 25px;
+            border: 1px solid rgba(255,255,255,0.05); border-radius: 15px;
+            text-align: left; transition: all 0.3s ease; display: flex; flex-direction: column;
+        }
+        .showcase-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.2); background: rgba(40, 40, 45, 0.8); }
+        .showcase-card h3 { color: #fff; margin: 0 0 15px 0; font-size: 1.25rem; font-weight: 700; }
+        .showcase-card p { color: #8892b0; font-size: 0.95rem; line-height: 1.7; margin: 0 0 25px 0; flex-grow: 1; }
+        
+        .link-blue { color: #3b82f6; text-decoration: none; font-size: 0.9rem; font-weight: 700; transition: opacity 0.3s; }
+        .link-orange { color: #f97316; text-decoration: none; font-size: 0.9rem; font-weight: 700; transition: opacity 0.3s; }
+        .link-green { color: #22c55e; text-decoration: none; font-size: 0.9rem; font-weight: 700; transition: opacity 0.3s; }
+        .showcase-card a:hover { opacity: 0.7; }
 
+        /* 3. SORUN & ÇÖZÜM BÖLÜMÜ */
+        .ps-section { width: 100%; max-width: 1100px; margin-bottom: 80px; }
+        .ps-header { text-align: center; margin-bottom: 40px; }
+        .ps-header-subtitle { color: #a855f7; font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; display: inline-block; }
+        .ps-header h2 { font-size: 2.2rem; margin: 0 0 15px 0; font-weight: 700; }
+        .ps-header p { color: #a0aab2; font-size: 1.05rem; }
+
+        .ps-container { display: flex; gap: 30px; align-items: flex-start; }
+        .ps-column { flex: 1; display: flex; flex-direction: column; gap: 15px; }
+        .col-title { font-size: 1.2rem; margin: 0 0 15px 0; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+        .col-title.warning { color: #ef4444; }
+        .col-title.success { color: #22c55e; }
+
+        .ps-card { display: flex; align-items: flex-start; gap: 15px; padding: 20px; border-radius: 12px; transition: transform 0.3s ease; }
+        .ps-card:hover { transform: translateX(5px); }
+        .problem-card { background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.15); }
+        .solution-card { background: rgba(34, 197, 94, 0.05); border: 1px solid rgba(34, 197, 94, 0.15); }
+
+        .ps-icon { display: flex; justify-content: center; align-items: center; width: 28px; height: 28px; border-radius: 6px; font-weight: bold; flex-shrink: 0; font-size: 0.9rem; }
+        .icon-red { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+        .icon-green { background: rgba(34, 197, 94, 0.15); color: #22c55e; }
+
+        .ps-text h4 { margin: 0 0 5px 0; color: #fff; font-size: 1.05rem; font-weight: 600; }
+        .ps-text p { margin: 0; color: #8892b0; font-size: 0.9rem; line-height: 1.6; }
+
+        /* 4. TEKNOLOJİ BÖLÜMÜ */
+        .tech-section { text-align: center; width: 100%; max-width: 900px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .tech-subtitle { color: #ff6b00; font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; display: inline-block; }
+        .tech-section h2 { font-size: 2.5rem; margin: 0 0 15px 0; font-weight: 700; }
+        .tech-desc { color: #a0aab2; font-size: 1.05rem; margin-bottom: 40px; }
+        
+        .tech-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+        .tech-badge { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); padding: 12px 25px; border-radius: 10px; font-size: 0.95rem; font-weight: 600; color: #d1d5db; transition: all 0.3s ease; cursor: default; }
+        .tech-badge:hover { background: rgba(var(--tech-color), 0.15); border-color: rgba(var(--tech-color), 0.5); color: #ffffff; transform: translateY(-4px); box-shadow: 0 8px 20px rgba(var(--tech-color), 0.2); }
+
+        /* Uçuşan Objeler */
         .floating-shape { position: absolute; border-radius: 50%; filter: blur(80px); z-index: 0; animation: float 10s infinite ease-in-out alternate; }
         .shape1 { width: 300px; height: 300px; background: rgba(30, 144, 255, 0.1); top: 10%; left: 20%; }
         .shape2 { width: 400px; height: 400px; background: rgba(138, 43, 226, 0.05); bottom: 10%; right: 10%; animation-delay: -5s; }
         @keyframes float { 0% { transform: translateY(0) translateX(0); } 100% { transform: translateY(-40px) translateX(40px); } }
 
-        footer {
-            width: 100%; padding: 25px 50px; box-sizing: border-box;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            display: flex; justify-content: space-between; align-items: center;
-            background-color: #050505; color: #888; font-size: 0.85rem;
-            z-index: 10; margin-top: auto; 
-        }
+        footer { width: 100%; padding: 25px 50px; box-sizing: border-box; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; background-color: #050505; color: #888; font-size: 0.85rem; z-index: 10; margin-top: auto; }
         .footer-left { font-weight: 300; }
         .footer-left strong { color: #fff; font-weight: 700; }
         .footer-right { display: flex; gap: 20px; }
         .footer-right a { color: #888; text-decoration: none; transition: color 0.3s; }
         .footer-right a:hover { color: #ffffff; }
 
+        /* Mobil Uyum */
         @media screen and (max-width: 768px) {
             header { padding: 20px 15px; flex-direction: column; justify-content: center; gap: 15px; }
             .logo-container { width: 100%; justify-content: center; }
             .logo-img { width: 360px; max-width: 95%; }
             .nav-links { position: relative; left: 0; transform: none; gap: 15px; flex-wrap: wrap; justify-content: center; }
             main { padding: 20px 15px; }
-            .content-box { padding: 30px 20px; border-radius: 15px; }
+            
+            .content-box { padding: 30px 20px; border-radius: 15px; margin-bottom: 40px; }
             .content-box h1 { font-size: 2rem; }
-            .personal-info { font-size: 0.9rem; padding: 15px; }
-            .content-box p { font-size: 0.95rem; }
+            
+            .showcase-section { padding: 30px 20px; margin-bottom: 50px; }
+            .showcase-section h2 { font-size: 1.8rem; }
+            .showcase-subtitle { font-size: 0.95rem; margin-bottom: 30px; }
+            
+            .ps-container { flex-direction: column; gap: 40px; }
+            .ps-header h2 { font-size: 1.8rem; }
+            
+            .tech-section h2 { font-size: 1.8rem; }
+            .tech-badge { padding: 10px 18px; font-size: 0.85rem; }
+            
             footer { flex-direction: column; text-align: center; gap: 15px; padding: 20px; }
             .footer-right { justify-content: center; flex-wrap: wrap; }
         }
@@ -121,25 +184,158 @@
         <nav class="nav-links">
             <a href="hakkimda.html" class="active">Hakkımda</a>
             <a href="uzmanliklar.html">Uzmanlıklar</a>
-            <a href="hizmetlerimiz.html">Hizmetlerimiz</a>
             <a href="iletisim.html">İletişim</a>
         </nav>
     </header>
 
     <main>
+        <!-- 1. HAKKIMDA BÖLÜMÜ -->
         <div class="content-box">
             <h1>Hakkımda</h1>
             
             <div class="personal-info">
                 <div><span>🎓 Eğitim:</span> İnönü Üniversitesi İşletme Mezunu</div>
-                <div><span>💻 Odak Alanı:</span> Yazılım ve Yapay Zeka </div>
+                <div><span>💻 Odak Alanı:</span> Yazılım ve Yapay Zeka Çözümleri</div>
             </div>
 
-            <p>Gökhan ÇİTİL, İnönü Üniversitesi İşletme mezunu olup Ayakkabı Delisiyim markasında Sosyal Medya Direktörü olarak çalışmıştır.</p>
+            <p>Gökhan ÇİTİL, İnönü Üniversitesi İşletme mezunu olup kariyerine Ayakkabı Delisiyim markasında Sosyal Medya Direktörü olarak başlamıştır.</p>
             
-            <p>2019-2022 yılları arasında Jandarma Genel Komutanlığı bünyesinde Astsubay olarak görev yapmış, burada edindiği üst düzey disiplin ve stratejik yönetim becerilerini sivil kariyerine entegre etmiştir.</p>
+            <p>2019-2022 yılları arasında Jandarma Genel Komutanlığı bünyesinde Astsubay olarak görev yapmış, burada edindiği üst düzey disiplin ve stratejik kriz yönetimi becerilerini sivil kariyerine entegre etmiştir.</p>
 
-            <p>2023 yılından itibaren kariyer rotasını teknolojiye çevirerek yazılım alanında çalışmalarını sürdürmekte; modern sistem mimarileri ve yapay zeka odaklı projeler üretmektedir.</p>
+            <p>2023 yılından itibaren kariyer rotasını teknolojiye çevirerek yazılım alanında derinleşmiş; günümüzde ölçeklenebilir sistem mimarileri, e-ticaret altyapıları ve verimlilik odaklı yapay zeka entegrasyonları üretmektedir.</p>
+        </div>
+
+        <!-- 2. VİTRİN HİZMET KARTLARI -->
+        <div class="showcase-section">
+            <h2>Profesyonel Web Tasarım & Yazılım Çözümleri</h2>
+            <p class="showcase-subtitle">Türkiye genelinde kurumsal web tasarım, e-ticaret sitesi yapımı ve yapay zeka entegrasyon hizmetleri sunuyorum. Her proje modern, mobil uyumlu ve SEO/GEO altyapısına sahiptir.</p>
+            
+            <div class="showcase-grid">
+                <div class="showcase-card">
+                    <h3>Kurumsal Web Tasarım</h3>
+                    <p>İşletmenize özel kurumsal web sitesi tasarlıyorum. Modern görünüm, hızlı açılma, mobil uyumluluk ve SEO/GEO altyapısı standart. Yönetim paneli ile içeriklerinizi kolayca güncelleyin.</p>
+                    <a href="iletisim.html" class="link-blue">Detaylı Bilgi &rarr;</a>
+                </div>
+                
+                <div class="showcase-card">
+                    <h3>E-Ticaret Sitesi Yapımı</h3>
+                    <p>Online satış yapmanız için e-ticaret sitesi kuruyorum. Ürün yönetimi, sanal POS, kargo entegrasyonu, kampanya sistemi -- anahtar teslim satış çözümü.</p>
+                    <a href="iletisim.html" class="link-orange">Yazılım Hizmeti &rarr;</a>
+                </div>
+
+                <div class="showcase-card">
+                    <h3>Google SEO/GEO & AI Uyumlu Siteler</h3>
+                    <p>Yaptığım her web sitesi Schema markup ve AI arama motoru (GEO) altyapısına sahiptir. Hız optimizasyonu ve doğru meta yapılandırması ile sistemleri yarına hazırlıyorum.</p>
+                    <a href="iletisim.html" class="link-green">SEO/GEO Hizmeti &rarr;</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. SORUN VE ÇÖZÜM BÖLÜMÜ -->
+        <div class="ps-section">
+            <div class="ps-header">
+                <div class="ps-header-subtitle">SORUN & ÇÖZÜM</div>
+                <h2>İşletmenizde Bu Sorunlar Tanıdık mı?</h2>
+                <p>Her sorunun dijital ve yapay zeka tabanlı bir çözümü var. Sizin için geliştiriyorum.</p>
+            </div>
+
+            <div class="ps-container">
+                <!-- Sol Kolon: Sorunlar -->
+                <div class="ps-column">
+                    <h3 class="col-title warning">⚠️ Yaşadığınız Sorunlar</h3>
+                    
+                    <div class="ps-card problem-card">
+                        <div class="ps-icon icon-red">✕</div>
+                        <div class="ps-text">
+                            <h4>Manuel tekrarlayan süreçler</h4>
+                            <p>Sipariş, stok, fatura, bildirim... Çalışanlarınız saatlerce aynı işlemleri tekrarlıyor, verimlilik düşüyor.</p>
+                        </div>
+                    </div>
+
+                    <div class="ps-card problem-card">
+                        <div class="ps-icon icon-red">✕</div>
+                        <div class="ps-text">
+                            <h4>Müşterilere geç yanıt verme</h4>
+                            <p>Mesai dışı gelen sorulara cevap veremiyorsunuz — 7/24 chatbot olmadan müşteriler rakibe gidiyor.</p>
+                        </div>
+                    </div>
+
+                    <div class="ps-card problem-card">
+                        <div class="ps-icon icon-red">✕</div>
+                        <div class="ps-text">
+                            <h4>AI arama motorlarında görünmezsiniz</h4>
+                            <p>ChatGPT, Gemini, Perplexity sizi referans göstermiyor — GEO altyapısı olmadan yeni nesil müşteri kanalını kaçırıyorsunuz.</p>
+                        </div>
+                    </div>
+
+                    <div class="ps-card problem-card">
+                        <div class="ps-icon icon-red">✕</div>
+                        <div class="ps-text">
+                            <h4>Eski altyapı AI'a kapalı</h4>
+                            <p>WordPress, OpenCart veya eski sisteminize yapay zeka entegre edilemiyor — modern altyapı şart.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sağ Kolon: Çözümler -->
+                <div class="ps-column">
+                    <h3 class="col-title success">💡 Dijital Çözümlerim</h3>
+                    
+                    <div class="ps-card solution-card">
+                        <div class="ps-icon icon-green">✓</div>
+                        <div class="ps-text">
+                            <h4>AI chatbot — 7/24 akıllı asistan</h4>
+                            <p>Müşteri sorularına anında cevap, randevu alma, ürün önerisi, sipariş takibi — uykuda bile çalışır.</p>
+                        </div>
+                    </div>
+
+                    <div class="ps-card solution-card">
+                        <div class="ps-icon icon-green">✓</div>
+                        <div class="ps-text">
+                            <h4>GEO — AI arama görünürlüğü</h4>
+                            <p>ChatGPT, Gemini, Perplexity'de firmanız referans gösterilsin. Structured data ve güncel kod mimarisi ile AI aramalarında öne çıkın.</p>
+                        </div>
+                    </div>
+
+                    <div class="ps-card solution-card">
+                        <div class="ps-icon icon-green">✓</div>
+                        <div class="ps-text">
+                            <h4>Özel otomasyon süreçleri</h4>
+                            <p>Sipariş onayı, stok uyarısı, fatura oluşturma, anlık bildirim... İşletmenize özel yazılımlarla tekrarlayan her işlem otomatik.</p>
+                        </div>
+                    </div>
+
+                    <div class="ps-card solution-card">
+                        <div class="ps-icon icon-green">✓</div>
+                        <div class="ps-text">
+                            <h4>Modern altyapıda entegrasyon</h4>
+                            <p>Laravel, Next.js ve güncel API'lar ile doğrudan entegre. Eski altyapıyı modernize edip sisteminizi geleceğe hazır hale getiriyorum.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. TEKNOLOJİ BÖLÜMÜ -->
+        <div class="tech-section">
+            <div class="tech-subtitle">TEKNOLOJİ</div>
+            <h2>Kullandığım Teknolojiler</h2>
+            <p class="tech-desc">Projelerinizde performans ve güvenlik için güncel altyapıları tercih ediyorum.</p>
+            
+            <div class="tech-grid">
+                <div class="tech-badge" style="--tech-color: 239, 68, 68;">Laravel 12</div>
+                <div class="tech-badge" style="--tech-color: 139, 92, 246;">PHP 8.3</div>
+                <div class="tech-badge" style="--tech-color: 56, 189, 248;">Tailwind CSS</div>
+                <div class="tech-badge" style="--tech-color: 45, 212, 191;">Alpine.js</div>
+                <div class="tech-badge" style="--tech-color: 244, 114, 182;">Livewire</div>
+                <div class="tech-badge" style="--tech-color: 251, 146, 60;">Filament</div>
+                <div class="tech-badge" style="--tech-color: 229, 231, 235;">Next.js</div>
+                <div class="tech-badge" style="--tech-color: 59, 130, 246;">MySQL</div>
+                <div class="tech-badge" style="--tech-color: 99, 102, 241;">PostgreSQL</div>
+                <div class="tech-badge" style="--tech-color: 220, 38, 38;">Redis</div>
+                <div class="tech-badge" style="--tech-color: 34, 197, 94;">Nginx</div>
+                <div class="tech-badge" style="--tech-color: 239, 68, 68;">Hetzner</div>
+            </div>
         </div>
     </main>
 
