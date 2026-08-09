@@ -30,15 +30,20 @@
             min-height: 100vh; display: flex; flex-direction: column;
         }
 
+        /* Menü Hizalama Güncellemesi */
         header {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 30px 50px; z-index: 10; flex-wrap: wrap; gap: 20px;
+            display: flex; justify-content: flex-start; align-items: center;
+            padding: 30px 50px; z-index: 10; position: relative;
         }
 
         .logo { font-size: 1.5rem; font-weight: 700; letter-spacing: 2px; text-align: center; text-decoration: none; color: #ffffff; }
         .logo span { font-weight: 300; font-size: 0.8rem; display: block; letter-spacing: 4px; color: #888; }
 
-        .nav-links { display: flex; gap: 40px; }
+        /* Linkleri Tam Merkeze Çiviledik */
+        .nav-links { 
+            display: flex; gap: 40px; 
+            position: absolute; left: 50%; transform: translateX(-50%);
+        }
         .nav-links a { color: #dddddd; text-decoration: none; font-size: 0.85rem; font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.3s; }
         .nav-links a:hover { color: #ffffff; }
         .nav-links a.active { color: #ffffff; font-weight: 700; border-bottom: 2px solid #fff; padding-bottom: 5px; }
@@ -81,28 +86,16 @@
                 justify-content: center;
                 gap: 15px;
             }
+            /* Mobilde merkezlemeyi sıfırlayıp alt alta uyumlu hale getirdik */
             .nav-links {
-                gap: 15px;
-                flex-wrap: wrap;
-                justify-content: center;
+                position: relative; left: 0; transform: none;
+                gap: 15px; flex-wrap: wrap; justify-content: center;
             }
-            main {
-                padding: 20px 15px;
-            }
-            .content-box {
-                padding: 30px 20px;
-                border-radius: 15px;
-            }
-            .content-box h1 {
-                font-size: 2rem;
-            }
-            .personal-info {
-                font-size: 0.9rem;
-                padding: 15px;
-            }
-            .content-box p {
-                font-size: 0.95rem;
-            }
+            main { padding: 20px 15px; }
+            .content-box { padding: 30px 20px; border-radius: 15px; }
+            .content-box h1 { font-size: 2rem; }
+            .personal-info { font-size: 0.9rem; padding: 15px; }
+            .content-box p { font-size: 0.95rem; }
         }
     </style>
 </head>
