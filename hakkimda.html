@@ -28,7 +28,7 @@
         
         body {
             margin: 0; padding: 0; 
-            background-color: #080808; /* Parlamalar kaldırıldı, düz koyu arka plan */
+            background-color: #080808; 
             color: #ffffff;
             font-family: 'Inter', sans-serif; overflow-x: hidden;
             min-height: 100vh; display: flex; flex-direction: column;
@@ -57,18 +57,18 @@
             justify-content: center; align-items: center; z-index: 5; padding: 40px 20px;
         }
 
+        /* DİKKAT: VİTRİN/KUTU KALDIRILDI, SADECE İÇERİK KALDI */
         .content-box {
-            background: rgba(20, 20, 25, 0.9); padding: 50px;
-            border: 1px solid rgba(255,255,255,0.1); width: 100%; max-width: 800px;
-            border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            width: 100%; max-width: 800px;
+            padding: 0 20px; /* Sadece yanlardan biraz boşluk */
             box-sizing: border-box; 
         }
+        
         .content-box h1 { margin-top: 0; font-size: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; margin-bottom: 30px; font-weight: 700; text-align: center; }
         
         .personal-info {
             display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px;
-            font-size: 1rem; color: #a0aab2; background: rgba(255,255,255,0.03);
+            font-size: 1rem; color: #a0aab2; background: rgba(255,255,255,0.03); /* Eğitim kutusu hafif belli olsun diye bırakıldı */
             padding: 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05);
         }
         .personal-info span { color: #fff; font-weight: 700; margin-right: 10px; }
@@ -94,7 +94,7 @@
             .logo-img { width: 360px; max-width: 95%; }
             .nav-links { position: relative; left: 0; transform: none; gap: 15px; flex-wrap: wrap; justify-content: center; }
             main { padding: 20px 15px; }
-            .content-box { padding: 30px 20px; border-radius: 15px; }
+            .content-box { padding: 0; }
             .content-box h1 { font-size: 2rem; }
             .personal-info { font-size: 0.9rem; padding: 15px; }
             .content-box p { font-size: 0.95rem; }
