@@ -49,13 +49,13 @@
         }
         .nav-links a:hover { color: #ffffff; }
 
-        /* Sosyal Medya İkonları - DAHA ZARİF VE KÜÇÜK HALE GETİRİLDİ */
+        /* Sosyal Medya İkonları */
         .social-icons { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; position: relative; z-index: 50; }
         .social-icons a {
-            color: #ffffff; text-decoration: none; font-size: 0.7rem; /* Yazı boyutu küçültüldü */
-            border: 1px solid #333; padding: 6px 14px; border-radius: 20px; /* İç boşluklar daraltıldı */
+            color: #ffffff; text-decoration: none; font-size: 0.7rem; 
+            border: 1px solid #333; padding: 6px 14px; border-radius: 20px; 
             transition: all 0.3s; letter-spacing: 0.8px;
-            display: inline-flex; align-items: center; gap: 6px; /* İkon ile yazı arası mesafe daraltıldı */
+            display: inline-flex; align-items: center; gap: 6px; 
         }
         .social-icons a:hover { background: #fff; color: #000; border-color: #fff; }
         .social-icons a:hover svg { fill: #000; }
@@ -101,20 +101,9 @@
                 blink 0.5s step-end 1.5s 3; 
         }
         
-        @keyframes typing1 {
-            from { width: 0; }
-            to { width: 18ch; } 
-        }
-        
-        @keyframes typing2 {
-            from { width: 0; }
-            to { width: 15.5ch; } 
-        }
-
-        @keyframes blink {
-            from, to { border-color: transparent; }
-            50% { border-color: #3b82f6; } 
-        }
+        @keyframes typing1 { from { width: 0; } to { width: 18ch; } }
+        @keyframes typing2 { from { width: 0; } to { width: 15.5ch; } }
+        @keyframes blink { from, to { border-color: transparent; } 50% { border-color: #3b82f6; } }
 
         .center-visual {
             margin-top: 40px; max-width: 550px; width: 90%;
@@ -145,8 +134,12 @@
             background-color: #050505; color: #888; font-size: 0.85rem;
             z-index: 10; margin-top: auto; 
         }
-        .footer-left { font-weight: 300; }
+        .footer-left { font-weight: 300; display: flex; align-items: center; } /* Flex eklendi */
         .footer-left strong { color: #fff; font-weight: 700; }
+        
+        /* FOOTER İÇİNDEKİ YENİ KÜÇÜK LOGONUN CSS AYARI */
+        .footer-logo { height: 14px; margin: 0 6px; margin-top: -2px; }
+
         .footer-right { display: flex; gap: 20px; }
         .footer-right a { color: #888; text-decoration: none; transition: color 0.3s; }
         .footer-right a:hover { color: #ffffff; }
@@ -159,12 +152,11 @@
             .logo-img { width: 360px; max-width: 95%; } 
             .nav-links { gap: 15px; flex-wrap: wrap; justify-content: center; }
             main { margin-top: 10px; padding: 10px 0; } 
-            
             .typewriter-text { font-size: 2.2rem !important; }
-            
             .center-visual { margin-top: 20px; }
             .bottom-text { position: relative; bottom: auto; left: auto; text-align: center; margin: 30px auto; padding: 0 20px; }
             footer { flex-direction: column; text-align: center; gap: 15px; padding: 20px; }
+            .footer-left { justify-content: center; } /* Mobilde ortalama eklendi */
             .footer-right { justify-content: center; flex-wrap: wrap; }
         }
     </style>
@@ -189,7 +181,6 @@
 
         <div class="social-icons">
             <a href="https://www.linkedin.com/in/gokhancitil" target="_blank">
-                <!-- SVG Boyutları 13x13'e düşürüldü -->
                 <svg viewBox="0 0 24 24" width="13" height="13" fill="#ffffff"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                 LinkedIn
             </a>
@@ -209,7 +200,6 @@
     </header>
 
     <main>
-        <!-- HACKER TYPEWRITER EFEKTİ UYGULANAN BÖLÜM -->
         <div class="typewriter-container">
             <div class="typewriter-text line-1">Fikirlerinizi Koda</div>
             <div class="typewriter-text line-2">Dönüştürüyoruz.</div>
@@ -226,8 +216,9 @@
 
     <!-- ALT BİLGİ (FOOTER) -->
     <footer>
+        <!-- YENİ İMZALI FOOTER ALANI -->
         <div class="footer-left">
-            &copy; 2026 <strong>Gökhan ÇİTİL</strong>. Tüm hakları saklıdır.
+            &copy; 2026 <img src="gokhancitil_logo_2.png" alt="Gökhan Çitil Logo" class="footer-logo"> <strong>Gökhan ÇİTİL</strong>. Tüm hakları saklıdır.
         </div>
         <div class="footer-right">
             <a href="gizlilik.html">Gizlilik Politikası</a>
