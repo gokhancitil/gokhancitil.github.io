@@ -89,7 +89,6 @@
         /* Mobil Uyum */
         @media screen and (max-width: 768px) {
             body { height: auto; min-height: 100vh; }
-            /* Mobilde logo ile menü arasını biraz daha açtık (gap: 30px) */
             header { padding: 20px 15px; flex-direction: column; justify-content: center; gap: 30px; }
             .nav-links { gap: 15px; flex-wrap: wrap; justify-content: center; }
             main { margin-top: 20px; padding: 20px 0; }
@@ -108,13 +107,12 @@
     <div class="floating-shape shape2"></div>
 
     <header>
-        <!-- Gelişmiş Tıklama Korumalı Logo Alanı -->
+        <!-- CSS FİLTRE HİLESİ İLE YÜKSEK ÇÖZÜNÜRLÜKLÜ LOGO -->
         <div style="position: relative; width: 220px; height: 50px; display: flex; justify-content: center; align-items: center;">
-            <!-- Gerçek tıklanabilir alan burası (220x50px ile sınırlandırıldı) -->
             <a href="https://gokhancitil.com" style="position: absolute; width: 100%; height: 100%; z-index: 10;"></a>
             
-            <!-- Görselin tıklama algılaması (pointer-events: none) kapatıldı -->
-            <img src="gokhancitil.com.png" alt="Gökhan Çitil AI & Software" style="width: 280px; transform: scale(1.6); image-rendering: -webkit-optimize-contrast; pointer-events: none; display: block; position: relative; z-index: 5;">
+            <!-- Filter kodu eklendi: Laciverti siyaha ezer, screen kodu şeffaf yapar -->
+            <img src="gokhancitil.com.jpg" alt="Gökhan Çitil AI & Software" style="width: 280px; transform: scale(1.6); mix-blend-mode: screen; filter: contrast(1.6) brightness(0.7) saturate(1.2); image-rendering: -webkit-optimize-contrast; pointer-events: none; display: block; position: relative; z-index: 5;">
         </div>
         
         <nav class="nav-links">
