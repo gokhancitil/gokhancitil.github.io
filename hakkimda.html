@@ -6,7 +6,6 @@
     <meta name="description" content="Gökhan ÇİTİL - İnönü Üniversitesi İşletme mezunu ve Yazılım Geliştiricisi.">
     <title>Hakkımda | Gökhan ÇİTİL</title>
     
-    <!-- SEKME SİMGESİ (FAVICON) -->
     <link rel="icon" type="image/png" href="gokhancitil_logo.png">
     
     <script type="application/ld+json">
@@ -25,7 +24,7 @@
     </script>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
         
         body {
             margin: 0; padding: 0; background-color: #080808; color: #ffffff;
@@ -39,13 +38,12 @@
             padding: 30px 50px; z-index: 10; position: relative;
         }
 
-        /* LOGO AYARLARI */
         .logo-container { position: relative; display: flex; justify-content: flex-start; align-items: center; }
         .logo-link { position: absolute; width: 100%; height: 100%; z-index: 10; }
         .logo-img { width: 450px; image-rendering: -webkit-optimize-contrast; pointer-events: none; display: block; position: relative; z-index: 5; }
 
         .nav-links { 
-            display: flex; gap: 40px; 
+            display: flex; gap: 30px; 
             position: absolute; left: 50%; transform: translateX(-50%);
         }
         .nav-links a { color: #dddddd; text-decoration: none; font-size: 0.85rem; font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.3s; }
@@ -57,7 +55,6 @@
             justify-content: center; align-items: center; z-index: 5; padding: 40px 20px;
         }
 
-        /* HAKKIMDA KUTUSU */
         .content-box {
             background: rgba(20, 20, 25, 0.9); padding: 50px;
             border: 1px solid rgba(255,255,255,0.1); width: 100%; max-width: 700px;
@@ -74,46 +71,14 @@
             padding: 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05);
         }
         .personal-info span { color: #fff; font-weight: 700; margin-right: 10px; }
+
         .content-box p { color: #d1d5db; line-height: 1.8; font-size: 1.05rem; margin-bottom: 20px; }
 
-        /* YENİ: TEKNOLOJİ BÖLÜMÜ (DARK PREMIUM TASARIM) */
-        .tech-section {
-            margin-top: 60px; text-align: center; width: 100%; max-width: 900px; z-index: 5;
-        }
-        .tech-subtitle {
-            color: #ff6b00; /* Görseldeki turuncu renk */
-            font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; 
-            text-transform: uppercase; margin-bottom: 10px;
-        }
-        .tech-section h2 { font-size: 2.5rem; margin: 0 0 15px 0; font-weight: 700; }
-        .tech-desc { color: #a0aab2; font-size: 1.05rem; margin-bottom: 40px; }
-        
-        .tech-grid {
-            display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;
-        }
-        .tech-badge {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 12px 25px; border-radius: 10px;
-            font-size: 0.95rem; font-weight: 600; color: #d1d5db;
-            transition: all 0.3s ease; cursor: default;
-        }
-        
-        /* Her teknolojinin kendi marka rengiyle parlaması için hile */
-        .tech-badge:hover {
-            background: rgba(var(--tech-color), 0.15);
-            border-color: rgba(var(--tech-color), 0.5);
-            color: #ffffff; transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(var(--tech-color), 0.2);
-        }
-
-        /* Uçuşan Objeler */
         .floating-shape { position: absolute; border-radius: 50%; filter: blur(80px); z-index: 0; animation: float 10s infinite ease-in-out alternate; }
         .shape1 { width: 300px; height: 300px; background: rgba(30, 144, 255, 0.1); top: 10%; left: 20%; }
         .shape2 { width: 400px; height: 400px; background: rgba(138, 43, 226, 0.05); bottom: 10%; right: 10%; animation-delay: -5s; }
         @keyframes float { 0% { transform: translateY(0) translateX(0); } 100% { transform: translateY(-40px) translateX(40px); } }
 
-        /* --- FOOTER --- */
         footer {
             width: 100%; padding: 25px 50px; box-sizing: border-box;
             border-top: 1px solid rgba(255,255,255,0.05);
@@ -127,25 +92,16 @@
         .footer-right a { color: #888; text-decoration: none; transition: color 0.3s; }
         .footer-right a:hover { color: #ffffff; }
 
-        /* Mobil Uyum */
         @media screen and (max-width: 768px) {
             header { padding: 20px 15px; flex-direction: column; justify-content: center; gap: 15px; }
             .logo-container { width: 100%; justify-content: center; }
             .logo-img { width: 360px; max-width: 95%; }
             .nav-links { position: relative; left: 0; transform: none; gap: 15px; flex-wrap: wrap; justify-content: center; }
-            
             main { padding: 20px 15px; }
             .content-box { padding: 30px 20px; border-radius: 15px; }
             .content-box h1 { font-size: 2rem; }
             .personal-info { font-size: 0.9rem; padding: 15px; }
             .content-box p { font-size: 0.95rem; }
-            
-            /* Mobil Teknoloji Bölümü Ayarları */
-            .tech-section { margin-top: 40px; }
-            .tech-section h2 { font-size: 1.8rem; }
-            .tech-desc { font-size: 0.95rem; margin-bottom: 25px; padding: 0 10px; }
-            .tech-badge { padding: 10px 18px; font-size: 0.85rem; }
-            
             footer { flex-direction: column; text-align: center; gap: 15px; padding: 20px; }
             .footer-right { justify-content: center; flex-wrap: wrap; }
         }
@@ -165,6 +121,7 @@
         <nav class="nav-links">
             <a href="hakkimda.html" class="active">Hakkımda</a>
             <a href="uzmanliklar.html">Uzmanlıklar</a>
+            <a href="hizmetlerimiz.html">Hizmetlerimiz</a>
             <a href="iletisim.html">İletişim</a>
         </nav>
     </header>
@@ -184,32 +141,8 @@
 
             <p>2023 yılından itibaren kariyer rotasını teknolojiye çevirerek yazılım alanında çalışmalarını sürdürmekte; modern sistem mimarileri ve yapay zeka odaklı projeler üretmektedir.</p>
         </div>
-
-        <!-- YENİ EKLENEN TEKNOLOJİLER BÖLÜMÜ -->
-        <div class="tech-section">
-            <div class="tech-subtitle">TEKNOLOJİ</div>
-            <h2>Kullandığım Teknolojiler</h2>
-            <p class="tech-desc">Projelerinizde en güncel ve güvenilir teknolojileri kullanıyorum.</p>
-            
-            <div class="tech-grid">
-                <!-- Her bir div'in içindeki RGB kodları, o markanın orijinal rengini temsil eder -->
-                <div class="tech-badge" style="--tech-color: 239, 68, 68;">Laravel 12</div>
-                <div class="tech-badge" style="--tech-color: 139, 92, 246;">PHP 8.3</div>
-                <div class="tech-badge" style="--tech-color: 56, 189, 248;">Tailwind CSS</div>
-                <div class="tech-badge" style="--tech-color: 45, 212, 191;">Alpine.js</div>
-                <div class="tech-badge" style="--tech-color: 244, 114, 182;">Livewire</div>
-                <div class="tech-badge" style="--tech-color: 251, 146, 60;">Filament</div>
-                <div class="tech-badge" style="--tech-color: 229, 231, 235;">Next.js</div>
-                <div class="tech-badge" style="--tech-color: 59, 130, 246;">MySQL</div>
-                <div class="tech-badge" style="--tech-color: 99, 102, 241;">PostgreSQL</div>
-                <div class="tech-badge" style="--tech-color: 220, 38, 38;">Redis</div>
-                <div class="tech-badge" style="--tech-color: 34, 197, 94;">Nginx</div>
-                <div class="tech-badge" style="--tech-color: 239, 68, 68;">Hetzner</div>
-            </div>
-        </div>
     </main>
 
-    <!-- ALT BİLGİ (FOOTER) -->
     <footer>
         <div class="footer-left">
             &copy; 2026 <strong>Gökhan ÇİTİL</strong>. Tüm hakları saklıdır.
