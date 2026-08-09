@@ -14,15 +14,16 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&display=swap');
 
+        /* min-height eklendi, böylece içerik sığmazsa footer'a binmez, sayfayı uzatır */
         html, body {
             margin: 0; padding: 0; background-color: #080808; color: #ffffff;
             font-family: 'Inter', sans-serif; overflow-x: hidden; 
             width: 100%; max-width: 100vw; 
-            height: 100vh; display: flex; flex-direction: column;
+            min-height: 100vh; display: flex; flex-direction: column;
             cursor: url('imlec.png'), auto;
         }
 
-        /* Üst Menü (Navbar) - Sadeleştirildi */
+        /* Üst Menü (Navbar) */
         header {
             display: flex; justify-content: space-between; align-items: center;
             padding: 30px 50px; z-index: 10; flex-wrap: wrap; gap: 20px;
@@ -53,39 +54,25 @@
         main {
             flex-grow: 1; display: flex; flex-direction: column;
             justify-content: center; align-items: center; text-align: center;
-            position: relative; z-index: 5; margin-top: -40px;
+            position: relative; z-index: 5; padding: 20px 0;
         }
 
         /* YAZILIMCI/HACKER (TYPEWRITER) EFEKTİ */
         .typewriter-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center; 
+            display: flex; flex-direction: column; align-items: center; 
         }
-        
         .typewriter-text {
-            font-family: 'Fira Code', monospace;
-            font-size: 4rem; 
-            font-weight: 900; 
-            line-height: 1.2; 
-            margin: 0; 
-            letter-spacing: -2px;
-            color: #fff;
-            overflow: hidden; 
-            white-space: nowrap; 
-            border-right: 4px solid transparent; 
+            font-family: 'Fira Code', monospace; font-size: 4rem; 
+            font-weight: 900; line-height: 1.2; margin: 0; 
+            letter-spacing: -2px; color: #fff; overflow: hidden; 
+            white-space: nowrap; border-right: 4px solid transparent; 
         }
-        
         .line-1 {
-            width: 0;
-            animation: typing1 1.5s steps(18, end) forwards, blink 0.5s step-end 3; 
+            width: 0; animation: typing1 1.5s steps(18, end) forwards, blink 0.5s step-end 3; 
         }
-        
         .line-2 {
-            width: 0;
-            animation: typing2 1.5s steps(15, end) 1.5s forwards, blink 0.5s step-end 1.5s 3; 
+            width: 0; animation: typing2 1.5s steps(15, end) 1.5s forwards, blink 0.5s step-end 1.5s 3; 
         }
-        
         @keyframes typing1 { from { width: 0; } to { width: 18ch; } }
         @keyframes typing2 { from { width: 0; } to { width: 15.5ch; } }
         @keyframes blink { from, to { border-color: transparent; } 50% { border-color: #3b82f6; } }
@@ -97,21 +84,26 @@
         }
         .center-visual:hover { filter: grayscale(0%); }
 
-        /* Sol Alt Metin ve İçine Taşınan Sosyal Medya İkonları */
+        /* ÇAKIŞMAYI ÖNLEYEN YENİ ALT BÖLÜM (Doğal akışa eklendi) */
+        .bottom-section {
+            width: 100%; padding: 0 50px 40px 50px; box-sizing: border-box;
+            display: flex; justify-content: flex-start;
+            position: relative; z-index: 10;
+        }
         .bottom-text {
-            position: absolute; bottom: 90px; left: 50px; max-width: 440px;
-            text-align: left; color: #999999; font-size: 0.95rem; font-weight: 300;
+            max-width: 440px; text-align: left; color: #999999; 
+            font-size: 0.95rem; font-weight: 300;
         }
         .bottom-text p {
             line-height: 1.6; margin-top: 0; margin-bottom: 20px;
         }
 
+        /* Sosyal Medya İkonları */
         .social-icons { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-start; position: relative; z-index: 50; }
         .social-icons a {
             color: #ffffff; text-decoration: none; font-size: 0.7rem; 
             border: 1px solid #333; padding: 6px 14px; border-radius: 20px; 
-            transition: all 0.3s; letter-spacing: 0.8px;
-            display: inline-flex; align-items: center; gap: 6px; 
+            transition: all 0.3s; letter-spacing: 0.8px; display: inline-flex; align-items: center; gap: 6px; 
         }
         .social-icons a:hover { background: #fff; color: #000; border-color: #fff; }
         .social-icons a:hover svg { fill: #000; }
@@ -142,7 +134,6 @@
 
         /* Mobil */
         @media screen and (max-width: 768px) {
-            body { height: auto; min-height: 100vh; }
             header { padding: 15px; flex-direction: column; justify-content: center; gap: 12px; }
             .logo-container { width: 100%; justify-content: center; margin-bottom: 5px; }
             .logo-img { width: 360px; max-width: 95%; } 
@@ -150,8 +141,12 @@
             main { margin-top: 10px; padding: 10px 0; } 
             .typewriter-text { font-size: 2.2rem !important; }
             .center-visual { margin-top: 20px; }
-            .bottom-text { position: relative; bottom: auto; left: auto; text-align: center; margin: 30px auto; padding: 0 20px; }
-            .social-icons { justify-content: center; } /* Mobilde sosyal ikonlar ortalansın */
+            
+            /* Mobilde Alt Bölüm Ayarları */
+            .bottom-section { padding: 0 20px 30px 20px; justify-content: center; }
+            .bottom-text { text-align: center; margin: 0 auto; }
+            .social-icons { justify-content: center; } 
+            
             footer { flex-direction: column; text-align: center; gap: 15px; padding: 20px; }
             .footer-left { justify-content: center; } 
             .footer-right { justify-content: center; flex-wrap: wrap; }
@@ -178,7 +173,6 @@
     </header>
 
     <main>
-        <!-- HACKER TYPEWRITER EFEKTİ UYGULANAN BÖLÜM -->
         <div class="typewriter-container">
             <div class="typewriter-text line-1">Fikirlerinizi Koda</div>
             <div class="typewriter-text line-2">Dönüştürüyoruz.</div>
@@ -187,31 +181,33 @@
         <img src="gokhancitil-yapay-zeka.jpg" alt="Yapay Zeka" class="center-visual">
     </main>
 
-    <!-- METİN VE SOSYAL MEDYA İKONLARI BURADA BİRLEŞTİRİLDİ -->
-    <div class="bottom-text">
-        <p>
-            Yapay zeka modelleri, modern yazılım mimarileri ve otomasyon 
-            çözümlerimizle dijital sistemleri geleceğe hazırlıyoruz. 
-            Temiz kod ile fikirleriniz gerçeğe dönüşsün!
-        </p>
-        
-        <div class="social-icons">
-            <a href="https://www.linkedin.com/in/gokhancitil" target="_blank">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="#ffffff"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                LinkedIn
-            </a>
-            <a href="https://medium.com/@gokhancitil" target="_blank">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="#ffffff"><path d="M2.846 6.887c.03-.295-.083-.586-.303-.784l-2.24-2.7v-.403h7.358l5.378 11.795 4.728-11.795h6.65v.403l-1.916 1.837c-.165.126-.247.333-.213.538v13.498c-.034.204.048.411.213.537l1.871 1.837v.403h-9.412v-.403l1.939-1.882c.19-.19.19-.246.19-.537v-10.91l-5.389 13.688h-.728l-6.275-13.688v9.174c-.052.385.076.774.347 1.052l2.52 3.058v.404h-7.148v-.404l2.521-3.058c.27-.279.39-.67.325-1.052v-10.608z"/></svg>
-                Medium
-            </a>
-            <a href="https://x.com/gokhancitil" target="_blank">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="#ffffff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                Twitter
-            </a>
-            <a href="https://instagram.com/gokhancitil" target="_blank">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="#ffffff"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                Instagram
-            </a>
+    <!-- METİN VE SOSYAL MEDYA İKONLARI AKIŞA EKLENDİ (Overlap imkansız) -->
+    <div class="bottom-section">
+        <div class="bottom-text">
+            <p>
+                Yapay zeka modelleri, modern yazılım mimarileri ve otomasyon 
+                çözümlerimizle dijital sistemleri geleceğe hazırlıyoruz. 
+                Temiz kod ile fikirleriniz gerçeğe dönüşsün!
+            </p>
+            
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/gokhancitil" target="_blank">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="#ffffff"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    LinkedIn
+                </a>
+                <a href="https://medium.com/@gokhancitil" target="_blank">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="#ffffff"><path d="M2.846 6.887c.03-.295-.083-.586-.303-.784l-2.24-2.7v-.403h7.358l5.378 11.795 4.728-11.795h6.65v.403l-1.916 1.837c-.165.126-.247.333-.213.538v13.498c-.034.204.048.411.213.537l1.871 1.837v.403h-9.412v-.403l1.939-1.882c.19-.19.19-.246.19-.537v-10.91l-5.389 13.688h-.728l-6.275-13.688v9.174c-.052.385.076.774.347 1.052l2.52 3.058v.404h-7.148v-.404l2.521-3.058c.27-.279.39-.67.325-1.052v-10.608z"/></svg>
+                    Medium
+                </a>
+                <a href="https://x.com/gokhancitil" target="_blank">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="#ffffff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    Twitter
+                </a>
+                <a href="https://instagram.com/gokhancitil" target="_blank">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="#ffffff"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    Instagram
+                </a>
+            </div>
         </div>
     </div>
 
