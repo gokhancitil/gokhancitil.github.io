@@ -13,6 +13,7 @@
             margin: 0; padding: 0; background-color: #080808; color: #ffffff;
             font-family: 'Inter', sans-serif; overflow-x: hidden;
             min-height: 100vh; display: flex; flex-direction: column;
+            cursor: url('cursor.png'), auto; /* YENİ ÖZEL İMLECİMİZ */
         }
 
         /* Menü Hizalama Güncellemesi */
@@ -65,17 +66,8 @@
 
         /* --- MOBİL UYUM (RESPONSIVE) AYARLARI --- */
         @media screen and (max-width: 768px) {
-            header {
-                padding: 20px 15px;
-                flex-direction: column;
-                justify-content: center;
-                gap: 15px;
-            }
-            /* Mobilde merkezlemeyi sıfırlayıp alt alta uyumlu hale getirdik */
-            .nav-links {
-                position: relative; left: 0; transform: none;
-                gap: 15px; flex-wrap: wrap; justify-content: center;
-            }
+            header { padding: 20px 15px; flex-direction: column; justify-content: center; gap: 15px; }
+            .nav-links { position: relative; left: 0; transform: none; gap: 15px; flex-wrap: wrap; justify-content: center; }
             main { padding: 20px 15px; }
             .content-box { padding: 30px 20px; border-radius: 15px; }
             .content-box h1 { font-size: 2rem; }
