@@ -3,83 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gökhan Çitil - Hakkımda</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="description" content="Gökhan ÇİTİL - İnönü Üniversitesi İşletme mezunu ve Yazılım Geliştiricisi. Profesyonel Web, E-Ticaret ve Yapay Zeka Çözümleri.">
+    <title>Hakkımda | Gökhan ÇİTİL</title>
+    
+    <link rel="icon" type="image/png" href="gokhancitil_logo.png">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Gökhan Çitil",
+      "jobTitle": "Yazılım Geliştiricisi",
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "İnönü Üniversitesi"
+      },
+      "url": "https://gokhancitil.com",
+      "description": "İnönü Üniversitesi İşletme mezunu ve 2023 yılından itibaren yazılım ve yapay zeka alanında çalışmalarını sürdüren geliştirici."
+    }
+    </script>
+
     <style>
-        /* Arka plandaki vitrin/parlama efektini kaldırıp tam düz koyu renk atadık */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+        
         body {
-            background-color: #0b0c10;
+            margin: 0; padding: 0; 
+            background-color: #080808; /* Parlamalar kaldırıldı, düz koyu arka plan */
+            color: #ffffff;
+            font-family: 'Inter', sans-serif; overflow-x: hidden;
+            min-height: 100vh; display: flex; flex-direction: column;
+            cursor: url('imlec.png'), auto;
         }
-        /* Kartın kendi arka plan rengi */
-        .card-bg {
-            background-color: #111217;
+
+        header {
+            display: flex; justify-content: flex-start; align-items: center;
+            padding: 30px 50px; z-index: 10; position: relative;
         }
-        /* İçerikteki eğitim/odak alanı kutusunun rengi */
-        .inner-box-bg {
-            background-color: #1a1c23;
+
+        .logo-container { position: relative; display: flex; justify-content: flex-start; align-items: center; }
+        .logo-link { position: absolute; width: 100%; height: 100%; z-index: 10; }
+        .logo-img { width: 450px; image-rendering: -webkit-optimize-contrast; pointer-events: none; display: block; position: relative; z-index: 5; }
+
+        .nav-links { 
+            display: flex; gap: 40px; 
+            position: absolute; left: 50%; transform: translateX(-50%);
+        }
+        .nav-links a { color: #dddddd; text-decoration: none; font-size: 0.85rem; font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.3s; }
+        .nav-links a:hover { color: #ffffff; }
+        .nav-links a.active { color: #ffffff; font-weight: 700; border-bottom: 2px solid #fff; padding-bottom: 5px; }
+
+        main {
+            flex-grow: 1; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; z-index: 5; padding: 40px 20px;
+        }
+
+        .content-box {
+            background: rgba(20, 20, 25, 0.9); padding: 50px;
+            border: 1px solid rgba(255,255,255,0.1); width: 100%; max-width: 800px;
+            border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            box-sizing: border-box; 
+        }
+        .content-box h1 { margin-top: 0; font-size: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; margin-bottom: 30px; font-weight: 700; text-align: center; }
+        
+        .personal-info {
+            display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px;
+            font-size: 1rem; color: #a0aab2; background: rgba(255,255,255,0.03);
+            padding: 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05);
+        }
+        .personal-info span { color: #fff; font-weight: 700; margin-right: 10px; }
+        
+        .content-box p { color: #d1d5db; line-height: 1.8; font-size: 1.05rem; margin-bottom: 20px; text-align: justify; }
+
+        footer {
+            width: 100%; padding: 25px 50px; box-sizing: border-box;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex; justify-content: space-between; align-items: center;
+            background-color: #050505; color: #888; font-size: 0.85rem;
+            z-index: 10; margin-top: auto; 
+        }
+        .footer-left { font-weight: 300; }
+        .footer-left strong { color: #fff; font-weight: 700; }
+        .footer-right { display: flex; gap: 20px; }
+        .footer-right a { color: #888; text-decoration: none; transition: color 0.3s; }
+        .footer-right a:hover { color: #ffffff; }
+
+        @media screen and (max-width: 768px) {
+            header { padding: 20px 15px; flex-direction: column; justify-content: center; gap: 15px; }
+            .logo-container { width: 100%; justify-content: center; }
+            .logo-img { width: 360px; max-width: 95%; }
+            .nav-links { position: relative; left: 0; transform: none; gap: 15px; flex-wrap: wrap; justify-content: center; }
+            main { padding: 20px 15px; }
+            .content-box { padding: 30px 20px; border-radius: 15px; }
+            .content-box h1 { font-size: 2rem; }
+            .personal-info { font-size: 0.9rem; padding: 15px; }
+            .content-box p { font-size: 0.95rem; }
+            footer { flex-direction: column; text-align: center; gap: 15px; padding: 20px; }
+            .footer-right { justify-content: center; flex-wrap: wrap; }
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col font-sans text-gray-300">
-    
-    <!-- Üst Menü (Navbar) -->
-    <header class="flex justify-between items-center px-8 py-6 max-w-7xl mx-auto w-full">
-        <div class="flex items-center gap-4">
-            <!-- Logo İkonu -->
-            <div class="text-5xl font-bold flex">
-                <span class="text-gray-400 tracking-tighter">&lt;</span>
-                <span class="text-cyan-500 tracking-tighter">&lt;</span>
-                <span class="text-gray-300 ml-1">G</span>
-            </div>
-            <!-- Logo Metni -->
-            <div class="flex flex-col justify-center">
-                <h1 class="text-xl font-bold text-white tracking-widest leading-none mb-1">GÖKHAN ÇİTİL</h1>
-                <p class="text-[0.65rem] text-cyan-400 tracking-[0.3em] uppercase leading-none">AI & Software</p>
-            </div>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <a href="https://gokhancitil.com" class="logo-link"></a>
+            <img src="gokhancitil.com.png" alt="Gökhan Çitil AI & Software" class="logo-img">
         </div>
-        <!-- Linkler -->
-        <nav>
-            <ul class="flex gap-8 text-sm font-semibold tracking-wide">
-                <li><a href="#" class="text-white border-b-2 border-white pb-1">HAKKIMDA</a></li>
-                <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">UZMANLIKLAR</a></li>
-                <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">İLETİŞİM</a></li>
-            </ul>
+        
+        <nav class="nav-links">
+            <a href="hakkimda.html" class="active">Hakkımda</a>
+            <a href="uzmanliklar.html">Uzmanlıklar</a>
+            <a href="hizmetlerimiz.html">Hizmetlerimiz</a>
+            <a href="iletisim.html">İletişim</a>
         </nav>
     </header>
 
-    <!-- Ana İçerik (Sadece Hakkımda Alanı) -->
-    <main class="flex-grow flex items-center justify-center p-6">
-        <div class="card-bg border border-gray-800/60 rounded-2xl p-10 md:p-12 max-w-4xl w-full">
+    <main>
+        <div class="content-box">
+            <h1>Hakkımda</h1>
             
-            <h2 class="text-4xl font-bold text-white text-center mb-10">Hakkımda</h2>
-
-            <!-- Eğitim ve Odak Alanı Kutusu -->
-            <div class="border border-gray-700/50 inner-box-bg rounded-xl p-5 mb-8 space-y-3">
-                <p class="flex items-center text-gray-400">
-                    <span class="mr-3 text-lg">🎓</span>
-                    <strong class="text-white mr-2 font-medium">Eğitim:</strong> İnönü Üniversitesi İşletme Mezunu
-                </p>
-                <p class="flex items-center text-gray-400">
-                    <span class="mr-3 text-lg">💻</span>
-                    <strong class="text-white mr-2 font-medium">Odak Alanı:</strong> Yazılım ve Yapay Zeka Çözümleri
-                </p>
+            <div class="personal-info">
+                <div><span>🎓 Eğitim:</span> İnönü Üniversitesi İşletme Mezunu</div>
+                <div><span>💻 Odak Alanı:</span> Yazılım ve Yapay Zeka Çözümleri</div>
             </div>
 
-            <!-- Paragraflar -->
-            <div class="space-y-6 text-gray-300/90 leading-relaxed text-[15px]">
-                <p>
-                    Gökhan ÇİTİL, İnönü Üniversitesi İşletme mezunu olup kariyerine Ayakkabı Delisiyim markasında Sosyal Medya Direktörü olarak başlamıştır.
-                </p>
-                <p>
-                    2019-2022 yılları arasında Jandarma Genel Komutanlığı bünyesinde Astsubay olarak görev yapmış, burada edindiği üst düzey disiplin ve stratejik kriz yönetimi becerilerini sivil kariyerine entegre etmiştir.
-                </p>
-                <p>
-                    2023 yılından itibaren kariyer rotasını teknolojiye çevirerek yazılım alanında derinleşmiş; günümüzde ölçeklenebilir sistem mimarileri, e-ticaret altyapıları ve verimlilik odaklı yapay zeka entegrasyonları üretmektedir.
-                </p>
-            </div>
+            <p>Gökhan ÇİTİL, İnönü Üniversitesi İşletme mezunu olup kariyerine Ayakkabı Delisiyim markasında Sosyal Medya Direktörü olarak başlamıştır.</p>
             
+            <p>2019-2022 yılları arasında Jandarma Genel Komutanlığı bünyesinde Astsubay olarak görev yapmış, burada edindiği üst düzey disiplin ve stratejik kriz yönetimi becerilerini sivil kariyerine entegre etmiştir.</p>
+
+            <p>2023 yılından itibaren kariyer rotasını teknolojiye çevirerek yazılım alanında derinleşmiş; günümüzde ölçeklenebilir sistem mimarileri, e-ticaret altyapıları ve verimlilik odaklı yapay zeka entegrasyonları üretmektedir.</p>
         </div>
     </main>
+
+    <footer>
+        <div class="footer-left">
+            &copy; 2026 <strong>Gökhan ÇİTİL</strong>. Tüm hakları saklıdır.
+        </div>
+        <div class="footer-right">
+            <a href="gizlilik.html">Gizlilik Politikası</a>
+            <a href="kvkk.html">KVKK</a>
+            <a href="kullanim.html">Kullanım Koşulları</a>
+        </div>
+    </footer>
 
 </body>
 </html>
