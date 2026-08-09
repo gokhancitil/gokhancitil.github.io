@@ -37,12 +37,12 @@
         .nav-links a:hover { color: #ffffff; }
         .nav-links a.active { color: #ffffff; font-weight: 700; border-bottom: 2px solid #fff; padding-bottom: 5px; }
 
-        /* HİZALAMA VE BOŞLUK AYARLARI HAKKIMDA SAYFASIYLA EŞİTLENDİ */
+        /* ARADAKİ BOŞLUK BURADA AZALTILDI */
         main {
             flex-grow: 1; display: flex; flex-direction: column;
-            justify-content: flex-start; /* İçeriği yukarı çeker */
+            justify-content: flex-start; 
             align-items: center; z-index: 5; 
-            padding: 80px 20px 40px 20px; /* Yukarıdan ideal boşluk */
+            padding: 20px 20px 40px 20px; 
         }
 
         .content-box {
@@ -51,7 +51,6 @@
             box-sizing: border-box; 
         }
         
-        /* BAŞLIK ORTALANDI (text-align: center;) */
         .content-box h1 { margin-top: 0; font-size: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; margin-bottom: 30px; font-weight: 700; text-align: center; }
         
         .personal-info {
@@ -81,9 +80,7 @@
             .logo-container { width: 100%; justify-content: center; }
             .logo-img { width: 360px; max-width: 95%; }
             .nav-links { position: relative; left: 0; transform: none; gap: 15px; flex-wrap: wrap; justify-content: center; }
-            
-            main { padding: 40px 15px 40px 15px; } /* Mobilde üst boşluk biraz azaltıldı */
-            
+            main { padding: 20px 15px 40px 15px; } 
             .content-box { padding: 0; }
             .content-box h1 { font-size: 2rem; }
             .personal-info { font-size: 0.9rem; padding: 15px; }
