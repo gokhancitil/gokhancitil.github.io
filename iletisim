@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gökhan ÇİTİL - İletişim Formu ve Bilgileri.">
+    <title>İletişim | Gökhan ÇİTİL</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+        
+        body {
+            margin: 0; padding: 0; background-color: #080808; color: #ffffff;
+            font-family: 'Inter', sans-serif; overflow-x: hidden;
+            min-height: 100vh; display: flex; flex-direction: column;
+            cursor: url('imlec.png'), auto;
+        }
+
+        header {
+            display: flex; justify-content: flex-start; align-items: center;
+            padding: 30px 50px; z-index: 10; position: relative;
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 700; letter-spacing: 2px; text-align: center; text-decoration: none; color: #ffffff; }
+        .logo span { font-weight: 300; font-size: 0.8rem; display: block; letter-spacing: 4px; color: #888; }
+
+        .nav-links { 
+            display: flex; gap: 40px; 
+            position: absolute; left: 50%; transform: translateX(-50%);
+        }
+        .nav-links a { color: #dddddd; text-decoration: none; font-size: 0.85rem; font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.3s; }
+        .nav-links a:hover { color: #ffffff; }
+        .nav-links a.active { color: #ffffff; font-weight: 700; border-bottom: 2px solid #fff; padding-bottom: 5px; }
+
+        main {
+            flex-grow: 1; display: flex; justify-content: center; align-items: center; 
+            z-index: 5; padding: 40px 20px;
+        }
+
+        /* Tasarımdaki İkili Yapı */
+        .contact-container {
+            display: flex; gap: 50px; width: 100%; max-width: 900px;
+            align-items: center;
+        }
+
+        /* SOL: İletişim Formu Kartı */
+        .contact-form-card {
+            background: rgba(20, 20, 25, 0.9); padding: 40px; flex: 1;
+            border: 1px solid rgba(255,255,255,0.05); border-radius: 15px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-form-card h2 { text-align: center; margin-top: 0; font-size: 1.5rem; margin-bottom: 30px; font-weight: 700; }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-size: 0.85rem; color: #a0aab2; margin-bottom: 8px; }
+        .form-group input, .form-group textarea {
+            width: 100%; padding: 12px; box-sizing: border-box;
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px; color: #fff; font-family: 'Inter', sans-serif;
+            outline: none; transition: border-color 0.3s;
+            cursor: url('imlec.png'), auto;
+        }
+        .form-group input:focus, .form-group textarea:focus { border-color: #b224ef; }
+        .form-group textarea { resize: vertical; min-height: 100px; }
+
+        .submit-btn {
+            background-color: #b224ef; color: #fff; border: none; font-weight: 700;
+            padding: 12px 30px; border-radius: 8px; font-size: 0.9rem; cursor: pointer;
+            transition: opacity 0.3s; width: 100%;
+        }
+        .submit-btn:hover { opacity: 0.8; }
+
+        /* SAĞ: İletişim Bilgileri */
+        .contact-info { flex: 1; padding: 20px; }
+        .contact-info h2 { font-size: 2rem; margin-top: 0; margin-bottom: 20px; font-weight: 700; }
+        .contact-info p { color: #d1d5db; line-height: 1.8; font-size: 1.05rem; margin-bottom: 30px; }
+        .contact-info p strong { color: #fff; }
+        
+        .info-item { display: flex; align-items: flex-start; gap: 15px; color: #d1d5db; font-size: 1.05rem; }
+        .info-item svg { width: 24px; height: 24px; fill: none; stroke: #fff; stroke-width: 2; flex-shrink: 0; margin-top: 2px; }
+
+        .floating-shape { position: absolute; border-radius: 50%; filter: blur(80px); z-index: 0; animation: float 10s infinite ease-in-out alternate; }
+        .shape1 { width: 300px; height: 300px; background: rgba(30, 144, 255, 0.1); top: 10%; left: 20%; }
+        .shape2 { width: 400px; height: 400px; background: rgba(138, 43, 226, 0.05); bottom: 10%; right: 10%; animation-delay: -5s; }
+        @keyframes float { 0% { transform: translateY(0) translateX(0); } 100% { transform: translateY(-40px) translateX(40px); } }
+
+        /* Mobil Uyum */
+        @media screen and (max-width: 768px) {
+            header { padding: 20px 15px; flex-direction: column; justify-content: center; gap: 15px; }
+            .nav-links { position: relative; left: 0; transform: none; gap: 15px; flex-wrap: wrap; justify-content: center; }
+            .contact-container { flex-direction: column-reverse; gap: 40px; }
+            .contact-info { text-align: center; }
+            .info-item { justify-content: center; text-align: left; }
+            .contact-form-card { width: 100%; box-sizing: border-box; padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="floating-shape shape1"></div>
+    <div class="floating-shape shape2"></div>
+
+    <header>
+        <a href="https://gokhancitil.com" class="logo">
+            GÖKHAN ÇİTİL
+            <span>AI & SOFTWARE</span>
+        </a>
+        
+        <nav class="nav-links">
+            <a href="hakkimda.html">Hakkımda</a>
+            <a href="uzmanliklar.html">Uzmanlıklar</a>
+            <a href="iletisim.html" class="active">İletişim</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="contact-container">
+            
+            <!-- Sol Form -->
+            <div class="contact-form-card">
+                <h2>İletişim Formu</h2>
+                <form action="https://formsubmit.co/gokhancitil@gmail.com" method="POST">
+                    <!-- Spamlardan korunmak için güvenlik önlemi -->
+                    <input type="text" name="_honey" style="display:none">
+                    <!-- Form gönderildikten sonra tekrar sitenize dönmesi için -->
+                    <input type="hidden" name="_next" value="https://gokhancitil.com/iletisim.html">
+                    <!-- FormSubmit'in kendi captcha'sını kapatmak için -->
+                    <input type="hidden" name="_captcha" value="false">
+
+                    <div class="form-group">
+                        <label>Ad Soyad</label>
+                        <input type="text" name="Ad_Soyad" placeholder="Adınız Soyadınız" required>
+                    </div>
+                    <div class="form-group">
+                        <label>E-posta adresiniz</label>
+                        <input type="email" name="Email" placeholder="ornek@mail.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Konu</label>
+                        <input type="text" name="Konu" placeholder="Mesajınızın konusu" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Mesaj</label>
+                        <textarea name="Mesaj" placeholder="Mesajınızı buraya yazın..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">GÖNDER</button>
+                </form>
+            </div>
+
+            <!-- Sağ Bilgiler -->
+            <div class="contact-info">
+                <h2>İletişim Bilgileri</h2>
+                <p>Projeleriniz, işbirlikleri veya merak ettikleriniz için yandaki formu kullanarak bana ulaşabilirsiniz. Size en kısa sürede dönüş yapabilmem için lütfen <strong>bilgilerinizi eksiksiz doldurunuz.</strong></p>
+                
+                <div class="info-item">
+                    <svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg>
+                    <div>gokhancitil@gmail.com</div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>
