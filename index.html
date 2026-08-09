@@ -24,16 +24,15 @@
             padding: 30px 50px; z-index: 10; flex-wrap: wrap; gap: 20px;
         }
 
-        /* --- LOGO AYARLARI --- */
+        /* TERTEMİZ LOGO ALANI */
         .logo-container {
-            position: relative; width: 240px; height: 50px; 
-            display: flex; justify-content: flex-start; align-items: center;
+            position: relative; display: flex; justify-content: flex-start; align-items: center;
         }
         .logo-link {
             position: absolute; width: 100%; height: 100%; z-index: 10;
         }
         .logo-img {
-            width: 260px; transform: scale(1.5); transform-origin: left center; 
+            width: 320px; /* Kırpılmış resme göre ideal masaüstü boyutu */
             image-rendering: -webkit-optimize-contrast; pointer-events: none; 
             display: block; position: relative; z-index: 5;
         }
@@ -101,23 +100,19 @@
         .footer-right a { color: #888; text-decoration: none; transition: color 0.3s; }
         .footer-right a:hover { color: #ffffff; }
 
-        /* MOBİL UYUM (LOGO KÜÇÜLME HATASI ÇÖZÜLDÜ) */
+        /* MOBİL UYUM */
         @media screen and (max-width: 768px) {
             body { height: auto; min-height: 100vh; }
-            header { padding: 20px 15px; flex-direction: column; justify-content: center; gap: 25px; overflow-x: hidden; }
+            header { padding: 20px 15px; flex-direction: column; justify-content: center; gap: 25px; }
             
-            /* Logo konteynerine sabit yükseklik verdik, resmi ise sınırları dışına taşırdık */
-            .logo-container { width: 100%; justify-content: center; height: 70px; margin-bottom: 5px; display: flex; align-items: center; }
-            .logo-img { width: 280px; max-width: none; transform: scale(1.7); transform-origin: center center; }
+            .logo-container { width: 100%; justify-content: center; }
+            .logo-img { width: 260px; max-width: 90%; } /* Kırpılmış logonun mobildeki ideal boyutu */
             
             .nav-links { gap: 15px; flex-wrap: wrap; justify-content: center; }
             main { margin-top: 20px; padding: 20px 0; }
-            
             h1 { font-size: 2.3rem !important; padding: 0 15px; word-break: break-word; }
-            
             .center-visual { margin-top: 20px; }
             .bottom-text { position: relative; bottom: auto; left: auto; text-align: center; margin: 40px auto; padding: 0 20px; }
-            
             footer { flex-direction: column; text-align: center; gap: 15px; padding: 20px; }
             .footer-right { justify-content: center; flex-wrap: wrap; }
         }
