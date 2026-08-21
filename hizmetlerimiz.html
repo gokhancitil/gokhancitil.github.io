@@ -22,6 +22,16 @@
         .showcase-section { text-align: center; margin-bottom: 90px; width: 100%; max-width: 1100px; z-index: 5; }
         .showcase-section h1 { font-size: 2.2rem; font-weight: 700; margin: 0 0 15px 0; }
         .showcase-subtitle { color: #a0aab2; font-size: 1.05rem; line-height: 1.6; max-width: 800px; margin: 0 auto 40px auto; }
+        
+        /* SaaS Tablo Stilleri */
+        .saas-table-container { width: 100%; margin-bottom: 50px; background: rgba(30, 30, 35, 0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; overflow: hidden; backdrop-filter: blur(10px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .saas-table { width: 100%; border-collapse: collapse; text-align: left; }
+        .saas-table th { background: rgba(255, 255, 255, 0.03); padding: 20px 25px; color: #fff; font-weight: 700; font-size: 1.05rem; border-bottom: 1px solid rgba(255,255,255,0.1); text-transform: uppercase; letter-spacing: 1px; }
+        .saas-table td { padding: 18px 25px; color: #a0aab2; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.95rem; line-height: 1.5; transition: background 0.3s; }
+        .saas-table tr:last-child td { border-bottom: none; }
+        .saas-table tr:hover td { background: rgba(255, 255, 255, 0.02); color: #fff; }
+        .saas-highlight { color: #a855f7; font-weight: 700; display: flex; align-items: center; gap: 8px; font-size: 1rem; }
+        
         .showcase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
         .showcase-card { background: rgba(30, 30, 35, 0.5); padding: 35px 25px; border: 1px solid rgba(255,255,255,0.05); border-radius: 15px; text-align: left; transition: all 0.3s ease; display: flex; flex-direction: column; backdrop-filter: blur(10px); }
         .showcase-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.2); background: rgba(40, 40, 45, 0.8); }
@@ -77,6 +87,11 @@
             .showcase-section { margin-bottom: 50px; }
             .showcase-section h1 { font-size: 1.8rem; }
             .showcase-subtitle { font-size: 0.95rem; margin-bottom: 30px; }
+            
+            /* Mobil Tablo Ayarları */
+            .saas-table-container { overflow-x: auto; margin-bottom: 40px; border-radius: 10px; }
+            .saas-table th, .saas-table td { padding: 15px; white-space: nowrap; }
+            
             .ps-container { flex-direction: column; gap: 40px; }
             .ps-header h2 { font-size: 1.8rem; }
             .tech-section h2 { font-size: 1.8rem; }
@@ -103,7 +118,40 @@
     <main>
         <div class="showcase-section">
             <h1>Profesyonel Web Tasarım & Yazılım Çözümleri</h1>
-            <p class="showcase-subtitle">Türkiye genelinde kurumsal web tasarım, e-ticaret sitesi yapımı ve yapay zeka entegrasyon hizmetleri sunuyorum. Her proje modern, mobil uyumlu ve SEO/GEO altyapısına sahiptir.</p>
+            <!-- Alt başlığa SaaS mimarilerini de ekledim -->
+            <p class="showcase-subtitle">Türkiye genelinde kurumsal web tasarım, SaaS bulut mimarileri, e-ticaret sitesi yapımı ve yapay zeka entegrasyon hizmetleri sunuyorum. Her proje modern, mobil uyumlu ve yüksek performanslıdır.</p>
+            
+            <!-- SaaS Hizmetleri Tablosu Başlangıcı -->
+            <div class="saas-table-container">
+                <table class="saas-table">
+                    <thead>
+                        <tr>
+                            <th>☁️ SaaS Bulut Çözümleri</th>
+                            <th>Kapsam & Özellikler</th>
+                            <th>Kullanılan Teknolojiler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="saas-highlight">🚀 Multi-Tenant Mimari</span></td>
+                            <td>Tek bir sistem üzerinden binlerce farklı müşteriye izole ve güvenli hizmet sağlama altyapısı.</td>
+                            <td>Laravel, PostgreSQL, Redis</td>
+                        </tr>
+                        <tr>
+                            <td><span class="saas-highlight">💳 Abonelik & Sanal POS</span></td>
+                            <td>Stripe, Iyzico veya PayTR ile tekrarlayan ödemeler, paket yükseltme (upgrade) ve fatura otomasyonu.</td>
+                            <td>API, Webhooks, Cron Jobs</td>
+                        </tr>
+                        <tr>
+                            <td><span class="saas-highlight">📈 Otomatik Ölçekleme</span></td>
+                            <td>Trafik dalgalanmalarında sunucu kaynaklarının otomatik artırılması ve yüksek erişilebilirlik (Uptime).</td>
+                            <td>Hetzner, Nginx, Docker</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- SaaS Hizmetleri Tablosu Sonu -->
+
             <div class="showcase-grid">
                 <div class="showcase-card">
                     <h3>Kurumsal Web Tasarım</h3>
@@ -122,6 +170,7 @@
                 </div>
             </div>
         </div>
+        
         <div class="ps-section">
             <div class="ps-header">
                 <div class="ps-header-subtitle">SORUN & ÇÖZÜM</div>
