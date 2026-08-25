@@ -1,251 +1,222 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18382035228"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'AW-18382035228');
-    </script>
-
-    <!-- Event snippet for Sayfa görüntüleme conversion page -->
-    <script>
-      gtag('event', 'conversion', {
-          'send_to': 'AW-18382035228/3zlyCNHXrt8cEJyynr1E',
-          'value': 1.0,
-          'currency': 'TRY'
-      });
-    </script>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Gökhan ÇİTİL, AI & Software Developer Yapay Zeka ve Yazılım Geliştiricisi olarak modern sistem mimarileri ve otomasyon çözümleri üretmektedir.">
-    <title>Gökhan ÇİTİL | AI & Software Developer | Yapay Zeka ve Yazılım Geliştiricisi</title>
-    
-    <!-- Sekme Simgesi -->
-    <link rel="icon" type="image/png" href="gokhancitil_logo.png">
+    <title>Gökhan ÇİTİL | 3D WebGL Arayüz</title>
     
     <style>
-        /* Genel Siyah Tema ve Font Ayarları */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&display=swap');
-
-        html, body {
-            margin: 0; padding: 0; background-color: #080808; color: #ffffff;
-            font-family: 'Inter', sans-serif; overflow-x: hidden; 
-            width: 100%; max-width: 100vw; 
-            min-height: 100vh; display: flex; flex-direction: column;
-            cursor: url('imlec.png'), auto;
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        
+        body { 
+            margin: 0; 
+            padding: 0; 
+            background-color: #050508; /* Tam o resimdeki gibi derin koyu lacivert/siyah */
+            color: #ffffff; 
+            font-family: 'Inter', sans-serif; 
+            overflow: hidden; /* Kaydırma çubuğunu gizle, tam ekran deneyim */
         }
 
-        /* Üst Menü (Navbar) - YENİDEN SADELEŞTİRİLDİ */
-        header {
-            display: flex; justify-content: flex-start; align-items: center;
-            padding: 30px 50px; z-index: 10; position: relative;
-            min-height: 90px;
+        /* Sol taraftaki Yazı Alanı */
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 8%;
+            transform: translateY(-50%);
+            z-index: 10;
+            max-width: 600px;
+            pointer-events: none; /* Fare 3D nesneye etki etsin diye yazıyı geçirgen yapıyoruz */
         }
 
-        /* LOGO ALANI */
-        .logo-container {
-            position: relative; display: flex; justify-content: flex-start; align-items: center;
-        }
-        .logo-link {
-            position: absolute; width: 100%; height: 100%; z-index: 10;
-        }
-        .logo-img {
-            width: 450px; image-rendering: -webkit-optimize-contrast; pointer-events: none; 
-            display: block; position: relative; z-index: 5;
+        .subtitle {
+            color: #00e5ff;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-weight: 700;
         }
 
-        /* Menü Linkleri (Tam ortaya hizalandı) */
-        .nav-links { 
-            display: flex; gap: 40px; 
-            position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-            z-index: 50; 
-        } 
-        .nav-links a {
-            color: #dddddd; text-decoration: none; font-size: 0.85rem;
-            font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase;
-            transition: color 0.3s;
-        }
-        .nav-links a:hover { color: #ffffff; }
-
-        /* Ana İçerik */
-        main {
-            flex-grow: 1; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; text-align: center;
-            position: relative; z-index: 5; padding: 40px 20px;
+        h1 {
+            font-size: 5rem;
+            line-height: 1.1;
+            font-weight: 900;
+            margin: 0 0 20px 0;
+            letter-spacing: -2px;
         }
 
-        /* YAZILIMCI/HACKER (TYPEWRITER) EFEKTİ */
-        .typewriter-container {
-            display: flex; flex-direction: column; align-items: center; 
-        }
-        .typewriter-text {
-            font-family: 'Fira Code', monospace; font-size: 4rem; 
-            font-weight: 900; line-height: 1.2; margin: 0; 
-            letter-spacing: -2px; color: #fff; overflow: hidden; 
-            white-space: nowrap; border-right: 4px solid transparent; 
-        }
-        .line-1 { width: 0; animation: typing1 1.5s steps(18, end) forwards, blink 0.5s step-end 3; }
-        .line-2 { width: 0; animation: typing2 1.5s steps(15, end) 1.5s forwards, blink 0.5s step-end 1.5s 3; }
-        @keyframes typing1 { from { width: 0; } to { width: 18ch; } }
-        @keyframes typing2 { from { width: 0; } to { width: 15.5ch; } }
-        @keyframes blink { from, to { border-color: transparent; } 50% { border-color: #3b82f6; } }
-
-        .center-visual {
-            margin-top: 40px; max-width: 550px; width: 100%;
-            border-radius: 15px; box-shadow: 0 10px 40px rgba(255, 255, 255, 0.05); 
-            z-index: 1; filter: grayscale(100%); transition: filter 0.6s ease; 
-        }
-        .center-visual:hover { filter: grayscale(0%); }
-
-        /* --- ALT BÖLÜM (Yazı ve Sosyal Medya İkonları Bir Arada) --- */
-        .hero-bottom-content {
-            margin-top: 40px; display: flex; flex-direction: column;
-            align-items: center; z-index: 10; gap: 25px; /* Yazı ile ikonlar arası mesafe */
-        }
-        .bottom-text {
-            max-width: 600px; color: #a0aab2; font-size: 1.05rem; 
-            line-height: 1.7; font-weight: 300; margin: 0;
-            text-align: center; 
+        p {
+            font-size: 1.2rem;
+            color: #a0aab2;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 500px;
         }
 
-        /* Sosyal Medya İkonları - Artık alt yazının altında! */
-        .social-icons { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; position: relative; z-index: 50; }
-        .social-icons a {
-            color: #ffffff; text-decoration: none; font-size: 0.75rem; 
-            border: 1px solid rgba(255,255,255,0.15); padding: 8px 18px; border-radius: 20px; 
-            transition: all 0.3s ease; letter-spacing: 0.8px; display: inline-flex; align-items: center; gap: 8px; 
-            background: rgba(255,255,255,0.03);
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            pointer-events: auto; /* Butonlara tıklanabilsin */
         }
-        .social-icons a:hover { background: #fff; color: #000; border-color: #fff; transform: translateY(-2px); }
-        .social-icons a:hover svg { fill: #000; }
 
-        /* Uçuşan Objeler */
-        .floating-shape {
-            position: absolute; border-radius: 50%; filter: blur(80px);
-            z-index: 0; animation: float 10s infinite ease-in-out alternate;
+        .btn-primary {
+            background: #6a1b9a; /* Mor buton */
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
-        .shape1 { width: 300px; height: 300px; background: rgba(30, 144, 255, 0.1); top: 10%; left: 20%; }
-        .shape2 { width: 400px; height: 400px; background: rgba(138, 43, 226, 0.05); bottom: 10%; right: 10%; animation-delay: -5s; }
-        @keyframes float { 0% { transform: translateY(0) translateX(0); } 100% { transform: translateY(-40px) translateX(40px); } }
+        .btn-primary:hover { background: #8e24aa; transform: scale(1.05); }
 
-        /* Footer */
-        footer {
-            width: 100%; padding: 25px 50px; box-sizing: border-box;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            display: flex; justify-content: space-between; align-items: center;
-            background-color: #050505; color: #888; font-size: 0.85rem;
-            z-index: 10; margin-top: auto; 
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
-        .footer-left { font-weight: 300; display: flex; align-items: center; } 
-        .footer-left strong { color: #fff; font-weight: 700; }
-        .footer-logo { height: 14px; margin: 0 6px; margin-top: -2px; }
-        .footer-right { display: flex; gap: 20px; }
-        .footer-right a { color: #888; text-decoration: none; transition: color 0.3s; }
-        .footer-right a:hover { color: #ffffff; }
+        .btn-secondary:hover { background: rgba(255,255,255,0.1); }
 
-        /* Mobil Uyum */
-        @media screen and (max-width: 768px) {
-            header { padding: 15px; flex-direction: column; justify-content: center; gap: 20px; }
-            .logo-container { width: 100%; justify-content: center; margin-bottom: 5px; }
-            .logo-img { width: 360px; max-width: 95%; } 
-            
-            .nav-links { position: relative; left: auto; top: auto; transform: none; gap: 15px; flex-wrap: wrap; justify-content: center; }
-            
-            main { padding: 30px 15px; } 
-            .typewriter-text { font-size: 2.2rem !important; }
-            .center-visual { margin-top: 20px; }
-            
-            .hero-bottom-content { margin-top: 30px; gap: 20px; }
-            .bottom-text { font-size: 0.95rem; padding: 0 10px; }
-            
-            footer { flex-direction: column; text-align: center; gap: 15px; padding: 20px; }
-            .footer-left { justify-content: center; } 
-            .footer-right { justify-content: center; flex-wrap: wrap; }
+        /* 3D Modelin Çizileceği Tuval */
+        #webgl-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
         }
     </style>
 </head>
 <body>
 
-    <div class="floating-shape shape1"></div>
-    <div class="floating-shape shape2"></div>
-
-    <header>
-        <div class="logo-container">
-            <a href="https://gokhancitil.com" class="logo-link"></a>
-            <img src="gokhancitil.com.png" alt="Gökhan Çitil AI & Software" class="logo-img">
+    <!-- Sol Taraf Yazı İçeriği (Resimdeki Tasarım) -->
+    <div class="content">
+        <div class="subtitle">3D WEB · AI KREATİF · YAZILIM</div>
+        <h1>Fikirler biter.<br>Sistem başlar.</h1>
+        <p>Yapay zeka modelleri, modern yazılım mimarileri ve otomasyon çözümlerimizle dijital sistemleri geleceğe hazırlıyoruz.</p>
+        <div class="btn-group">
+            <button class="btn-primary">Randevu Al</button>
+            <button class="btn-secondary">WhatsApp'tan yazın</button>
         </div>
-        
-        <nav class="nav-links">
-            <a href="hakkimda.html">Hakkımda</a>
-            <a href="uzmanliklar.html">Uzmanlıklar</a>
-            <a href="hizmetlerimiz.html">Hizmetlerimiz</a>
-            <a href="iletisim.html">İletişim</a>
-        </nav>
-    </header>
+    </div>
 
-    <main>
-        <div class="typewriter-container">
-            <div class="typewriter-text line-1">Fikirlerinizi Koda</div>
-            <div class="typewriter-text line-2">Dönüştürüyoruz.</div>
-        </div>
-        
-        <img src="gokhancitil-yapay-zeka.jpg" alt="Yapay Zeka" class="center-visual">
+    <!-- Sağ Taraf 3D Animasyon Alanı -->
+    <div id="webgl-container"></div>
 
-        <!-- YAZI VE ALTINDAKİ SOSYAL MEDYA İKONLARI -->
-        <div class="hero-bottom-content">
-            <p class="bottom-text">
-                Yapay zeka modelleri, modern yazılım mimarileri ve otomasyon 
-                çözümlerimizle dijital sistemleri geleceğe hazırlıyoruz. 
-                Temiz kod ile fikirleriniz gerçeğe dönüşsün!
-            </p>
+    <!-- THREE.JS KÜTÜPHANESİ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <script>
+        // 1. SAHNE, KAMERA VE RENDER KURULUMU
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        document.getElementById('webgl-container').appendChild(renderer.domElement);
+
+        // 2. TAŞLARIN (KRİSTALLERİN) OLUŞTURULMASI
+        const particleGroup = new THREE.Group();
+        scene.add(particleGroup);
+
+        // Keskin 3D Geometri (Tetrahedron - 4 yüzlü piramit/taş)
+        const geometry = new THREE.TetrahedronGeometry(1.2, 0); 
+        
+        // Işığı yansıtan mor/mavi parlak materyal
+        const material = new THREE.MeshStandardMaterial({
+            color: 0x4a148c,      // Koyu Mor
+            emissive: 0x1a0b2e,   // Hafif parlama
+            roughness: 0.2,       // Yüzey pürüzlülüğü
+            metalness: 0.8,       // Metalik yansıma
+            flatShading: true     // Keskin köşeleri belli et
+        });
+
+        // Küre şeklinde 600 adet taş yerleştiriyoruz
+        for(let i = 0; i < 600; i++) {
+            const mesh = new THREE.Mesh(geometry, material);
             
-            <!-- Sosyal Medya İkonları Buraya Taşındı -->
-            <div class="social-icons">
-                <a href="https://www.linkedin.com/in/gokhancitil" target="_blank">
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="#ffffff"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                    LinkedIn
-                </a>
-                <a href="https://github.com/gokhancitil" target="_blank">
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="#ffffff"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    GitHub
-                </a>
-                <a href="https://instagram.com/gokhancitil" target="_blank">
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="#ffffff"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                    Instagram
-                </a>
-                <a href="https://x.com/gokhancitil" target="_blank">
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="#ffffff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                    Twitter
-                </a>
-                <a href="https://www.facebook.com/gokhancitil" target="_blank">
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="#ffffff"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.312h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
-                    Facebook
-                </a>
-                <a href="https://medium.com/@gokhancitil" target="_blank">
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="#ffffff"><path d="M2.846 6.887c.03-.295-.083-.586-.303-.784l-2.24-2.7v-.403h7.358l5.378 11.795 4.728-11.795h6.65v.403l-1.916 1.837c-.165.126-.247.333-.213.538v13.498c-.034.204.048.411.213.537l1.871 1.837v.403h-9.412v-.403l1.939-1.882c.19-.19.19-.246.19-.537v-10.91l-5.389 13.688h-.728l-6.275-13.688v9.174c-.052.385.076.774.347 1.052l2.52 3.058v.404h-7.148v-.404l2.521-3.058c.27-.279.39-.67.325-1.052v-10.608z"/></svg>
-                    Medium
-                </a>
-            </div>
-        </div>
-    </main>
+            // Taşları rastgele bir küre (sphere) formunda dağıt
+            const radius = 18 + Math.random() * 6; // Kürenin çapı
+            const theta = Math.random() * 2 * Math.PI;
+            const phi = Math.acos((Math.random() * 2) - 1);
+            
+            mesh.position.x = radius * Math.sin(phi) * Math.cos(theta);
+            mesh.position.y = radius * Math.sin(phi) * Math.sin(theta);
+            mesh.position.z = radius * Math.cos(phi);
+            
+            // Taşların kendi eksenlerindeki rastgele açıları
+            mesh.rotation.x = Math.random() * Math.PI;
+            mesh.rotation.y = Math.random() * Math.PI;
+            mesh.rotation.z = Math.random() * Math.PI;
+            
+            particleGroup.add(mesh);
+        }
 
-    <!-- ALT BİLGİ (FOOTER) -->
-    <footer>
-        <div class="footer-left">
-            &copy; 2026 <img src="gokhancitil_logo.png" alt="Gökhan Çitil Logo" class="footer-logo"> <strong>Gökhan ÇİTİL</strong>. Tüm hakları saklıdır.
-        </div>
-        <div class="footer-right">
-            <a href="gizlilik.html">Gizlilik Politikası</a>
-            <a href="kvkk.html">KVKK</a>
-            <a href="kullanim.html">Kullanım Koşulları</a>
-        </div>
-    </footer>
+        // 3. IŞIKLANDIRMA (Taşların o 3D hacmini göstermek için çok önemli)
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+        scene.add(ambientLight);
 
+        const dirLight1 = new THREE.DirectionalLight(0x00e5ff, 1.5); // Mavi ışık vuruyor
+        dirLight1.position.set(10, 10, 10);
+        scene.add(dirLight1);
+
+        const dirLight2 = new THREE.DirectionalLight(0xaa00ff, 1.5); // Mor ışık vuruyor
+        dirLight2.position.set(-10, -10, 10);
+        scene.add(dirLight2);
+
+        // Küreyi ekranın sağ tarafına (ve biraz geriye) itiyoruz
+        particleGroup.position.x = 25; 
+        camera.position.z = 40;
+
+        // 4. FARE HAREKETİ İLE ETKİLEŞİM (Parallax Efekti)
+        let mouseX = 0;
+        let mouseY = 0;
+        let targetX = 0;
+        let targetY = 0;
+
+        const windowHalfX = window.innerWidth / 2;
+        const windowHalfY = window.innerHeight / 2;
+
+        document.addEventListener('mousemove', (event) => {
+            mouseX = (event.clientX - windowHalfX) * 0.001;
+            mouseY = (event.clientY - windowHalfY) * 0.001;
+        });
+
+        // 5. ANİMASYON DÖNGÜSÜ (Kendi etrafında dönme ve fareye tepki)
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Küre kendi etrafında yavaşça sürekli döner
+            particleGroup.rotation.y += 0.002;
+            particleGroup.rotation.x += 0.001;
+
+            // Fareye doğru hafifçe eğilme efekti
+            targetX = mouseX * 0.5;
+            targetY = mouseY * 0.5;
+            
+            particleGroup.rotation.y += 0.05 * (targetX - particleGroup.rotation.y);
+            particleGroup.rotation.x += 0.05 * (targetY - particleGroup.rotation.x);
+
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Ekran boyutu değiştiğinde yapıyı bozmaması için
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
 </body>
 </html>
