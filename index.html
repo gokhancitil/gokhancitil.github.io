@@ -1,64 +1,94 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18382035228"></script>
-    <script>
-      window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date()); gtag('config', 'AW-18382035228');
-    </script>
+    <!-- Google Tag ayarların burada aynen kalacak -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gökhan ÇİTİL // CYBER_DEV</title>
+    <title>Gökhan ÇİTİL | 3D Deneyim</title>
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&display=swap');
-        body { margin: 0; background-color: #050510; color: #fff; font-family: 'Oswald', sans-serif; cursor: url('imlec.png'), auto; text-transform: uppercase; overflow-x: hidden;}
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;700;900&display=swap');
         
-        /* Neon Grid Arka Plan */
-        body::before { content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-image: linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px); background-size: 40px 40px; z-index: -1; pointer-events: none;}
+        /* Sayfanın yüksekliği: Ne kadar büyük olursa kaydırma o kadar uzun sürer */
+        body { margin: 0; height: 500vh; background: #050505; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; cursor: url('imlec.png'), auto; }
         
-        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; text-align: center; }
+        /* 3D Kamera Perspektifi */
+        .viewport { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; perspective: 1200px; overflow: hidden; }
         
-        .nav-links { display: flex; justify-content: center; gap: 30px; margin-bottom: 50px; flex-wrap: wrap;}
-        .nav-links a { color: #0ff; text-decoration: none; font-size: 1.2rem; letter-spacing: 2px; position: relative; padding: 5px 10px; transition: 0.3s; }
-        .nav-links a::after { content: ''; position: absolute; width: 100%; height: 2px; bottom: 0; left: 0; background: #0ff; transform: scaleX(0); transform-origin: right; transition: transform 0.3s ease; }
-        .nav-links a:hover { text-shadow: 0 0 10px #0ff; }
-        .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+        /* Tüm sahnelerin içinde durduğu uzay boşluğu */
+        .scene { position: absolute; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 0.1s linear; }
         
-        .cyber-title { font-size: 5rem; line-height: 1; margin: 0; color: #fff; text-shadow: 2px 2px 0px #ff00ff, -2px -2px 0px #0ff; animation: glitch 3s infinite; }
-        @keyframes glitch { 0% { text-shadow: 2px 2px 0px #ff00ff, -2px -2px 0px #0ff; } 20% { text-shadow: -2px 2px 0px #ff00ff, 2px -2px 0px #0ff; } 40% { text-shadow: 2px -2px 0px #ff00ff, -2px 2px 0px #0ff; } 100% { text-shadow: 2px 2px 0px #ff00ff, -2px -2px 0px #0ff; } }
+        /* Her bir elementin (katmanın) ortak özelliği */
+        .layer { position: absolute; top: 50%; left: 50%; text-align: center; width: 80%; max-width: 800px; }
         
-        .desc { font-family: sans-serif; text-transform: none; font-size: 1.2rem; color: #ccc; max-width: 700px; margin: 30px auto; line-height: 1.6; }
+        /* KATMANLARIN DERİNLİKLERİ (Z Ekseni) */
+        /* Katman 1: Tam karşımızda */
+        .layer-1 { transform: translate(-50%, -50%) translateZ(0px); }
         
-        .cyber-image { border: 3px solid #ff00ff; box-shadow: 0 0 20px #ff00ff; max-width: 100%; margin: 30px 0; clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%); }
+        /* Katman 2: Ekranın 1500px gerisinde */
+        .layer-2 { transform: translate(-50%, -50%) translateZ(-1500px); }
         
-        .social-buttons { display: flex; justify-content: center; gap: 20px; margin-top: 40px; flex-wrap: wrap;}
-        .social-buttons a { background: transparent; color: #0ff; border: 2px solid #0ff; padding: 15px 30px; text-decoration: none; font-size: 1.1rem; letter-spacing: 1px; box-shadow: inset 0 0 10px rgba(0,255,255,0.2), 0 0 10px rgba(0,255,255,0.2); transition: 0.3s; clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px); }
-        .social-buttons a:hover { background: #0ff; color: #000; box-shadow: 0 0 25px #0ff; }
+        /* Katman 3: Ekranın 3000px gerisinde */
+        .layer-3 { transform: translate(-50%, -50%) translateZ(-3000px); }
+        
+        /* Katman 4: Ekranın 4500px gerisinde */
+        .layer-4 { transform: translate(-50%, -50%) translateZ(-4500px); }
 
-        @media (max-width: 768px) { .cyber-title { font-size: 3rem; } }
+        /* Tasarım Detayları */
+        h1 { font-size: 6rem; font-weight: 900; letter-spacing: -3px; margin: 0; background: linear-gradient(135deg, #fff, #555); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        h2 { font-size: 3rem; font-weight: 700; }
+        p { font-size: 1.5rem; color: #888; font-weight: 300; }
+        
+        .glass-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); padding: 50px; border-radius: 30px; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); box-shadow: 0 30px 60px rgba(0,0,0,0.8); }
+        .glass-card img { width: 100%; max-width: 400px; border-radius: 15px; margin-top: 20px; filter: grayscale(100%); transition: 0.5s; }
+        .glass-card img:hover { filter: grayscale(0%); }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="nav-links">
-            <a href="hakkimda.html">Hakkımda</a>
-            <a href="uzmanliklar.html">Uzmanlıklar</a>
-            <a href="hizmetlerimiz.html">Hizmetlerimiz</a>
-            <a href="iletisim.html">İletişim</a>
-        </div>
-        
-        <h1 class="cyber-title">FİKİRLERİNİZİ KODA<br>DÖNÜŞTÜRÜYORUZ</h1>
-        <p class="desc">Yapay zeka modelleri, modern yazılım mimarileri ve otomasyon çözümlerimizle dijital sistemleri geleceğe hazırlıyoruz. Temiz kod ile fikirleriniz gerçeğe dönüşsün!</p>
-        
-        <img src="gokhancitil-yapay-zeka.jpg" alt="AI Developer" class="cyber-image">
-        
-        <div class="social-buttons">
-            <a href="https://www.linkedin.com/in/gokhancitil" target="_blank">LINKEDIN</a>
-            <a href="https://github.com/gokhancitil" target="_blank">GITHUB</a>
-            <a href="https://instagram.com/gokhancitil" target="_blank">INSTAGRAM</a>
+
+    <!-- Sabit Kamera / Görüş Alanı -->
+    <div class="viewport">
+        <!-- İleri doğru hareket edecek olan uzay -->
+        <div class="scene" id="scene">
+            
+            <div class="layer layer-1">
+                <h1>GÖKHAN ÇİTİL</h1>
+                <p>AI & Software Developer</p>
+            </div>
+            
+            <div class="layer layer-2">
+                <div class="glass-card">
+                    <h2>Fikirleri Koda<br>Dönüştürüyoruz</h2>
+                    <img src="gokhancitil-yapay-zeka.jpg" alt="Yapay Zeka">
+                </div>
+            </div>
+            
+            <div class="layer layer-3">
+                <h1 style="font-size: 5rem;">SAAS & OTOMASYON</h1>
+                <p>Modern mimariler ile sıfır risk, maksimum performans.</p>
+            </div>
+            
+            <div class="layer layer-4">
+                <div class="glass-card">
+                    <h2>Projeye Başla</h2>
+                    <p>Bağlantılar ve İletişim Formu Buraya Gelecek</p>
+                </div>
+            </div>
+
         </div>
     </div>
+
+    <!-- Scroll (Kaydırma) İşlemini Z Eksenine Bağlayan Script -->
+    <script>
+        // Sayfa kaydırıldıkça çalışacak fonksiyon
+        window.addEventListener('scroll', () => {
+            // Ne kadar aşağı kaydırdığımızı piksel olarak alıyoruz
+            const scrollPozisyonu = window.scrollY;
+            
+            // Sahneyi Z ekseninde (bize doğru) kaydırdığımız piksel kadar itiyoruz
+            document.getElementById('scene').style.transform = `translateZ(${scrollPozisyonu}px)`;
+        });
+    </script>
+
 </body>
 </html>
