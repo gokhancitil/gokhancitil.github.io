@@ -52,7 +52,7 @@
       l:[["İletişim","iletisim.html"]] },
 
     { k:["proje","referans","ornek","örnek","is yapt","iş yapt","portfoy","portföy","deneyim","tecrube","tecrübe"],
-      a:"Geliştirdiğim sistemlerden biri, poliçe yönetimi ve müşteri portföyü süreçlerini tek panelde toplayan <b>çok kiracılı bir sigorta acentesi platformu</b>. Ayrıca bu sitenin kendisi (Three.js WebGL sahnesi, Schema.org altyapısı) ve işletmelere özel süreç otomasyonları geliştirdim.",
+      a:"Geliştirdiğim sistemlerden biri, poliçe yönetimi ve müşteri portföyü süreçlerini tek panelde toplayan <b>çok kiracılı bir sigorta acentesi platformu</b>. Bunun yanında işletmelere özel e-ticaret ve kurumsal web sistemleri ile süreç otomasyonları geliştiriyorum.",
       l:[["Hakkımda","hakkimda.html"]] },
 
     { k:["destek","bakim","bakım","sonrasi","sonrası","garanti"],
