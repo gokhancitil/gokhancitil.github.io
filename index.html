@@ -883,6 +883,15 @@
     const rimLight=new THREE.DirectionalLight(0x386af6,0.9);
     rimLight.position.set(-4,-3,-6); scene.add(rimLight);
 
+    // Ortam haritası: taşların parlak yansımaları buradan gelir
+    (async()=>{
+      try{
+        const {RoomEnvironment}=await import('https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/environments/RoomEnvironment.js');
+        const pmrem=new THREE.PMREMGenerator(renderer);
+        scene.environment=pmrem.fromScene(new RoomEnvironment(),0.04).texture;
+      }catch(e){ console.warn('env map yuklenemedi',e); }
+    })();
+
     const group=new THREE.Group(); scene.add(group);
 
     const COUNT=isMobile?1400:3400;
@@ -917,12 +926,6 @@
     }
     mesh.instanceColor.needsUpdate=true;
     group.add(mesh);
-
-    const core=new THREE.Mesh(
-        new THREE.IcosahedronGeometry(3.6,1),
-        new THREE.MeshBasicMaterial({color:0x4f46e5,wireframe:true,transparent:true,opacity:0.13})
-    );
-    group.add(core);
 
     const mouse={x:0,y:0}, target={x:0,y:0};
     addEventListener('mousemove',e=>{
@@ -968,8 +971,6 @@
         }
         mesh.instanceMatrix.needsUpdate=true;
 
-        core.rotation.y=-t*0.45; core.rotation.x=t*0.22;
-        core.scale.setScalar(1+Math.sin(t*1.4)*0.05);
 
         renderer.render(scene,camera);
     }
