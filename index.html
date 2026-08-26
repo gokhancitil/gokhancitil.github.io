@@ -184,27 +184,13 @@
         .social-icons a:hover{color:#fff;}
         .social-icons a:hover svg{fill:#a78bfa;}
 
-        /* 3D küre: metnin ARKASINDA kalır */
+        /* 3D küre: sağ sütunda durur, metne girmez */
         .hero-right{
-            position:relative;height:min(96vh,940px);
-            margin-left:-14vw;margin-right:-8vw;
+            position:relative;height:min(88vh,860px);
+            margin-right:-6vw;
             z-index:0;pointer-events:none;
         }
-        /* Metin katmanı her zaman önde + arkasına okunabilirlik perdesi */
-        .hero-left{
-            position:relative;z-index:3;
-            max-width:620px;
-        }
-        .hero-left::before{
-            content:"";position:absolute;z-index:-1;
-            inset:-60px -140px -60px -60px;
-            background:radial-gradient(120% 90% at 22% 50%,
-                rgba(5,10,28,.97) 0%,
-                rgba(5,10,28,.93) 42%,
-                rgba(5,10,28,.72) 66%,
-                rgba(5,10,28,0) 100%);
-            pointer-events:none;
-        }
+        .hero-left{position:relative;z-index:3;max-width:620px;}
         #webgl{position:absolute;inset:0;width:100%;height:100%;}
 
         /* ===== KARTLAR ===== */
@@ -884,7 +870,7 @@
 
     const scene=new THREE.Scene();
     const camera=new THREE.PerspectiveCamera(45,1,0.1,140);
-    camera.position.set(0,0,isMobile?24:15.5);
+    camera.position.set(0,0,isMobile?24:17.5);
 
     const renderer=new THREE.WebGLRenderer({canvas,antialias:!isMobile,alpha:true,powerPreference:'high-performance'});
     renderer.setPixelRatio(Math.min(devicePixelRatio,isMobile?1.5:2));
