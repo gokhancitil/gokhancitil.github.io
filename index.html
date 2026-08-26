@@ -932,47 +932,6 @@
     rimLight.position.set(-4,-3,-6); scene.add(rimLight);
 
     /* ---------- "G" FORMASYON HEDEFİ ---------- */
-    function makeTextPoints(lines,need){
-        const W=760, H=380;
-        const c=document.createElement('canvas'); c.width=W; c.height=H;
-        const x=c.getContext('2d');
-        x.fillStyle='#000'; x.fillRect(0,0,W,H);
-        x.fillStyle='#fff';
-        x.textAlign='center'; x.textBaseline='middle';
-
-        // her satırı kutuya sığacak en büyük punto ile çiz
-        const rows=lines.length, rowH=H/rows;
-        lines.forEach(function(txt,r){
-            let fs=Math.round(rowH*0.86);
-            const FF='Inter, "Helvetica Neue", Arial, sans-serif';
-            const fit=function(size){
-                x.font='900 '+size+'px '+FF;
-                return x.measureText(txt).width;
-            };
-            while(fit(fs)>W*0.90 && fs>10) fs-=2;
-            x.font='900 '+fs+'px '+FF;
-            if(x.letterSpacing!==undefined) x.letterSpacing=Math.round(fs*0.045)+'px';
-            x.fillText(txt, W/2, rowH*(r+0.5));
-        });
-
-        const d=x.getImageData(0,0,W,H).data, hits=[];
-        for(let py=0;py<H;py++){
-            for(let px=0;px<W;px++){
-                if(d[(py*W+px)*4]>140) hits.push([px,py]);
-            }
-        }
-        const out=[];
-        for(let i=0;i<need;i++){
-            const h=hits.length ? hits[(Math.random()*hits.length)|0] : [W/2,H/2];
-            out.push([
-                ((h[0]/W)-0.5)*2,                 // -1 … 1
-                -((h[1]/H)-0.5)*2*(H/W),          // en-boy oranı korunur
-                (Math.random()-0.5)*0.16
-            ]);
-        }
-        return out;
-    }
-
     // Ortam haritası: taşların parlak yansımaları buradan gelir
     (async()=>{
       try{
@@ -1019,22 +978,6 @@
         mesh.setColorAt(i,cTmp);
     }
     mesh.instanceColor.needsUpdate=true;
-    function buildText(){
-        const pts=makeTextPoints(['GÖKHAN','ÇİTİL'],COUNT);
-        for(let i=0;i<COUNT;i++){
-            const g=pts[i];
-            if(seeds[i].gn) seeds[i].gn.set(g[0],g[1],g[2]);
-            else seeds[i].gn=new THREE.Vector3(g[0],g[1],g[2]);
-        }
-    }
-    buildText();
-    if(document.fonts&&document.fonts.load){
-        document.fonts.load('900 120px Inter','GÖKHANÇİTİL')
-            .then(function(){ return document.fonts.ready; })
-            .then(buildText).catch(function(){});
-    }
-    let GSX=RADIUS;              // resize ile hesaplanır
-    const gTmp=new THREE.Vector3();
 
     group.add(mesh);
 
@@ -1056,9 +999,6 @@
         camera.position.z=Math.max(need/halfV, need/(halfV*camera.aspect));
         camera.updateProjectionMatrix();
 
-        // yazı da görünür genişliğin %86'sını kaplasın
-        GSX=halfV*camera.position.z*camera.aspect*0.86;
-
         renderer.setSize(w,h,false);
     }
     addEventListener('resize',resize); resize();
@@ -1070,7 +1010,7 @@
     const mouse3=new THREE.Vector3(1e3,1e3,1e3);
     const pushV=new THREE.Vector3();
     const INF=1.5, FORCE=1.1;
-    let overCanvas=false, burst=0, breakG=0;
+    let overCanvas=false, burst=0;
 
     canvas.style.pointerEvents='auto';
     // fare konumu CANVAS'a göre hesaplanır (pencereye göre değil)
@@ -1083,7 +1023,7 @@
     });
     canvas.addEventListener('mouseenter',()=>{overCanvas=true;});
     canvas.addEventListener('mouseleave',()=>{overCanvas=false;});
-    canvas.addEventListener('pointerdown',()=>{ burst=1; breakG=1; });
+    canvas.addEventListener('pointerdown',()=>{ burst=1; });
 
     const clock=new THREE.Clock();
     let visible=true;
@@ -1094,15 +1034,6 @@
         if(!visible) return;
         const t=clock.getElapsedTime();
 
-        // 22 sn'lik döngü: küre → G → küre
-        const cyc=(t+4)%22;
-        let m=0;
-        if(cyc<7) m=0;
-        else if(cyc<9.5) m=(cyc-7)/2.5;
-        else if(cyc<16.5) m=1;
-        else if(cyc<19) m=1-(cyc-16.5)/2.5;
-        m=m*m*(3-2*m);                    // yumuşat
-        if(breakG>0){ breakG*=0.985; m*=(1-breakG); }   // tıklayınca G dağılır
         burst*=0.94;
 
         // farenin sahnedeki karşılığı
@@ -1114,7 +1045,7 @@
         mouse.x+=(target.x-mouse.x)*0.07;
         mouse.y+=(target.y-mouse.y)*0.07;
 
-        group.rotation.y=t*0.18*(1-m)+mouse.x*0.1;
+        group.rotation.y=t*0.18+mouse.x*0.1;
         group.rotation.x=Math.sin(t*0.25)*0.08+mouse.y*0.1;
         group.position.x=mouse.x*(isMobile?0.1:0.35);
         group.position.y=-mouse.y*(isMobile?0.1:0.25)+Math.sin(t*0.8)*0.1;
@@ -1124,10 +1055,6 @@
             const wave=Math.sin(t*1.1+s.phase)*0.05;
             const pulse=(RADIUS+wave+Math.sin(t*2.2+s.phase)*0.09)*s.rOff;
             dummy.position.copy(s.dir).multiplyScalar(pulse);
-            if(m>0.001){
-                gTmp.set(s.gn.x*GSX, s.gn.y*GSX, s.gn.z*RADIUS*0.5);
-                dummy.position.lerp(gTmp,m);
-            }
 
             // fareden kaç + tıklama dalgası
             pushV.copy(dummy.position).sub(mouse3);
@@ -1136,8 +1063,8 @@
                 const f=1-dd/(INF+burst*2.4);
                 dummy.position.addScaledVector(pushV.normalize(), f*f*(FORCE+burst*2.6));
             }
-            dummy.rotation.set(s.rot.x+t*s.spin*(1-m*0.75), s.rot.y+t*s.spin*0.9*(1-m*0.75), s.rot.z+t*s.spin*0.5);
-            dummy.scale.setScalar(s.scale*(s.edge?0.7:1)*(1-m*0.28));
+            dummy.rotation.set(s.rot.x+t*s.spin, s.rot.y+t*s.spin*0.9, s.rot.z+t*s.spin*0.5);
+            dummy.scale.setScalar(s.scale*(s.edge?0.7:1));
             dummy.updateMatrix();
             mesh.setMatrixAt(i,dummy.matrix);
         }
