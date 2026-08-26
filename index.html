@@ -863,24 +863,35 @@
     const isMobile=matchMedia('(max-width:900px)').matches;
 
     const scene=new THREE.Scene();
-    const camera=new THREE.PerspectiveCamera(45,1,0.1,100);
+    const camera=new THREE.PerspectiveCamera(50,1,0.1,100);
     camera.position.set(0,0,isMobile?17:15);
 
     const renderer=new THREE.WebGLRenderer({canvas,antialias:!isMobile,alpha:true,powerPreference:'high-performance'});
     renderer.setPixelRatio(Math.min(devicePixelRatio,isMobile?1.5:2));
+    renderer.outputColorSpace=THREE.SRGBColorSpace;
+    renderer.toneMapping=THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure=1.1;
 
-    scene.add(new THREE.AmbientLight(0x223066,1.2));
-    const blueLight=new THREE.DirectionalLight(0x3b82f6,4.5); blueLight.position.set(-6,4,6); scene.add(blueLight);
-    const purpleLight=new THREE.DirectionalLight(0x8b5cf6,4.5); purpleLight.position.set(6,-3,4); scene.add(purpleLight);
-    const rimLight=new THREE.DirectionalLight(0x22d3ee,2.0); rimLight.position.set(0,6,-8); scene.add(rimLight);
+    scene.add(new THREE.HemisphereLight(0x9aa7ff,0x05060b,0.55));
+
+    const keyLight=new THREE.DirectionalLight(0xffffff,1.1);
+    keyLight.position.set(3,5,8); scene.add(keyLight);
+
+    const warmLight=new THREE.DirectionalLight(0xfff2dd,0.6);
+    warmLight.position.set(-6,3,4); scene.add(warmLight);
+
+    const rimLight=new THREE.DirectionalLight(0x386af6,0.9);
+    rimLight.position.set(-4,-3,-6); scene.add(rimLight);
 
     const group=new THREE.Group(); scene.add(group);
 
     const COUNT=isMobile?800:2400;
     const RADIUS=5.2;
-    const geo=new THREE.TetrahedronGeometry(isMobile?0.2:0.155);
-    const mat=new THREE.MeshStandardMaterial({color:0xdfe6ff,metalness:0.85,roughness:0.25,flatShading:true});
+    const geo=new THREE.OctahedronGeometry(1,0);
+    const mat=new THREE.MeshStandardMaterial({color:0xffffff,metalness:0.1,roughness:0.18,flatShading:true});
     const mesh=new THREE.InstancedMesh(geo,mat,COUNT);
+    const COL_VIOLET=0x6c3cf0, COL_BLUE=0x386af6, COL_CYAN=0x00d4ff;
+    const cTmp=new THREE.Color();
     const dummy=new THREE.Object3D();
     const seeds=[];
 
@@ -891,11 +902,17 @@
         const th=golden*i;
         const dir=new THREE.Vector3(Math.cos(th)*r,y,Math.sin(th)*r);
         seeds.push({
-            dir, scale:0.5+Math.random()*1.05,
+            dir, scale:0.14+Math.random()*0.09,
             phase:Math.random()*6.283, spin:(Math.random()-0.5)*1.8,
             rot:new THREE.Euler(Math.random()*6.283,Math.random()*6.283,Math.random()*6.283)
         });
     }
+    for(let i=0;i<COUNT;i++){
+        if(Math.random()<0.08) cTmp.setHex(COL_CYAN);
+        else cTmp.setHex(COL_VIOLET).lerp(new THREE.Color(COL_BLUE),Math.random());
+        mesh.setColorAt(i,cTmp);
+    }
+    mesh.instanceColor.needsUpdate=true;
     group.add(mesh);
 
     const core=new THREE.Mesh(
@@ -931,10 +948,10 @@
         mouse.x+=(target.x-mouse.x)*0.07;
         mouse.y+=(target.y-mouse.y)*0.07;
 
-        group.rotation.y=t*0.28+mouse.x*0.7;
-        group.rotation.x=Math.sin(t*0.25)*0.12+mouse.y*0.55;
-        group.position.x=mouse.x*(isMobile?0.25:0.7);
-        group.position.y=-mouse.y*(isMobile?0.2:0.5)+Math.sin(t*0.8)*0.12;
+        group.rotation.y=t*0.18+mouse.x*0.1;
+        group.rotation.x=Math.sin(t*0.25)*0.08+mouse.y*0.1;
+        group.position.x=mouse.x*(isMobile?0.1:0.35);
+        group.position.y=-mouse.y*(isMobile?0.1:0.25)+Math.sin(t*0.8)*0.1;
 
         for(let i=0;i<COUNT;i++){
             const s=seeds[i];
