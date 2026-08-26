@@ -1073,6 +1073,14 @@
     let overCanvas=false, burst=0, breakG=0;
 
     canvas.style.pointerEvents='auto';
+    // fare konumu CANVAS'a göre hesaplanır (pencereye göre değil)
+    const cn={x:0,y:0};
+    canvas.addEventListener('pointermove',function(e){
+        const r=canvas.getBoundingClientRect();
+        cn.x=((e.clientX-r.left)/r.width)*2-1;
+        cn.y=-(((e.clientY-r.top)/r.height)*2-1);
+        overCanvas=true;
+    });
     canvas.addEventListener('mouseenter',()=>{overCanvas=true;});
     canvas.addEventListener('mouseleave',()=>{overCanvas=false;});
     canvas.addEventListener('pointerdown',()=>{ burst=1; breakG=1; });
@@ -1099,7 +1107,7 @@
 
         // farenin sahnedeki karşılığı
         if(overCanvas && !isMobile){
-            rayc.setFromCamera({x:target.x,y:-target.y},camera);
+            rayc.setFromCamera(cn,camera);
             if(rayc.ray.intersectPlane(plane,hitPt)) group.worldToLocal(mouse3.copy(hitPt));
         } else mouse3.set(1e3,1e3,1e3);
 
