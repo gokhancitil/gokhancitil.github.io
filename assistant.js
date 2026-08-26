@@ -138,6 +138,21 @@
   +'#gc-send:hover{transform:translateY(-2px);}'
   +'#gc-note{font-size:10px;color:#5d6a91;text-align:center;padding:0 16px 10px;flex:none;}'
   +'@media (hover:hover) and (pointer:fine){#gc-fab,#gc-close,#gc-send,#gc-chips button,#gc-in,.gc-links a{cursor:none;}}'
+  +'#gc-tip{position:fixed;right:92px;bottom:34px;z-index:9450;max-width:230px;padding:12px 15px;border-radius:14px;'
+  +'border:1px solid rgba(139,92,246,.4);background:rgba(10,16,48,.96);backdrop-filter:blur(12px);'
+  +'box-shadow:0 20px 46px -14px rgba(0,0,0,.9);font-family:Inter,system-ui,sans-serif;font-size:12.8px;'
+  +'line-height:1.55;color:#cbd5e1;font-weight:300;opacity:0;transform:translateX(14px) scale(.94);'
+  +'pointer-events:none;transition:opacity .5s,transform .5s cubic-bezier(.16,1,.3,1);}'
+  +'#gc-tip.show{opacity:1;transform:none;pointer-events:auto;cursor:pointer;}'
+  +'#gc-tip b{color:#fff;font-weight:600;display:block;margin-bottom:3px;font-size:13px;}'
+  +'#gc-tip::after{content:"";position:absolute;right:-7px;bottom:20px;width:12px;height:12px;'
+  +'background:rgba(10,16,48,.96);border-right:1px solid rgba(139,92,246,.4);'
+  +'border-top:1px solid rgba(139,92,246,.4);transform:rotate(45deg);}'
+  +'#gc-tip .x{position:absolute;top:5px;right:8px;font-size:15px;color:#5d6a91;line-height:1;}'
+  +'#gc-tip .x:hover{color:#fff;}'
+  +'#gc-fab.ring{animation:gcshake 1.1s ease-in-out 2;}'
+  +'@keyframes gcshake{0%,100%{transform:none;}25%{transform:rotate(-11deg) scale(1.07);}75%{transform:rotate(11deg) scale(1.07);}}'
+  +'@media (max-width:520px){#gc-tip{right:76px;bottom:24px;max-width:180px;font-size:12px;padding:10px 13px;}}'
   +'@media (max-width:520px){#gc-panel{right:10px;left:10px;bottom:10px;width:auto;height:min(76vh,540px);}'
   +'#gc-fab{right:14px;bottom:14px;width:52px;height:52px;font-size:21px;}}';
 
@@ -158,6 +173,11 @@
       +'<form id="gc-form"><input id="gc-in" type="text" placeholder="Sorunuzu yazın…" autocomplete="off"><button id="gc-send" type="submit" aria-label="Gönder">➤</button></form>'
       +'<div id="gc-note">Bu asistan site içeriğinden otomatik yanıt verir.</div>';
     document.body.appendChild(p);
+
+    var tip=document.createElement('div');
+    tip.id='gc-tip';
+    tip.innerHTML='<span class="x">×</span><b>Bir sorunuz mu var?</b>Gökhan Çitil kimdir, hangi hizmetleri veriyor — hemen sorun, anında cevaplayayım.';
+    document.body.appendChild(tip);
 
     var log=p.querySelector('#gc-log'), chips=p.querySelector('#gc-chips'),
         form=p.querySelector('#gc-form'), input=p.querySelector('#gc-in');
@@ -200,7 +220,10 @@
     }
 
     var started=false;
+    function hideTip(){ tip.classList.remove('show'); }
+
     function open(){
+      hideTip();
       p.classList.add('open'); fab.classList.add('hide');
       if(!started){
         started=true;
@@ -210,6 +233,22 @@
       if(matchMedia('(min-width:620px)').matches) setTimeout(function(){input.focus();},380);
     }
     function close(){ p.classList.remove('open'); fab.classList.remove('hide'); }
+
+    tip.onclick=function(e){
+      if(e.target.className==='x'){ e.stopPropagation(); hideTip(); try{sessionStorage.setItem('gc_tip','0');}catch(err){} return; }
+      open();
+    };
+
+    var seen=null; try{seen=sessionStorage.getItem('gc_tip');}catch(e){}
+    if(seen!=='0'){
+      setTimeout(function(){
+        if(p.classList.contains('open')) return;
+        tip.classList.add('show');
+        fab.classList.add('ring');
+        setTimeout(function(){fab.classList.remove('ring');},2400);
+        setTimeout(hideTip,14000);
+      },4500);
+    }
 
     fab.onclick=open;
     p.querySelector('#gc-close').onclick=close;
