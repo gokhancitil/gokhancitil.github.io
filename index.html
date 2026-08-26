@@ -184,13 +184,7 @@
         .social-icons a:hover{color:#fff;}
         .social-icons a:hover svg{fill:#a78bfa;}
 
-        /* 3D küre: sağ sütunda durur, metne girmez */
-        .hero-right{
-            position:relative;height:min(88vh,860px);
-            margin-right:-6vw;
-            z-index:0;pointer-events:none;
-        }
-        .hero-left{position:relative;z-index:3;max-width:620px;}
+        .hero-right{position:relative;height:min(76vh,700px);}
         #webgl{position:absolute;inset:0;width:100%;height:100%;}
 
         /* ===== KARTLAR ===== */
@@ -869,82 +863,47 @@
     const isMobile=matchMedia('(max-width:900px)').matches;
 
     const scene=new THREE.Scene();
-    const camera=new THREE.PerspectiveCamera(45,1,0.1,140);
-    camera.position.set(0,0,isMobile?22:16);
+    const camera=new THREE.PerspectiveCamera(45,1,0.1,100);
+    camera.position.set(0,0,isMobile?17:15);
 
     const renderer=new THREE.WebGLRenderer({canvas,antialias:!isMobile,alpha:true,powerPreference:'high-performance'});
     renderer.setPixelRatio(Math.min(devicePixelRatio,isMobile?1.5:2));
-    renderer.outputColorSpace=THREE.SRGBColorSpace;
 
-    /* ---------- IŞIKLAR: parlak ön + mavi/mor yan ---------- */
-    scene.add(new THREE.AmbientLight(0x252c85,1.35));
-
-    const keyLight=new THREE.DirectionalLight(0xffffff,4.6);
-    keyLight.position.set(3,6,10); scene.add(keyLight);
-
-    const blueLight=new THREE.DirectionalLight(0x4c6bff,3.6);
-    blueLight.position.set(-9,-2,4); scene.add(blueLight);
-
-    const purpleLight=new THREE.DirectionalLight(0x9d6cff,3.4);
-    purpleLight.position.set(9,3,2); scene.add(purpleLight);
-
-    const backLight=new THREE.DirectionalLight(0x1e2a8a,2.0);
-    backLight.position.set(2,-6,-8); scene.add(backLight);
+    scene.add(new THREE.AmbientLight(0x223066,1.2));
+    const blueLight=new THREE.DirectionalLight(0x3b82f6,4.5); blueLight.position.set(-6,4,6); scene.add(blueLight);
+    const purpleLight=new THREE.DirectionalLight(0x8b5cf6,4.5); purpleLight.position.set(6,-3,4); scene.add(purpleLight);
+    const rimLight=new THREE.DirectionalLight(0x22d3ee,2.0); rimLight.position.set(0,6,-8); scene.add(rimLight);
 
     const group=new THREE.Group(); scene.add(group);
 
-    /* ---------- İÇİ DOLU TETRAHEDRON YIĞINI ---------- */
-    const COUNT=isMobile?700:1600;
-    const R=6.2;
-
-    const geo=new THREE.TetrahedronGeometry(1);
-    const mat=new THREE.MeshStandardMaterial({
-        color:0xffffff, metalness:0.30, roughness:0.30, flatShading:true
-    });
+    const COUNT=isMobile?800:2400;
+    const RADIUS=5.2;
+    const geo=new THREE.TetrahedronGeometry(isMobile?0.2:0.155);
+    const mat=new THREE.MeshStandardMaterial({color:0xdfe6ff,metalness:0.85,roughness:0.25,flatShading:true});
     const mesh=new THREE.InstancedMesh(geo,mat,COUNT);
-    const PAL=[0x4f46e5,0x5b54f0,0x6366f1,0x6d5ce8,0x7c6cf5,0x818cf8,0x8b5cf6,0x93a5fd,0xa5b4fc,0x7c3aed,0xc7d2fe,0x6366f1];
-    const cTmp=new THREE.Color();
-    mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
-
     const dummy=new THREE.Object3D();
     const seeds=[];
-    const tmp=new THREE.Vector3();
 
+    const golden=Math.PI*(3-Math.sqrt(5));
     for(let i=0;i<COUNT;i++){
-        const u=Math.random(), v=Math.random(), w=Math.random();
-        const th=Math.acos(2*u-1), ph=2*Math.PI*v;
-
-        // kalın kabuk: taşlar dış yüzeyde yoğun, içeri doğru seyrelir
-        let rad, edge=false;
-        if(Math.random()<0.18){                 // dışa saçılan tüylü kenar
-            rad=R*(1.02+Math.pow(Math.random(),1.7)*0.40); edge=true;
-        }else{
-            rad=R*(0.80+0.20*Math.pow(Math.random(),0.5));
-        }
-        rad*=1+Math.sin(th*4.3+ph*3.1)*0.03;
-
-        const dir=new THREE.Vector3(
-            Math.sin(th)*Math.cos(ph),
-            Math.cos(th),
-            Math.sin(th)*Math.sin(ph)
-        );
-
+        const y=1-(i/(COUNT-1))*2;
+        const r=Math.sqrt(Math.max(0,1-y*y));
+        const th=golden*i;
+        const dir=new THREE.Vector3(Math.cos(th)*r,y,Math.sin(th)*r);
         seeds.push({
-            dir, rad,
-            scale:(0.24+Math.random()*0.26)*(edge?0.7:1),
-            rot:new THREE.Euler(Math.random()*6.283,Math.random()*6.283,Math.random()*6.283),
-            spin:(Math.random()-0.5)*0.5,
-            phase:Math.random()*6.283
+            dir, scale:0.5+Math.random()*1.05,
+            phase:Math.random()*6.283, spin:(Math.random()-0.5)*1.8,
+            rot:new THREE.Euler(Math.random()*6.283,Math.random()*6.283,Math.random()*6.283)
         });
     }
-    for(let i=0;i<COUNT;i++){
-        cTmp.setHex(PAL[(Math.random()*PAL.length)|0]);
-        mesh.setColorAt(i,cTmp);
-    }
-    mesh.instanceColor.needsUpdate=true;
     group.add(mesh);
 
-    /* ---------- PARALLAX ---------- */
+    const core=new THREE.Mesh(
+        new THREE.IcosahedronGeometry(3.6,1),
+        new THREE.MeshBasicMaterial({color:0x4f46e5,wireframe:true,transparent:true,opacity:0.13})
+    );
+    group.add(core);
+
     const mouse={x:0,y:0}, target={x:0,y:0};
     addEventListener('mousemove',e=>{
         target.x=(e.clientX/innerWidth)*2-1;
@@ -960,19 +919,6 @@
     }
     addEventListener('resize',resize); resize();
 
-    /* fare konumunu sahnenin içinde bir noktaya çevir */
-    const rayNdc=new THREE.Vector3();
-    const mouse3=new THREE.Vector3(999,999,999);
-    const plane=new THREE.Plane(new THREE.Vector3(0,0,1),0);
-    const rayc=new THREE.Raycaster();
-    const hit=new THREE.Vector3();
-    const push=new THREE.Vector3();
-    const INF=3.1;      // itme yarıçapı
-    const FORCE=2.6;    // itme gücü
-    let hasMouse=false;
-    addEventListener('mousemove',()=>{hasMouse=true;});
-    addEventListener('mouseout',()=>{hasMouse=false;});
-
     const clock=new THREE.Clock();
     let visible=true;
     document.addEventListener('visibilitychange',()=>{visible=!document.hidden;});
@@ -985,46 +931,28 @@
         mouse.x+=(target.x-mouse.x)*0.07;
         mouse.y+=(target.y-mouse.y)*0.07;
 
-        group.rotation.y=t*0.11+mouse.x*0.5;
-        group.rotation.x=Math.sin(t*0.2)*0.07+mouse.y*0.4;
-        group.position.x=mouse.x*(isMobile?0.25:0.5);
-        group.position.y=-mouse.y*(isMobile?0.2:0.35)+Math.sin(t*0.7)*0.1;
-
-        // farenin sahnedeki karşılığı (grup koordinatlarında)
-        if(hasMouse && !isMobile){
-            rayNdc.set(target.x,-target.y,0.5);
-            rayc.setFromCamera({x:target.x,y:-target.y},camera);
-            if(rayc.ray.intersectPlane(plane,hit)){
-                group.worldToLocal(mouse3.copy(hit));
-            }
-        }else{
-            mouse3.set(999,999,999);
-        }
+        group.rotation.y=t*0.28+mouse.x*0.7;
+        group.rotation.x=Math.sin(t*0.25)*0.12+mouse.y*0.55;
+        group.position.x=mouse.x*(isMobile?0.25:0.7);
+        group.position.y=-mouse.y*(isMobile?0.2:0.5)+Math.sin(t*0.8)*0.12;
 
         for(let i=0;i<COUNT;i++){
             const s=seeds[i];
-            const r=s.rad+Math.sin(t*0.9+s.phase)*0.09;
-            tmp.copy(s.dir).multiplyScalar(r);
-
-            // fareden kaçış
-            push.copy(tmp).sub(mouse3);
-            const d=push.length();
-            if(d<INF){
-                const f=(1-d/INF);
-                tmp.addScaledVector(push.normalize(), f*f*FORCE);
-                s.spinBoost=(s.spinBoost||0)*0.9+f*3.0;
-            }else if(s.spinBoost){
-                s.spinBoost*=0.93;
-            }
-
-            dummy.position.copy(tmp);
-            const sb=s.spinBoost||0;
-            dummy.rotation.set(s.rot.x+t*(s.spin+sb), s.rot.y+t*(s.spin*0.8+sb*0.6), s.rot.z+t*sb*0.4);
-            dummy.scale.setScalar(s.scale);
+            const wave=Math.sin(t*1.6+s.dir.y*4.5)*0.35;
+            const pulse=RADIUS+wave+Math.sin(t*2.2+s.phase)*0.22;
+            dummy.position.copy(s.dir).multiplyScalar(pulse);
+            dummy.rotation.set(s.rot.x+t*s.spin, s.rot.y+t*s.spin*0.9, s.rot.z+t*s.spin*0.5);
+            dummy.scale.setScalar(s.scale*(1+wave*0.35));
             dummy.updateMatrix();
             mesh.setMatrixAt(i,dummy.matrix);
         }
         mesh.instanceMatrix.needsUpdate=true;
+
+        core.rotation.y=-t*0.45; core.rotation.x=t*0.22;
+        core.scale.setScalar(1+Math.sin(t*1.4)*0.05);
+
+        blueLight.position.set(Math.cos(t*0.5)*8,4,Math.sin(t*0.5)*8);
+        purpleLight.position.set(Math.cos(t*0.5+Math.PI)*8,-3,Math.sin(t*0.5+Math.PI)*8);
 
         renderer.render(scene,camera);
     }
