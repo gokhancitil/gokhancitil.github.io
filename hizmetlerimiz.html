@@ -3,242 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Gökhan ÇİTİL - Sunduğum Hizmetler ve Kullandığım Teknolojiler">
-    <title>Hizmetlerimiz | Gökhan ÇİTİL</title>
+    <title>Hizmetler | Web Tasarım, E-Ticaret ve Yapay Zeka | Gökhan ÇİTİL</title>
+    <meta name="description" content="Kurumsal web tasarım, e-ticaret sitesi yapımı, SaaS bulut çözümleri, yapay zeka entegrasyonu ve SEO/GEO optimizasyonu hizmetleri.">
+    <meta name="author" content="Gökhan ÇİTİL">
+    <link rel="canonical" href="https://gokhancitil.com/hizmetlerimiz.html">
     <link rel="icon" type="image/png" href="gokhancitil_logo.png">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
-        body { margin: 0; padding: 0; background-color: #080808; color: #ffffff; font-family: 'Inter', sans-serif; overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; cursor: url('imlec.png'), auto; }
-        header { display: flex; justify-content: flex-start; align-items: center; padding: 30px 50px; z-index: 10; position: relative; }
-        .logo-container { position: relative; display: flex; justify-content: flex-start; align-items: center; }
-        .logo-link { position: absolute; width: 100%; height: 100%; z-index: 10; }
-        .logo-img { width: 450px; image-rendering: -webkit-optimize-contrast; pointer-events: none; display: block; position: relative; z-index: 5; }
-        .nav-links { display: flex; gap: 40px; position: absolute; left: 50%; transform: translateX(-50%); }
-        .nav-links a { color: #dddddd; text-decoration: none; font-size: 0.85rem; font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.3s; }
-        .nav-links a:hover { color: #ffffff; }
-        .nav-links a.active { color: #ffffff; font-weight: 700; border-bottom: 2px solid #fff; padding-bottom: 5px; }
-        main { flex-grow: 1; display: flex; flex-direction: column; align-items: center; z-index: 5; padding: 40px 20px; }
-
-        .showcase-section { text-align: center; margin-bottom: 90px; width: 100%; max-width: 1100px; z-index: 5; }
-        .showcase-section h1 { font-size: 2.2rem; font-weight: 700; margin: 0 0 15px 0; }
-        .showcase-subtitle { color: #a0aab2; font-size: 1.05rem; line-height: 1.6; max-width: 800px; margin: 0 auto 40px auto; }
-        
-        /* SaaS Tablo Stilleri */
-        .saas-table-container { width: 100%; margin-bottom: 50px; background: rgba(30, 30, 35, 0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; overflow: hidden; backdrop-filter: blur(10px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .saas-table { width: 100%; border-collapse: collapse; text-align: left; }
-        .saas-table th { background: rgba(255, 255, 255, 0.03); padding: 20px 25px; color: #fff; font-weight: 700; font-size: 1.05rem; border-bottom: 1px solid rgba(255,255,255,0.1); text-transform: uppercase; letter-spacing: 1px; }
-        .saas-table td { padding: 18px 25px; color: #a0aab2; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.95rem; line-height: 1.5; transition: background 0.3s; }
-        .saas-table tr:last-child td { border-bottom: none; }
-        .saas-table tr:hover td { background: rgba(255, 255, 255, 0.02); color: #fff; }
-        .saas-highlight { color: #a855f7; font-weight: 700; display: flex; align-items: center; gap: 8px; font-size: 1rem; }
-        
-        .showcase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .showcase-card { background: rgba(30, 30, 35, 0.5); padding: 35px 25px; border: 1px solid rgba(255,255,255,0.05); border-radius: 15px; text-align: left; transition: all 0.3s ease; display: flex; flex-direction: column; backdrop-filter: blur(10px); }
-        .showcase-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.2); background: rgba(40, 40, 45, 0.8); }
-        .showcase-card h3 { color: #fff; margin: 0 0 15px 0; font-size: 1.25rem; font-weight: 700; }
-        .showcase-card p { color: #8892b0; font-size: 0.95rem; line-height: 1.7; margin: 0 0 25px 0; flex-grow: 1; }
-        .link-blue { color: #3b82f6; text-decoration: none; font-size: 0.9rem; font-weight: 700; transition: opacity 0.3s; }
-        .link-orange { color: #f97316; text-decoration: none; font-size: 0.9rem; font-weight: 700; transition: opacity 0.3s; }
-        .link-green { color: #22c55e; text-decoration: none; font-size: 0.9rem; font-weight: 700; transition: opacity 0.3s; }
-        .showcase-card a:hover { opacity: 0.7; }
-
-        .ps-section { width: 100%; max-width: 1100px; margin-bottom: 80px; }
-        .ps-header { text-align: center; margin-bottom: 40px; }
-        .ps-header-subtitle { color: #a855f7; font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; display: inline-block; }
-        .ps-header h2 { font-size: 2.2rem; margin: 0 0 15px 0; font-weight: 700; }
-        .ps-header p { color: #a0aab2; font-size: 1.05rem; }
-        .ps-container { display: flex; gap: 30px; align-items: flex-start; }
-        .ps-column { flex: 1; display: flex; flex-direction: column; gap: 15px; }
-        .col-title { font-size: 1.2rem; margin: 0 0 15px 0; font-weight: 700; display: flex; align-items: center; gap: 10px; }
-        .col-title.warning { color: #ef4444; }
-        .col-title.success { color: #22c55e; }
-        .ps-card { display: flex; align-items: flex-start; gap: 15px; padding: 20px; border-radius: 12px; transition: transform 0.3s ease; }
-        .ps-card:hover { transform: translateX(5px); }
-        .problem-card { background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.15); }
-        .solution-card { background: rgba(34, 197, 94, 0.05); border: 1px solid rgba(34, 197, 94, 0.15); }
-        .ps-icon { display: flex; justify-content: center; align-items: center; width: 28px; height: 28px; border-radius: 6px; font-weight: bold; flex-shrink: 0; font-size: 0.9rem; }
-        .icon-red { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
-        .icon-green { background: rgba(34, 197, 94, 0.15); color: #22c55e; }
-        .ps-text h4 { margin: 0 0 5px 0; color: #fff; font-size: 1.05rem; font-weight: 600; }
-        .ps-text p { margin: 0; color: #8892b0; font-size: 0.9rem; line-height: 1.6; }
-
-        .tech-section { text-align: center; width: 100%; max-width: 900px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.05); }
-        .tech-subtitle { color: #ff6b00; font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; display: inline-block; }
-        .tech-section h2 { font-size: 2.5rem; margin: 0 0 15px 0; font-weight: 700; }
-        .tech-desc { color: #a0aab2; font-size: 1.05rem; margin-bottom: 40px; }
-        .tech-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
-        .tech-badge { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); padding: 12px 25px; border-radius: 10px; font-size: 0.95rem; font-weight: 600; color: #d1d5db; transition: all 0.3s ease; cursor: default; }
-        .tech-badge:hover { background: rgba(var(--tech-color), 0.15); border-color: rgba(var(--tech-color), 0.5); color: #ffffff; transform: translateY(-4px); box-shadow: 0 8px 20px rgba(var(--tech-color), 0.2); }
-
-        footer { width: 100%; padding: 25px 50px; box-sizing: border-box; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; background-color: #050505; color: #888; font-size: 0.85rem; z-index: 10; margin-top: auto; }
-        .footer-left { font-weight: 300; display: flex; align-items: center; }
-        .footer-logo { height: 14px; margin: 0 6px; margin-top: -2px; }
-        .footer-left strong { color: #fff; font-weight: 700; }
-        .footer-right { display: flex; gap: 20px; }
-        .footer-right a { color: #888; text-decoration: none; transition: color 0.3s; }
-        .footer-right a:hover { color: #ffffff; }
-
-        @media screen and (max-width: 768px) {
-            header { padding: 20px 15px; flex-direction: column; justify-content: center; gap: 15px; }
-            .logo-container { width: 100%; justify-content: center; }
-            .logo-img { width: 360px; max-width: 95%; }
-            .nav-links { position: relative; left: 0; transform: none; gap: 15px; flex-wrap: wrap; justify-content: center; }
-            main { padding: 20px 15px; }
-            .showcase-section { margin-bottom: 50px; }
-            .showcase-section h1 { font-size: 1.8rem; }
-            .showcase-subtitle { font-size: 0.95rem; margin-bottom: 30px; }
-            
-            /* Mobil Tablo Ayarları */
-            .saas-table-container { overflow-x: auto; margin-bottom: 40px; border-radius: 10px; }
-            .saas-table th, .saas-table td { padding: 15px; white-space: nowrap; }
-            
-            .ps-container { flex-direction: column; gap: 40px; }
-            .ps-header h2 { font-size: 1.8rem; }
-            .tech-section h2 { font-size: 1.8rem; }
-            .tech-badge { padding: 10px 18px; font-size: 0.85rem; }
-            footer { flex-direction: column; text-align: center; gap: 15px; padding: 20px; }
-            .footer-left { justify-content: center; }
-            .footer-right { justify-content: center; flex-wrap: wrap; }
-        }
-    </style>
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="tr_TR">
+    <meta property="og:url" content="https://gokhancitil.com/hizmetlerimiz.html">
+    <meta property="og:title" content="Hizmetler | Web Tasarım, E-Ticaret ve Yapay Zeka | Gökhan ÇİTİL">
+    <meta property="og:description" content="Kurumsal web tasarım, e-ticaret sitesi yapımı, SaaS bulut çözümleri, yapay zeka entegrasyonu ve SEO/GEO optimizasyonu hizmetleri.">
+    <meta property="og:image" content="https://gokhancitil.com/gokhancitil-yapay-zeka.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@graph":[
+        {"@type":"WebPage","url":"https://gokhancitil.com/hizmetlerimiz.html","name":"Hizmetler | Web Tasarım, E-Ticaret ve Yapay Zeka | Gökhan ÇİTİL",
+         "description":"Kurumsal web tasarım, e-ticaret sitesi yapımı, SaaS bulut çözümleri, yapay zeka entegrasyonu ve SEO/GEO optimizasyonu hizmetleri.","inLanguage":"tr-TR","about":{"@id":"https://gokhancitil.com/#gokhancitil"},
+         "isPartOf":{"@id":"https://gokhancitil.com/#website"}},
+        {"@type":"ProfessionalService","name":"Gökhan ÇİTİL | Yazılım ve Yapay Zeka Çözümleri",
+         "url":"https://gokhancitil.com/hizmetlerimiz.html","areaServed":"TR","provider":{"@id":"https://gokhancitil.com/#gokhancitil"},
+         "hasOfferCatalog":{"@type":"OfferCatalog","name":"Hizmetler","itemListElement":[
+           {"@type":"Offer","itemOffered":{"@type":"Service","name":"Multi-Tenant SaaS Mimarisi"}},
+           {"@type":"Offer","itemOffered":{"@type":"Service","name":"Abonelik ve Sanal POS Entegrasyonu"}},
+           {"@type":"Offer","itemOffered":{"@type":"Service","name":"Kurumsal Web Tasarım"}},
+           {"@type":"Offer","itemOffered":{"@type":"Service","name":"E-Ticaret Sitesi Yapımı"}},
+           {"@type":"Offer","itemOffered":{"@type":"Service","name":"SEO ve GEO Optimizasyonu"}},
+           {"@type":"Offer","itemOffered":{"@type":"Service","name":"Yapay Zeka Entegrasyonu ve Otomasyon"}}
+         ]}},
+        {"@type":"BreadcrumbList","itemListElement":[
+          {"@type":"ListItem","position":1,"name":"Ana Sayfa","item":"https://gokhancitil.com/"},
+          {"@type":"ListItem","position":2,"name":"Hizmetlerimiz","item":"https://gokhancitil.com/hizmetlerimiz.html"}
+        ]}
+    ]}
+    </script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
+
+    <div class="bg-glow a"></div>
+    <div class="bg-glow b"></div>
+
+    <header id="site-header">
         <div class="logo-container">
-            <a href="https://gokhancitil.com" class="logo-link"></a>
-            <img src="gokhancitil.com.png" alt="Gökhan Çitil AI & Software" class="logo-img">
+            <a href="index.html" class="logo-link" aria-label="Ana sayfa"></a>
+            <img src="gokhancitil.com.png" alt="Gökhan Çitil AI &amp; Software" class="logo-img">
         </div>
-        <nav class="nav-links">
+        <nav class="nav-links" id="nav">
             <a href="hakkimda.html">Hakkımda</a>
             <a href="uzmanliklar.html">Uzmanlıklar</a>
             <a href="hizmetlerimiz.html" class="active">Hizmetlerimiz</a>
             <a href="iletisim.html">İletişim</a>
+            <a href="iletisim.html" class="nav-cta">Projenizi Konuşalım</a>
         </nav>
+        <button class="burger" id="burger" aria-label="Menü"><span></span><span></span><span></span></button>
     </header>
-    <main>
-        <div class="showcase-section">
-            <h1>Profesyonel Web Tasarım & Yazılım Çözümleri</h1>
-            <!-- Alt başlığa SaaS mimarilerini de ekledim -->
-            <p class="showcase-subtitle">Türkiye genelinde kurumsal web tasarım, SaaS bulut mimarileri, e-ticaret sitesi yapımı ve yapay zeka entegrasyon hizmetleri sunuyorum. Her proje modern, mobil uyumlu ve yüksek performanslıdır.</p>
-            
-            <!-- SaaS Hizmetleri Tablosu Başlangıcı -->
-            <div class="saas-table-container">
-                <table class="saas-table">
-                    <thead>
-                        <tr>
-                            <th>☁️ SaaS Bulut Çözümleri</th>
-                            <th>Kapsam & Özellikler</th>
-                            <th>Kullanılan Teknolojiler</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><span class="saas-highlight">🚀 Multi-Tenant Mimari</span></td>
-                            <td>Tek bir sistem üzerinden binlerce farklı müşteriye izole ve güvenli hizmet sağlama altyapısı.</td>
-                            <td>Laravel, PostgreSQL, Redis</td>
-                        </tr>
-                        <tr>
-                            <td><span class="saas-highlight">💳 Abonelik & Sanal POS</span></td>
-                            <td>Stripe, Iyzico veya PayTR ile tekrarlayan ödemeler, paket yükseltme (upgrade) ve fatura otomasyonu.</td>
-                            <td>API, Webhooks, Cron Jobs</td>
-                        </tr>
-                        <tr>
-                            <td><span class="saas-highlight">📈 Otomatik Ölçekleme</span></td>
-                            <td>Trafik dalgalanmalarında sunucu kaynaklarının otomatik artırılması ve yüksek erişilebilirlik (Uptime).</td>
-                            <td>Hetzner, Nginx, Docker</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <!-- SaaS Hizmetleri Tablosu Sonu -->
 
-            <div class="showcase-grid">
-                <div class="showcase-card">
-                    <h3>Kurumsal Web Tasarım</h3>
-                    <p>İşletmenize özel kurumsal web sitesi tasarlıyorum. Modern görünüm, hızlı açılma, mobil uyumluluk ve SEO/GEO altyapısı standart. Yönetim paneli ile içeriklerinizi kolayca güncelleyin.</p>
-                    <a href="iletisim.html" class="link-blue">Detaylı Bilgi &rarr;</a>
-                </div>
-                <div class="showcase-card">
-                    <h3>E-Ticaret Sitesi Yapımı</h3>
-                    <p>Online satış yapmanız için e-ticaret sitesi kuruyorum. Ürün yönetimi, sanal POS, kargo entegrasyonu, kampanya sistemi -- anahtar teslim satış çözümü.</p>
-                    <a href="iletisim.html" class="link-orange">Yazılım Hizmeti &rarr;</a>
-                </div>
-                <div class="showcase-card">
-                    <h3>Google SEO/GEO & AI Uyumlu Siteler</h3>
-                    <p>Yaptığım her web sitesi Schema markup ve AI arama motoru (GEO) altyapısına sahiptir. Hız optimizasyonu ve doğru meta yapılandırması ile sistemleri yarına hazırlıyorum.</p>
-                    <a href="iletisim.html" class="link-green">SEO/GEO Hizmeti &rarr;</a>
-                </div>
+    <main>
+    <section>
+        <div class="reveal">
+            <div class="eyebrow"><span class="dot"></span> Hizmetler</div>
+            <h1 class="page-title">Profesyonel web tasarım &amp;<br><span class="grad">yazılım çözümleri</span></h1>
+            <p class="sec-lead">Türkiye genelinde kurumsal web tasarım, SaaS bulut mimarileri, e-ticaret sitesi
+            yapımı ve yapay zeka entegrasyon hizmetleri sunuyorum. Her proje modern, mobil uyumlu ve
+            yüksek performanslıdır.</p>
+        </div>
+        <div class="cards">
+            <article class="card reveal"><div class="ico">🚀</div><h3>Multi-Tenant SaaS Mimarisi</h3>
+                <p>Tek bir sistem üzerinden binlerce farklı müşteriye izole ve güvenli hizmet sağlama altyapısı.</p>
+                <div class="tags"><i>Laravel</i><i>PostgreSQL</i><i>Redis</i></div></article>
+            <article class="card reveal"><div class="ico">💳</div><h3>Abonelik &amp; Sanal POS</h3>
+                <p>Stripe, Iyzico veya PayTR ile tekrarlayan ödemeler, paket yükseltme ve fatura otomasyonu.</p>
+                <div class="tags"><i>API</i><i>Webhooks</i><i>Cron Jobs</i></div></article>
+            <article class="card reveal"><div class="ico">📈</div><h3>Otomatik Ölçekleme</h3>
+                <p>Trafik dalgalanmalarında sunucu kaynaklarının otomatik artırılması ve yüksek erişilebilirlik.</p>
+                <div class="tags"><i>Hetzner</i><i>Nginx</i><i>Docker</i></div></article>
+            <article class="card reveal"><div class="ico">🖥️</div><h3>Kurumsal Web Tasarım</h3>
+                <p>İşletmenize özel kurumsal web sitesi. Modern görünüm, hızlı açılma, mobil uyumluluk ve SEO/GEO altyapısı standart. Yönetim paneli ile içeriklerinizi kolayca güncelleyin.</p>
+                <div class="tags"><i>Yönetim Paneli</i><i>Mobil Uyumlu</i></div></article>
+            <article class="card reveal"><div class="ico">🛒</div><h3>E-Ticaret Sitesi Yapımı</h3>
+                <p>Ürün yönetimi, sanal POS, kargo entegrasyonu ve kampanya sistemiyle anahtar teslim online satış çözümü.</p>
+                <div class="tags"><i>Kargo Entegrasyonu</i><i>Kampanya</i></div></article>
+            <article class="card reveal"><div class="ico">🔎</div><h3>Google SEO/GEO &amp; AI Uyumlu Siteler</h3>
+                <p>Yaptığım her web sitesi Schema markup ve AI arama motoru (GEO) altyapısına sahiptir. Hız optimizasyonu ve doğru meta yapılandırmasıyla sistemleri yarına hazırlıyorum.</p>
+                <div class="tags"><i>Schema.org</i><i>Core Web Vitals</i></div></article>
+        </div>
+    </section>
+
+    <section>
+        <div class="reveal">
+            <div class="eyebrow"><span class="dot"></span> Sorun &amp; Çözüm</div>
+            <h2 class="sec-title">İşletmenizde bu sorunlar <span class="grad">tanıdık mı?</span></h2>
+            <p class="sec-lead">Her sorunun dijital ve yapay zeka tabanlı bir çözümü var. Sizin için geliştiriyorum.</p>
+        </div>
+        <div class="cards">
+            <article class="card reveal"><div class="ico">⚠️</div><h3>Manuel tekrarlayan süreçler</h3>
+                <p>Sipariş, stok, fatura, bildirim… Çalışanlarınız saatlerce aynı işlemleri tekrarlıyor, verimlilik düşüyor.</p>
+                <p style="color:#86efac"><strong style="color:#86efac">✓ Çözüm:</strong> İşletmenize özel otomasyon yazılımları — sipariş onayı, stok uyarısı, fatura oluşturma ve anlık bildirimler otomatik çalışır.</p></article>
+            <article class="card reveal"><div class="ico">⏰</div><h3>Müşterilere geç yanıt verme</h3>
+                <p>Mesai dışı gelen sorulara cevap veremiyorsunuz — 7/24 asistan olmadan müşteriler rakibe gidiyor.</p>
+                <p style="color:#86efac"><strong style="color:#86efac">✓ Çözüm:</strong> AI chatbot — müşteri sorularına anında cevap, randevu alma, ürün önerisi ve sipariş takibi. Uykuda bile çalışır.</p></article>
+            <article class="card reveal"><div class="ico">👻</div><h3>AI aramalarında görünmüyorsunuz</h3>
+                <p>ChatGPT, Gemini ve Perplexity sizi referans göstermiyor — GEO altyapısı olmadan yeni nesil müşteri kanalını kaçırıyorsunuz.</p>
+                <p style="color:#86efac"><strong style="color:#86efac">✓ Çözüm:</strong> GEO optimizasyonu — structured data ve güncel kod mimarisi ile firmanız AI aramalarında referans gösterilsin.</p></article>
+        </div>
+    </section>
+    <section>
+        <div class="cta-box reveal">
+            <h2>Projenizi birlikte <span class="grad">hayata geçirelim</span></h2>
+            <p>Fikrinizi anlatın, size en uygun teknik çözümü ve yol haritasını çıkarayım. İlk görüşme ücretsizdir.</p>
+            <div class="btn-row">
+                <a href="iletisim.html" class="btn btn-primary">İletişime Geç &rarr;</a>
+                <a href="mailto:gokhancitil@gmail.com" class="btn btn-ghost">gokhancitil@gmail.com</a>
             </div>
         </div>
-        
-        <div class="ps-section">
-            <div class="ps-header">
-                <div class="ps-header-subtitle">SORUN & ÇÖZÜM</div>
-                <h2>İşletmenizde Bu Sorunlar Tanıdık mı?</h2>
-                <p>Her sorunun dijital ve yapay zeka tabanlı bir çözümü var. Sizin için geliştiriyorum.</p>
-            </div>
-            <div class="ps-container">
-                <div class="ps-column">
-                    <h3 class="col-title warning">⚠️ Yaşadığınız Sorunlar</h3>
-                    <div class="ps-card problem-card">
-                        <div class="ps-icon icon-red">✕</div>
-                        <div class="ps-text"><h4>Manuel tekrarlayan süreçler</h4><p>Sipariş, stok, fatura, bildirim... Çalışanlarınız saatlerce aynı işlemleri tekrarlıyor, verimlilik düşüyor.</p></div>
-                    </div>
-                    <div class="ps-card problem-card">
-                        <div class="ps-icon icon-red">✕</div>
-                        <div class="ps-text"><h4>Müşterilere geç yanıt verme</h4><p>Mesai dışı gelen sorulara cevap veremiyorsunuz — 7/24 chatbot olmadan müşteriler rakibe gidiyor.</p></div>
-                    </div>
-                    <div class="ps-card problem-card">
-                        <div class="ps-icon icon-red">✕</div>
-                        <div class="ps-text"><h4>AI arama motorlarında görünmezsiniz</h4><p>ChatGPT, Gemini, Perplexity sizi referans göstermiyor — GEO altyapısı olmadan yeni nesil müşteri kanalını kaçırıyorsunuz.</p></div>
-                    </div>
-                </div>
-                <div class="ps-column">
-                    <h3 class="col-title success">💡 Dijital Çözümlerim</h3>
-                    <div class="ps-card solution-card">
-                        <div class="ps-icon icon-green">✓</div>
-                        <div class="ps-text"><h4>AI chatbot — 7/24 akıllı asistan</h4><p>Müşteri sorularına anında cevap, randevu alma, ürün önerisi, sipariş takibi — uykuda bile çalışır.</p></div>
-                    </div>
-                    <div class="ps-card solution-card">
-                        <div class="ps-icon icon-green">✓</div>
-                        <div class="ps-text"><h4>GEO — AI arama görünürlüğü</h4><p>ChatGPT, Gemini, Perplexity'de firmanız referans gösterilsin. Structured data ve güncel kod mimarisi ile AI aramalarında öne çıkın.</p></div>
-                    </div>
-                    <div class="ps-card solution-card">
-                        <div class="ps-icon icon-green">✓</div>
-                        <div class="ps-text"><h4>Özel otomasyon süreçleri</h4><p>Sipariş onayı, stok uyarısı, fatura oluşturma, anlık bildirim... İşletmenize özel yazılımlarla tekrarlayan her işlem otomatik.</p></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="tech-section">
-            <div class="tech-subtitle">TEKNOLOJİ</div>
-            <h2>Kullandığım Teknolojiler</h2>
-            <p class="tech-desc">Projelerinizde performans ve güvenlik için güncel altyapıları tercih ediyorum.</p>
-            <div class="tech-grid">
-                <div class="tech-badge" style="--tech-color: 239, 68, 68;">Laravel 12</div>
-                <div class="tech-badge" style="--tech-color: 139, 92, 246;">PHP 8.3</div>
-                <div class="tech-badge" style="--tech-color: 56, 189, 248;">Tailwind CSS</div>
-                <div class="tech-badge" style="--tech-color: 45, 212, 191;">Alpine.js</div>
-                <div class="tech-badge" style="--tech-color: 244, 114, 182;">Livewire</div>
-                <div class="tech-badge" style="--tech-color: 251, 146, 60;">Filament</div>
-                <div class="tech-badge" style="--tech-color: 229, 231, 235;">Next.js</div>
-                <div class="tech-badge" style="--tech-color: 59, 130, 246;">MySQL</div>
-                <div class="tech-badge" style="--tech-color: 99, 102, 241;">PostgreSQL</div>
-                <div class="tech-badge" style="--tech-color: 220, 38, 38;">Redis</div>
-                <div class="tech-badge" style="--tech-color: 34, 197, 94;">Nginx</div>
-                <div class="tech-badge" style="--tech-color: 239, 68, 68;">Hetzner</div>
-            </div>
-        </div>
+    </section>
     </main>
+
     <footer>
         <div class="footer-left">
             &copy; 2026 <img src="gokhancitil_logo.png" alt="Gökhan Çitil Logo" class="footer-logo"> <strong>Gökhan ÇİTİL</strong>. Tüm hakları saklıdır.
         </div>
         <div class="footer-right">
+            <a href="index.html">Ana Sayfa</a>
+            <a href="hakkimda.html">Hakkımda</a>
+            <a href="uzmanliklar.html">Uzmanlıklar</a>
+            <a href="hizmetlerimiz.html">Hizmetlerimiz</a>
+            <a href="iletisim.html">İletişim</a>
             <a href="gizlilik.html">Gizlilik Politikası</a>
             <a href="kvkk.html">KVKK</a>
             <a href="kullanim.html">Kullanım Koşulları</a>
         </div>
     </footer>
+
+    <div id="cookie">
+        <p>Sitemizde deneyimi iyileştirmek ve analiz/reklam amacıyla çerezler kullanılıyor. Detaylar için
+           <a href="gizlilik.html">Gizlilik Politikası</a> ve <a href="kvkk.html">KVKK</a> metnimizi inceleyebilirsiniz.</p>
+        <div class="row">
+            <button id="ck-yes">Kabul et</button>
+            <button id="ck-no">Yalnızca gerekli</button>
+        </div>
+    </div>
+
+    <div class="cursor-ring"></div>
+    <div class="cursor-dot"></div>
+    <script src="site.js"></script>
 </body>
 </html>
