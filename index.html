@@ -288,6 +288,75 @@
         .cursor-ring.hot{width:62px;height:62px;border-color:rgba(96,165,250,.9);background:rgba(139,92,246,.12);}
 
         /* ===== TABLET ===== */
+
+        /* ===== 3D KOD EDİTÖRÜ ===== */
+        .code-scene{perspective:1400px;perspective-origin:60% 40%;}
+        .code-win{
+            position:relative;border-radius:14px;overflow:hidden;
+            border:1px solid rgba(139,92,246,.28);
+            background:linear-gradient(165deg,#0a1030,#060b21 60%);
+            box-shadow:0 40px 90px -30px rgba(0,0,0,.9),0 0 60px -20px rgba(99,102,241,.5);
+            transform:rotateY(-14deg) rotateX(7deg) rotateZ(-1.2deg);
+            transform-style:preserve-3d;
+            transition:transform .8s cubic-bezier(.16,1,.3,1);
+            animation:codefloat 7s ease-in-out infinite;
+        }
+        .code-scene:hover .code-win{transform:rotateY(-5deg) rotateX(2deg);animation-play-state:paused;}
+        @keyframes codefloat{0%,100%{translate:0 0;}50%{translate:0 -12px;}}
+        .code-win::before{
+            content:"";position:absolute;inset:0;pointer-events:none;z-index:3;
+            background:linear-gradient(115deg,rgba(255,255,255,.09) 0%,transparent 32%,transparent 68%,rgba(139,92,246,.09) 100%);
+        }
+        .code-bar{
+            display:flex;align-items:center;gap:8px;padding:11px 14px;
+            background:rgba(255,255,255,.035);border-bottom:1px solid rgba(255,255,255,.06);
+        }
+        .code-bar .d{width:10px;height:10px;border-radius:50%;}
+        .code-bar .d.r{background:#ff5f57;} .code-bar .d.y{background:#febc2e;} .code-bar .d.g{background:#28c840;}
+        .code-bar .fname{
+            margin-left:10px;font-size:11.5px;color:#8ea0c9;font-family:ui-monospace,"SF Mono",Menlo,monospace;
+            padding:4px 11px;border-radius:6px;background:rgba(99,102,241,.14);border:1px solid rgba(139,92,246,.22);
+        }
+        .code-body{
+            padding:18px 16px 22px;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+            font-size:12.5px;line-height:1.95;min-height:310px;
+        }
+        .code-body .ln{display:flex;gap:14px;white-space:pre;}
+        .code-body .ln>i{
+            font-style:normal;color:#3d4a75;width:16px;text-align:right;flex:none;user-select:none;
+        }
+        .code-body .ln.hl{background:rgba(99,102,241,.09);margin:0 -16px;padding:0 16px;}
+        .k{color:#c084fc;} .f{color:#60a5fa;} .s{color:#5eead4;} .n{color:#fbbf24;}
+        .c{color:#4b5b86;font-style:italic;} .p{color:#94a3b8;} .v{color:#e879f9;}
+        .caret{display:inline-block;width:7px;height:14px;background:#a78bfa;
+            vertical-align:-2px;animation:blink 1.05s steps(1) infinite;box-shadow:0 0 10px #a78bfa;}
+        @keyframes blink{0%,50%{opacity:1;}51%,100%{opacity:0;}}
+        .code-status{
+            display:flex;align-items:center;gap:8px;padding:9px 14px;font-size:10.5px;letter-spacing:.6px;
+            font-family:ui-monospace,Menlo,monospace;color:#7c88ab;
+            background:rgba(255,255,255,.025);border-top:1px solid rgba(255,255,255,.06);
+        }
+        .code-status .live{width:6px;height:6px;border-radius:50%;background:#22d3ee;box-shadow:0 0 8px #22d3ee;
+            animation:pulse 1.8s ease-in-out infinite;}
+        @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.25;}}
+        .code-status .sp{margin-left:auto;}
+        .code-badge{
+            position:absolute;z-index:4;padding:9px 14px;border-radius:11px;font-size:11.5px;font-weight:600;
+            background:rgba(7,15,43,.92);border:1px solid rgba(139,92,246,.4);backdrop-filter:blur(10px);
+            box-shadow:0 16px 40px -14px rgba(0,0,0,.9);display:flex;align-items:center;gap:7px;
+        }
+        .code-badge.one{top:14%;right:-26px;color:#93c5fd;animation:codefloat 5.5s ease-in-out infinite;}
+        .code-badge.two{bottom:16%;left:-30px;color:#d8b4fe;animation:codefloat 6.5s ease-in-out .8s infinite;}
+
+        @media (max-width:1080px){
+            .code-badge.one{right:-10px;} .code-badge.two{left:-10px;}
+        }
+        @media (max-width:900px){
+            .code-win{transform:none;animation:none;}
+            .code-body{font-size:11px;min-height:0;padding:14px 12px 18px;}
+            .code-badge{display:none;}
+        }
+
         @media (max-width:1080px){
             #kimdir .wrap{grid-template-columns:1fr;gap:34px;}
             .who-img{max-width:330px;}
@@ -480,8 +549,34 @@
     <section id="kimdir">
         <div class="wrap">
             <div class="reveal">
-                <img src="gokhancitil-yapay-zeka.jpg" alt="Gökhan Çitil — Yapay Zeka ve Yazılım Geliştiricisi" class="who-img">
-                <div class="who-meta">
+                <div class="code-scene">
+                    <div class="code-win">
+                        <div class="code-bar">
+                            <span class="d r"></span><span class="d y"></span><span class="d g"></span>
+                            <span class="fname">gokhan_citil.py</span>
+                        </div>
+                        <div class="code-body" aria-hidden="true">
+<div class="ln"><i>1</i><span class="c"># Fikirleri koda dönüştürür.</span></div>
+<div class="ln"><i>2</i><span class="k">from</span> <span class="f">ai</span> <span class="k">import</span> <span class="f">Agent</span><span class="p">,</span> <span class="f">Automation</span></div>
+<div class="ln"><i>3</i></div>
+<div class="ln"><i>4</i><span class="k">class</span> <span class="v">Developer</span><span class="p">:</span></div>
+<div class="ln hl"><i>5</i>    <span class="n">name</span> <span class="p">=</span> <span class="s">"Gökhan Çitil"</span></div>
+<div class="ln"><i>6</i>    <span class="n">stack</span> <span class="p">=</span> <span class="p">[</span><span class="s">"Python"</span><span class="p">,</span> <span class="s">"JS"</span><span class="p">,</span> <span class="s">"C#"</span><span class="p">]</span></div>
+<div class="ln"><i>7</i></div>
+<div class="ln"><i>8</i>    <span class="k">def</span> <span class="f">build</span><span class="p">(</span><span class="v">self</span><span class="p">,</span> <span class="n">idea</span><span class="p">):</span></div>
+<div class="ln"><i>9</i>        <span class="n">system</span> <span class="p">=</span> <span class="f">Agent</span><span class="p">(</span><span class="n">idea</span><span class="p">)</span></div>
+<div class="ln"><i>10</i>        <span class="n">system</span><span class="p">.</span><span class="f">scale</span><span class="p">(</span><span class="n">cloud</span><span class="p">=</span><span class="v">True</span><span class="p">)</span></div>
+<div class="ln"><i>11</i>        <span class="k">return</span> <span class="n">system</span><span class="p">.</span><span class="f">deploy</span><span class="p">()</span><span class="caret"></span></div>
+                        </div>
+                        <div class="code-status">
+                            <span class="live"></span> DEPLOY BAŞARILI
+                            <span class="sp">UTF-8 · Python · Ln 11</span>
+                        </div>
+                    </div>
+                    <div class="code-badge one">⚡ %99.9 Uptime</div>
+                    <div class="code-badge two">🤖 AI Entegrasyonu</div>
+                </div>
+                <div class="who-meta" style="margin-top:34px">
                     <div>🎓 <strong>Eğitim:</strong> İnönü Üniversitesi, İşletme</div>
                     <div>💻 <strong>Odak:</strong> Yazılım ve Yapay Zeka Çözümleri</div>
                     <div>📍 <strong>Hizmet Bölgesi:</strong> Türkiye geneli / Uzaktan</div>
