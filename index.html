@@ -808,13 +808,18 @@
         h.appendChild(cur);
 
         let i=0;
-        function step(){
-            // her karede 2 karakter → hızlı ama görünür
-            for(let k=0;k<2 && i<chars.length;k++,i++) chars[i].classList.add('on');
-            if(i<chars.length) requestAnimationFrame(step);
-            else setTimeout(function(){ cur.remove(); },1600);
+        function type(){
+            if(i>=chars.length){ setTimeout(function(){ cur.remove(); },2200); return; }
+            const ch=chars[i].textContent;
+            chars[i].classList.add('on');
+            i++;
+            // harf başına ~55ms, boşlukta ve satır sonunda kısa duraklama
+            let wait=48+Math.random()*26;
+            if(ch===' ') wait+=90;
+            if(ch==='.') wait+=260;
+            setTimeout(type,wait);
         }
-        window.__startTyping=function(){ requestAnimationFrame(step); };
+        window.__startTyping=function(){ setTimeout(type,320); };
     })();
 
     /* ---------- HEADER / MENÜ ---------- */
