@@ -184,7 +184,7 @@
         .social-icons a:hover{color:#fff;}
         .social-icons a:hover svg{fill:#a78bfa;}
 
-        .hero-right{position:relative;height:min(84vh,800px);}
+        .hero-right{position:relative;height:min(96vh,940px);margin-left:-18vw;margin-right:-8vw;z-index:1;pointer-events:none;}
         #webgl{position:absolute;inset:0;width:100%;height:100%;}
 
         /* ===== KARTLAR ===== */
@@ -429,7 +429,7 @@
             /* 3D küre artık arka planda, metinlerin ardında */
             #hero{grid-template-columns:1fr;min-height:auto;padding:40px 20px 60px;}
             .hero-right{
-                position:fixed;inset:0;height:100vh;width:100vw;margin-right:0;
+                position:fixed;inset:0;height:100vh;width:100vw;margin:0;
                 z-index:0;pointer-events:none;opacity:.34;
             }
             .hero-left{position:relative;z-index:2;}
@@ -864,17 +864,17 @@
 
     const scene=new THREE.Scene();
     const camera=new THREE.PerspectiveCamera(45,1,0.1,140);
-    camera.position.set(0,0,isMobile?26:20.5);
+    camera.position.set(0,0,isMobile?24:15.5);
 
     const renderer=new THREE.WebGLRenderer({canvas,antialias:!isMobile,alpha:true,powerPreference:'high-performance'});
     renderer.setPixelRatio(Math.min(devicePixelRatio,isMobile?1.5:2));
     renderer.outputColorSpace=THREE.SRGBColorSpace;
 
     /* ---------- IŞIKLAR: parlak ön + mavi/mor yan ---------- */
-    scene.add(new THREE.AmbientLight(0x232a78,1.15));
+    scene.add(new THREE.AmbientLight(0x1b2168,1.0));
 
-    const keyLight=new THREE.DirectionalLight(0xdfe4ff,3.0);
-    keyLight.position.set(-5,6,10); scene.add(keyLight);
+    const keyLight=new THREE.DirectionalLight(0xe8ecff,3.2);
+    keyLight.position.set(4,5,9); scene.add(keyLight);
 
     const blueLight=new THREE.DirectionalLight(0x3d5bff,3.0);
     blueLight.position.set(-9,-2,4); scene.add(blueLight);
@@ -888,14 +888,16 @@
     const group=new THREE.Group(); scene.add(group);
 
     /* ---------- İÇİ DOLU TETRAHEDRON YIĞINI ---------- */
-    const COUNT=isMobile?900:2000;
+    const COUNT=isMobile?1400:4200;
     const R=6.2;
 
     const geo=new THREE.TetrahedronGeometry(1);
     const mat=new THREE.MeshStandardMaterial({
-        color:0x5f5ce0, metalness:0.05, roughness:0.62, flatShading:true
+        color:0xffffff, metalness:0.05, roughness:0.58, flatShading:true, vertexColors:false
     });
     const mesh=new THREE.InstancedMesh(geo,mat,COUNT);
+    const PAL=[0x3730a3,0x4338ca,0x4f46e5,0x5b54f0,0x6366f1,0x7c6cf5,0x818cf8,0x93a5fd,0x6d28d9,0x7c3aed];
+    const cTmp=new THREE.Color();
     mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
 
     const dummy=new THREE.Object3D();
@@ -905,10 +907,15 @@
     for(let i=0;i<COUNT;i++){
         const u=Math.random(), v=Math.random(), w=Math.random();
         const th=Math.acos(2*u-1), ph=2*Math.PI*v;
-        const depth=Math.pow(w,0.55);
-        const noise=1+Math.sin(th*5.1+ph*3.7)*0.035+Math.sin(ph*6.3)*0.03;
-        let rad=R*(0.30+0.70*depth)*noise;
-        if(Math.random()<0.035) rad*=1.07+Math.random()*0.13;   // kenara savrulan tekil taşlar
+
+        // kalın kabuk: taşlar dış yüzeyde yoğun, içeri doğru seyrelir
+        let rad, edge=false;
+        if(Math.random()<0.18){                 // dışa saçılan tüylü kenar
+            rad=R*(1.0+Math.pow(Math.random(),1.6)*0.42); edge=true;
+        }else{
+            rad=R*(0.55+0.45*Math.pow(Math.random(),0.45));
+        }
+        rad*=1+Math.sin(th*4.3+ph*3.1)*0.03;
 
         const dir=new THREE.Vector3(
             Math.sin(th)*Math.cos(ph),
@@ -918,12 +925,17 @@
 
         seeds.push({
             dir, rad,
-            scale:(0.13+Math.random()*0.20)*(0.7+depth*0.45),
+            scale:(0.085+Math.random()*0.135)*(edge?0.75:1),
             rot:new THREE.Euler(Math.random()*6.283,Math.random()*6.283,Math.random()*6.283),
             spin:(Math.random()-0.5)*0.5,
             phase:Math.random()*6.283
         });
     }
+    for(let i=0;i<COUNT;i++){
+        cTmp.setHex(PAL[(Math.random()*PAL.length)|0]);
+        mesh.setColorAt(i,cTmp);
+    }
+    mesh.instanceColor.needsUpdate=true;
     group.add(mesh);
 
     /* ---------- PARALLAX ---------- */
@@ -954,14 +966,14 @@
         mouse.x+=(target.x-mouse.x)*0.07;
         mouse.y+=(target.y-mouse.y)*0.07;
 
-        group.rotation.y=t*0.13+mouse.x*0.55;
+        group.rotation.y=t*0.11+mouse.x*0.5;
         group.rotation.x=Math.sin(t*0.2)*0.07+mouse.y*0.4;
         group.position.x=mouse.x*(isMobile?0.25:0.5);
         group.position.y=-mouse.y*(isMobile?0.2:0.35)+Math.sin(t*0.7)*0.1;
 
         for(let i=0;i<COUNT;i++){
             const s=seeds[i];
-            const r=s.rad+Math.sin(t*0.9+s.phase)*0.12;
+            const r=s.rad+Math.sin(t*0.9+s.phase)*0.09;
             tmp.copy(s.dir).multiplyScalar(r);
             dummy.position.copy(tmp);
             dummy.rotation.set(s.rot.x+t*s.spin, s.rot.y+t*s.spin*0.8, s.rot.z);
