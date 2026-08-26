@@ -927,28 +927,41 @@
     rimLight.position.set(-4,-3,-6); scene.add(rimLight);
 
     /* ---------- "G" FORMASYON HEDEFİ ---------- */
-    function makeLetterPoints(ch,need){
-        const S=220, c=document.createElement('canvas'); c.width=c.height=S;
+    function makeTextPoints(lines,need){
+        const W=760, H=380;
+        const c=document.createElement('canvas'); c.width=W; c.height=H;
         const x=c.getContext('2d');
-        x.fillStyle='#000'; x.fillRect(0,0,S,S);
+        x.fillStyle='#000'; x.fillRect(0,0,W,H);
         x.fillStyle='#fff';
-        x.font='900 '+Math.round(S*0.92)+'px Inter, Helvetica, Arial, sans-serif';
         x.textAlign='center'; x.textBaseline='middle';
-        x.fillText(ch,S/2,S/2+S*0.03);
-        const d=x.getImageData(0,0,S,S).data, hits=[];
-        for(let py=0;py<S;py+=1){
-            for(let px=0;px<S;px+=1){
-                if(d[(py*S+px)*4]>140) hits.push([px,py]);
+
+        // her satırı kutuya sığacak en büyük punto ile çiz
+        const rows=lines.length, rowH=H/rows;
+        lines.forEach(function(txt,r){
+            let fs=Math.round(rowH*0.86);
+            const fit=function(size){
+                x.font='900 '+size+'px Inter, "Helvetica Neue", Arial, sans-serif';
+                return x.measureText(txt).width;
+            };
+            while(fit(fs)>W*0.92 && fs>10) fs-=2;
+            x.font='900 '+fs+'px Inter, "Helvetica Neue", Arial, sans-serif';
+            if(x.letterSpacing!==undefined) x.letterSpacing=Math.round(fs*0.04)+'px';
+            x.fillText(txt, W/2, rowH*(r+0.5));
+        });
+
+        const d=x.getImageData(0,0,W,H).data, hits=[];
+        for(let py=0;py<H;py++){
+            for(let px=0;px<W;px++){
+                if(d[(py*W+px)*4]>140) hits.push([px,py]);
             }
         }
         const out=[];
         for(let i=0;i<need;i++){
-            const h=hits[(Math.random()*hits.length)|0];
-            if(!h){ out.push([0,0,0]); continue; }
+            const h=hits.length ? hits[(Math.random()*hits.length)|0] : [W/2,H/2];
             out.push([
-                ((h[0]/S)-0.5)*2,
-                -((h[1]/S)-0.5)*2,
-                (Math.random()-0.5)*0.22
+                ((h[0]/W)-0.5)*2,                 // -1 … 1
+                -((h[1]/H)-0.5)*2*(H/W),          // en-boy oranı korunur
+                (Math.random()-0.5)*0.16
             ]);
         }
         return out;
@@ -1000,11 +1013,11 @@
         mesh.setColorAt(i,cTmp);
     }
     mesh.instanceColor.needsUpdate=true;
-    const GPTS=makeLetterPoints('G',COUNT);
-    const GS=RADIUS*1.15;
+    const GPTS=makeTextPoints(['GÖKHAN','ÇİTİL'],COUNT);
+    const GSX=RADIUS*1.75;
     for(let i=0;i<COUNT;i++){
         const g=GPTS[i];
-        seeds[i].g=new THREE.Vector3(g[0]*GS,g[1]*GS,g[2]*GS);
+        seeds[i].g=new THREE.Vector3(g[0]*GSX, g[1]*GSX, g[2]*RADIUS);
     }
 
     group.add(mesh);
@@ -1052,8 +1065,8 @@
         let m=0;
         if(cyc<7) m=0;
         else if(cyc<9.5) m=(cyc-7)/2.5;
-        else if(cyc<15.5) m=1;
-        else if(cyc<18) m=1-(cyc-15.5)/2.5;
+        else if(cyc<16.5) m=1;
+        else if(cyc<19) m=1-(cyc-16.5)/2.5;
         m=m*m*(3-2*m);                    // yumuşat
         if(breakG>0){ breakG*=0.985; m*=(1-breakG); }   // tıklayınca G dağılır
         burst*=0.94;
@@ -1087,7 +1100,7 @@
                 dummy.position.addScaledVector(pushV.normalize(), f*f*(FORCE+burst*2.6));
             }
             dummy.rotation.set(s.rot.x+t*s.spin*(1-m*0.75), s.rot.y+t*s.spin*0.9*(1-m*0.75), s.rot.z+t*s.spin*0.5);
-            dummy.scale.setScalar(s.scale*(s.edge?0.7:1));
+            dummy.scale.setScalar(s.scale*(s.edge?0.7:1)*(1-m*0.28));
             dummy.updateMatrix();
             mesh.setMatrixAt(i,dummy.matrix);
         }
