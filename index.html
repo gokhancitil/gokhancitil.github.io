@@ -912,7 +912,7 @@
 
     const scene=new THREE.Scene();
     const camera=new THREE.PerspectiveCamera(50,1,0.1,100);
-    camera.position.set(0,0,isMobile?11:8);
+    camera.position.set(0,0,12);
 
     const renderer=new THREE.WebGLRenderer({canvas,antialias:!isMobile,alpha:true,powerPreference:'high-performance'});
     renderer.setPixelRatio(Math.min(devicePixelRatio,isMobile?1.5:2));
@@ -1019,11 +1019,12 @@
     }
     mesh.instanceColor.needsUpdate=true;
     const GPTS=makeTextPoints(['GÖKHAN','ÇİTİL'],COUNT);
-    const GSX=RADIUS*1.75;
     for(let i=0;i<COUNT;i++){
         const g=GPTS[i];
-        seeds[i].g=new THREE.Vector3(g[0]*GSX, g[1]*GSX, g[2]*RADIUS);
+        seeds[i].gn=new THREE.Vector3(g[0],g[1],g[2]);   // -1 … 1
     }
+    let GSX=RADIUS;              // resize ile hesaplanır
+    const gTmp=new THREE.Vector3();
 
     group.add(mesh);
 
@@ -1037,7 +1038,17 @@
     function resize(){
         const w=holder.clientWidth,h=holder.clientHeight;
         if(!w||!h) return;
-        camera.aspect=w/h; camera.updateProjectionMatrix();
+        camera.aspect=w/h;
+
+        // küre + saçılan taşlar kadraja TAM sığsın (kırpılma yok)
+        const halfV=Math.tan((camera.fov/2)*Math.PI/180);
+        const need=RADIUS*1.52;
+        camera.position.z=Math.max(need/halfV, need/(halfV*camera.aspect));
+        camera.updateProjectionMatrix();
+
+        // yazı da görünür genişliğin %86'sını kaplasın
+        GSX=halfV*camera.position.z*camera.aspect*0.86;
+
         renderer.setSize(w,h,false);
     }
     addEventListener('resize',resize); resize();
@@ -1095,7 +1106,10 @@
             const wave=Math.sin(t*1.1+s.phase)*0.05;
             const pulse=(RADIUS+wave+Math.sin(t*2.2+s.phase)*0.09)*s.rOff;
             dummy.position.copy(s.dir).multiplyScalar(pulse);
-            if(m>0.001) dummy.position.lerp(s.g,m);
+            if(m>0.001){
+                gTmp.set(s.gn.x*GSX, s.gn.y*GSX, s.gn.z*RADIUS*0.5);
+                dummy.position.lerp(gTmp,m);
+            }
 
             // fareden kaç + tıklama dalgası
             pushV.copy(dummy.position).sub(mouse3);
