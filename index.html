@@ -699,7 +699,7 @@
             </div>
             <div class="ai-foot">
                 <span>GEO · AI ARAMALARINDA GÖRÜNÜR</span>
-                <span class="sp">schema.org ✓</span>
+                <span class="sp">gokhancitil.com ✓</span>
             </div>
         </aside>
         </div>
@@ -757,18 +757,18 @@
         window.__sceneReady=()=>{ready=true;};
         const tick=setInterval(()=>{
             const cap = ready ? 100 : 92;
-            p += Math.max(0.6,(cap-p)*0.09);
+            p += Math.max(1.6,(cap-p)*0.17);
             if(p>cap) p=cap;
             num.textContent=Math.floor(p);
             fill.style.width=p+'%';
             if(p>=99.4){
                 clearInterval(tick);
                 num.textContent=100; fill.style.width='100%';
-                setTimeout(()=>{pl.classList.add('done');document.body.style.overflow='';},350);
+                setTimeout(()=>{pl.classList.add('done');document.body.style.overflow='';},220);
             }
-        },40);
+        },26);
         document.body.style.overflow='hidden';
-        setTimeout(()=>{ready=true;},6000); // güvenlik ağı
+        setTimeout(()=>{ready=true;},3500); // güvenlik ağı
     })();
 
     /* ---------- HEADER / MENÜ ---------- */
