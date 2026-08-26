@@ -8,8 +8,6 @@
     <meta name="author" content="Gökhan ÇİTİL">
     <link rel="canonical" href="https://gokhancitil.com/">
     <link rel="icon" type="image/png" href="gokhancitil_logo.png">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
 
     <meta property="og:type" content="website">
     <meta property="og:locale" content="tr_TR">
@@ -946,14 +944,14 @@
         const rows=lines.length, rowH=H/rows;
         lines.forEach(function(txt,r){
             let fs=Math.round(rowH*0.86);
-            const FF='Anton, "Arial Black", Impact, sans-serif';
+            const FF='Inter, "Helvetica Neue", Arial, sans-serif';
             const fit=function(size){
-                x.font='400 '+size+'px '+FF;
+                x.font='900 '+size+'px '+FF;
                 return x.measureText(txt).width;
             };
             while(fit(fs)>W*0.90 && fs>10) fs-=2;
-            x.font='400 '+fs+'px '+FF;
-            if(x.letterSpacing!==undefined) x.letterSpacing=Math.round(fs*0.06)+'px';
+            x.font='900 '+fs+'px '+FF;
+            if(x.letterSpacing!==undefined) x.letterSpacing=Math.round(fs*0.045)+'px';
             x.fillText(txt, W/2, rowH*(r+0.5));
         });
 
@@ -1031,7 +1029,7 @@
     }
     buildText();
     if(document.fonts&&document.fonts.load){
-        document.fonts.load('400 120px Anton','GÖKHANÇİTİL')
+        document.fonts.load('900 120px Inter','GÖKHANÇİTİL')
             .then(function(){ return document.fonts.ready; })
             .then(buildText).catch(function(){});
     }
