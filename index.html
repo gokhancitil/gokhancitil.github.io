@@ -1008,7 +1008,8 @@
             const wave=Math.sin(t*1.1+s.phase)*0.05;
             const pulse=(RADIUS+wave+Math.sin(t*2.2+s.phase)*0.09)*s.rOff;
             dummy.position.copy(s.dir).multiplyScalar(pulse);
-            dummy.rotation.set(s.rot.x+t*s.spin, s.rot.y+t*s.spin*0.9, s.rot.z+t*s.spin*0.5);
+            if(m>0.001) dummy.position.lerp(s.g,m);
+            dummy.rotation.set(s.rot.x+t*s.spin*(1-m*0.75), s.rot.y+t*s.spin*0.9*(1-m*0.75), s.rot.z+t*s.spin*0.5);
             dummy.scale.setScalar(s.scale*(s.edge?0.7:1));
             dummy.updateMatrix();
             mesh.setMatrixAt(i,dummy.matrix);
