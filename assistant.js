@@ -8,7 +8,7 @@
       l:[["Hakkımda sayfası","hakkimda.html"]] },
 
     { k:["hizmet","neler yap","ne yapiyor","ne yapıyor","yapabil","cozum","çözüm","is yap","iş yap"],
-      a:"Şu hizmetleri veriyorum:<br>• <b>Yapay zeka entegrasyonu</b> — chatbot, içerik üretimi, veri analizi<br>• <b>SaaS bulut çözümleri</b> — multi-tenant mimari, abonelik, sanal POS<br>• <b>Kurumsal web tasarım</b> — yönetim panelli, mobil uyumlu<br>• <b>E-ticaret sitesi yapımı</b> — anahtar teslim<br>• <b>SEO &amp; GEO optimizasyonu</b> — AI aramalarında görünürlük<br>• <b>Süreç otomasyonu</b> — tekrarlayan işleri ortadan kaldırma",
+      a:"Şu hizmetleri veriyorum:<br>• <b>Yapay zeka entegrasyonu</b> — chatbot, içerik üretimi, veri analizi<br>• <b>SaaS bulut çözümleri</b> — multi-tenant mimari, abonelik, sanal POS<br>• <b>Mobil uygulama</b> — iOS/Android geliştirme, App Store &amp; Google Play yayını<br>• <b>Kurumsal web tasarım</b> — yönetim panelli, mobil uyumlu<br>• <b>E-ticaret sitesi yapımı</b> — anahtar teslim<br>• <b>SEO &amp; GEO optimizasyonu</b> — AI aramalarında görünürlük<br>• <b>Süreç otomasyonu</b> — tekrarlayan işleri ortadan kaldırma",
       l:[["Hizmetler","hizmetlerimiz.html"],["Teklif al","iletisim.html"]] },
 
     { k:["teknoloji","dil","python","javascript","c#","stack","yazilim dili","yazılım dili","laravel","docker","hangi araç"],
@@ -17,6 +17,10 @@
 
     { k:["yapay zeka","ai ","chatbot","asistan","llm","gpt","otomasyon","robot"],
       a:"İş süreçlerinize yapay zeka entegre ediyorum: <b>7/24 çalışan AI chatbot</b> (soru cevaplama, randevu, sipariş takibi), içerik üretimi, veri analizi ve karar destek sistemleri. Ayrıca tekrarlayan işleri ortadan kaldıran özel otomasyon yazılımları geliştiriyorum.",
+      l:[["Hizmetler","hizmetlerimiz.html"],["Konuşalım","iletisim.html"]] },
+
+    { k:["mobil","uygulama","app","android","ios","google play","app store","telefon uygulama","magaza","mağaza"],
+      a:"iOS ve Android için <b>mobil uygulama geliştiriyorum</b>. Sadece kodlama değil; <b>App Store ve Google Play yayın süreçlerini</b> de baştan sona yönetiyorum — geliştirici hesabı kurulumu, mağaza listesi hazırlığı, sürüm yönetimi ve sonraki güncellemeler dahil.",
       l:[["Hizmetler","hizmetlerimiz.html"],["Konuşalım","iletisim.html"]] },
 
     { k:["e-ticaret","eticaret","satis sitesi","satış sitesi","magaza","mağaza","online satis","online satış"],
