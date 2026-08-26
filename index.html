@@ -8,6 +8,8 @@
     <meta name="author" content="Gökhan ÇİTİL">
     <link rel="canonical" href="https://gokhancitil.com/">
     <link rel="icon" type="image/png" href="gokhancitil_logo.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
 
     <meta property="og:type" content="website">
     <meta property="og:locale" content="tr_TR">
@@ -944,13 +946,14 @@
         const rows=lines.length, rowH=H/rows;
         lines.forEach(function(txt,r){
             let fs=Math.round(rowH*0.86);
+            const FF='Anton, "Arial Black", Impact, sans-serif';
             const fit=function(size){
-                x.font='900 '+size+'px Inter, "Helvetica Neue", Arial, sans-serif';
+                x.font='400 '+size+'px '+FF;
                 return x.measureText(txt).width;
             };
-            while(fit(fs)>W*0.92 && fs>10) fs-=2;
-            x.font='900 '+fs+'px Inter, "Helvetica Neue", Arial, sans-serif';
-            if(x.letterSpacing!==undefined) x.letterSpacing=Math.round(fs*0.04)+'px';
+            while(fit(fs)>W*0.90 && fs>10) fs-=2;
+            x.font='400 '+fs+'px '+FF;
+            if(x.letterSpacing!==undefined) x.letterSpacing=Math.round(fs*0.06)+'px';
             x.fillText(txt, W/2, rowH*(r+0.5));
         });
 
@@ -1018,10 +1021,19 @@
         mesh.setColorAt(i,cTmp);
     }
     mesh.instanceColor.needsUpdate=true;
-    const GPTS=makeTextPoints(['GÖKHAN','ÇİTİL'],COUNT);
-    for(let i=0;i<COUNT;i++){
-        const g=GPTS[i];
-        seeds[i].gn=new THREE.Vector3(g[0],g[1],g[2]);   // -1 … 1
+    function buildText(){
+        const pts=makeTextPoints(['GÖKHAN','ÇİTİL'],COUNT);
+        for(let i=0;i<COUNT;i++){
+            const g=pts[i];
+            if(seeds[i].gn) seeds[i].gn.set(g[0],g[1],g[2]);
+            else seeds[i].gn=new THREE.Vector3(g[0],g[1],g[2]);
+        }
+    }
+    buildText();
+    if(document.fonts&&document.fonts.load){
+        document.fonts.load('400 120px Anton','GÖKHANÇİTİL')
+            .then(function(){ return document.fonts.ready; })
+            .then(buildText).catch(function(){});
     }
     let GSX=RADIUS;              // resize ile hesaplanır
     const gTmp=new THREE.Vector3();
