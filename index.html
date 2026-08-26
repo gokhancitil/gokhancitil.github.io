@@ -46,6 +46,14 @@
           ]
         },
         {
+          "@type":"SoftwareApplication",
+          "name":"Sigorta Acentesi Yönetim Sistemi",
+          "applicationCategory":"BusinessApplication",
+          "operatingSystem":"Web",
+          "description":"Poliçe yönetimi, müşteri portföyü ve teklif süreçlerini tek panelde toplayan çok kiracılı (multi-tenant) SaaS platformu.",
+          "author":{"@id":"https://gokhancitil.com/#gokhancitil"}
+        },
+        {
           "@type":"WebSite",
           "@id":"https://gokhancitil.com/#website",
           "url":"https://gokhancitil.com/",
@@ -74,7 +82,7 @@
         {
           "@type":"FAQPage",
           "mainEntity":[
-            {"@type":"Question","name":"Gökhan Çitil kimdir?","acceptedAnswer":{"@type":"Answer","text":"Gökhan Çitil, yapay zeka ve yazılım geliştirme alanında çalışan bir AI & Software Developer'dır. İnönü Üniversitesi İktisadi ve İdari Bilimler Fakültesi (İİBF) İşletme Bölümü mezunudur. 2019-2022 yılları arasında Jandarma Genel Komutanlığı bünyesinde astsubay olarak görev yapmış, buradaki disiplin ve kriz yönetimi birikimini yazılım kariyerine taşımıştır. Bugün ölçeklenebilir sistem mimarileri, e-ticaret altyapıları ve yapay zeka entegrasyonları geliştirmektedir."}},
+            {"@type":"Question","name":"Gökhan Çitil kimdir?","acceptedAnswer":{"@type":"Answer","text":"Gökhan Çitil, yapay zeka ve yazılım geliştirme alanında çalışan bir AI & Software Developer'dır. İnönü Üniversitesi İktisadi ve İdari Bilimler Fakültesi (İİBF) İşletme Bölümü mezunudur. 2023 yılından itibaren yazılım alanında çalışmaktadır. Çok kiracılı SaaS sistemleri, e-ticaret altyapıları, kurumsal web siteleri ve süreç otomasyonları geliştirmekte; sistemlere verimlilik odaklı yapay zeka entegrasyonları sağlamaktadır."}},
             {"@type":"Question","name":"Gökhan Çitil hangi hizmetleri veriyor?","acceptedAnswer":{"@type":"Answer","text":"Yapay zeka entegrasyonu, SaaS bulut yazılımları (multi-tenant mimari, abonelik ve sanal POS), kurumsal web tasarım, e-ticaret sitesi kurulumu, süreç otomasyonu ile SEO ve GEO optimizasyonu hizmetleri sunmaktadır."}},
             {"@type":"Question","name":"Gökhan Çitil hangi teknolojileri kullanıyor?","acceptedAnswer":{"@type":"Answer","text":"Python, JavaScript ve C# başta olmak üzere; Laravel, PostgreSQL, Redis, Docker ve Nginx teknolojilerini kullanmaktadır. Ödeme altyapılarında Stripe, Iyzico ve PayTR entegrasyonları geliştirir."}},
             {"@type":"Question","name":"Gökhan Çitil ile nasıl iletişime geçilir?","acceptedAnswer":{"@type":"Answer","text":"gokhancitil@gmail.com adresinden veya gokhancitil.com üzerindeki iletişim formundan ulaşılabilir. LinkedIn ve GitHub üzerinde gokhancitil kullanıcı adıyla yer almaktadır."}}
@@ -481,6 +489,7 @@
         </div>
         <nav class="nav-links" id="nav">
             <a href="#hizmetler">Hizmetler</a>
+            <a href="#projeler">Projeler</a>
             <a href="#uzmanlik">Uzmanlıklar</a>
             <a href="#kimdir">Hakkımda</a>
             <a href="#sss">S.S.S.</a>
@@ -505,7 +514,7 @@
                 <a href="#hizmetler" class="btn btn-ghost">Hizmetleri İncele</a>
             </div>
             <div class="stats">
-                <div><span>50+</span><small>Tamamlanan Proje</small></div>
+                <div><span>6</span><small>Hizmet Alanı</small></div>
                 <div><span>3</span><small>Ana Programlama Dili</small></div>
                 <div><span>7/24</span><small>Teknik Destek</small></div>
             </div>
@@ -583,6 +592,43 @@
         </div>
     </section>
 
+    <!-- ================= PROJELER ================= -->
+    <section id="projeler">
+        <div class="reveal">
+            <div class="eyebrow"><span class="dot"></span> Projeler</div>
+            <h2 class="sec-title">Geliştirdiğim <span class="grad">sistemler</span></h2>
+            <p class="sec-lead">
+                Anlattığım çözümlerin gerçek karşılıkları. Her biri belirli bir operasyonel
+                sorunu ortadan kaldırmak için sıfırdan kuruldu.
+            </p>
+        </div>
+        <div class="cards">
+            <article class="card reveal">
+                <div class="ico">🏢</div>
+                <h3>Sigorta Acentesi Yönetim Sistemi</h3>
+                <p>Poliçe yönetimi, müşteri portföyü ve teklif süreçlerini tek panelde toplayan
+                   çok kiracılı (multi-tenant) SaaS platformu. Her acente kendi izole verisiyle,
+                   aynı altyapı üzerinde çalışır.</p>
+                <div class="tags"><i>Multi-Tenant</i><i>Poliçe Yönetimi</i><i>Müşteri Portföyü</i><i>PostgreSQL</i></div>
+            </article>
+            <article class="card reveal">
+                <div class="ico">🌐</div>
+                <h3>gokhancitil.com</h3>
+                <p>Bu sitenin kendisi. Three.js ile gerçek zamanlı WebGL sahnesi, yapılandırılmış veri
+                   (Schema.org) altyapısı, çerez onay yönetimi ve site içi yapay zeka asistanı —
+                   dış bağımlılık olmadan.</p>
+                <div class="tags"><i>Three.js</i><i>WebGL</i><i>SEO / GEO</i><i>Schema.org</i></div>
+            </article>
+            <article class="card reveal">
+                <div class="ico">⚙️</div>
+                <h3>Süreç Otomasyonları</h3>
+                <p>İşletmelere özel geliştirilen otomasyon akışları: sipariş ve stok bildirimleri,
+                   fatura oluşturma, tekrarlayan raporlama görevleri ve sistemler arası veri aktarımı.</p>
+                <div class="tags"><i>Python</i><i>Webhooks</i><i>Cron Jobs</i><i>API</i></div>
+            </article>
+        </div>
+    </section>
+
     <!-- ================= UZMANLIKLAR ================= -->
     <section id="uzmanlik">
         <div class="reveal">
@@ -645,26 +691,19 @@
                 <h2 class="sec-title">Gökhan Çitil <span class="grad">kimdir?</span></h2>
                 <p>
                     <strong>Gökhan Çitil</strong>, yapay zeka ve yazılım geliştirme alanında çalışan bir
-                    <strong>AI &amp; Software Developer</strong>'dır. İşletmelerin operasyonel süreçlerini
-                    dijitale taşıyan SaaS mimarileri, e-ticaret altyapıları, kurumsal web sistemleri ve
-                    verimlilik odaklı yapay zeka entegrasyonları geliştirir.
+                    <strong>AI &amp; Software Developer</strong>'dır. Çok kiracılı SaaS sistemleri,
+                    e-ticaret altyapıları, kurumsal web siteleri ve süreç otomasyonları geliştirir;
+                    mevcut sistemlere verimlilik odaklı yapay zeka entegrasyonları sağlar.
                 </p>
                 <p>
-                    Yazılıma klasik bir yoldan gelmedi ve bunu bir avantaj olarak değerlendirir.
-                    <strong>Jandarma Genel Komutanlığı</strong> bünyesinde astsubay olarak görev yaptı;
-                    orada edindiği disiplin ve stratejik kriz yönetimi becerileri bugün projelerine doğrudan
-                    yansır: <strong>söz verilen tarihte teslim</strong>, iş büyüdüğünde ortadan kaybolmayan
-                    bir muhatap, sorun çıktığında panik değil çözüm.
-                </p>
-                <p>
-                    <strong>İnönü Üniversitesi İİBF İşletme</strong> mezunudur. Bu nedenle projelere yalnızca
-                    teknik değil <strong>ticari sonuç</strong> perspektifiyle yaklaşır; teknik jargon yerine
-                    maliyet, verimlilik ve geri dönüş diliyle iletişim kurar.
+                    <strong>İnönü Üniversitesi İİBF İşletme</strong> mezunudur. Projelere yalnızca teknik
+                    değil ticari sonuç perspektifiyle yaklaşır; teknik jargon yerine maliyet, verimlilik
+                    ve geri dönüş diliyle iletişim kurar.
                 </p>
                 <div class="timeline">
-                    <div class="tl"><b>BUGÜN</b><span>Yapay zeka entegrasyonları, SaaS mimarileri, e-ticaret ve kurumsal yazılım geliştiriyor.</span></div>
-                    <div class="tl"><b>DİSİPLİN · 2019–2022</b><span>Jandarma Genel Komutanlığı — Astsubay. Takip disiplini ve kriz yönetimi yaklaşımının kaynağı burası.</span></div>
-                    <div class="tl"><b>TİCARİ BAKIŞ · EĞİTİM</b><span>İnönü Üniversitesi İİBF, İşletme. Teknik çözümü değil, işletmeye kazandıracağı sonucu önceler.</span></div>
+                    <div class="tl"><b>BUGÜN</b><span>Çok kiracılı SaaS sistemleri, e-ticaret altyapıları, kurumsal web ve yapay zeka entegrasyonları geliştiriyor.</span></div>
+                    <div class="tl"><b>UZMANLIK</b><span>Python, JavaScript ve C#; Laravel, PostgreSQL, Redis ve Docker tabanlı ölçeklenebilir mimariler.</span></div>
+                    <div class="tl"><b>EĞİTİM</b><span>İnönü Üniversitesi İİBF, İşletme Bölümü mezunu.</span></div>
                 </div>
 
                 <div style="margin-top:32px"><a class="btn btn-ghost" href="hakkimda.html">Daha fazlası &rarr;</a></div>
@@ -682,7 +721,7 @@
         <div class="faq reveal">
             <div class="faq-item">
                 <button class="faq-q">Gökhan Çitil kimdir?</button>
-                <div class="faq-a"><p>Gökhan Çitil, yapay zeka ve yazılım geliştirme alanında çalışan bir AI &amp; Software Developer'dır. İnönü Üniversitesi İktisadi ve İdari Bilimler Fakültesi (İİBF) İşletme Bölümü mezunudur. 2019–2022 arasında Jandarma Genel Komutanlığı bünyesinde astsubay olarak görev yapmış, oradaki disiplin ve kriz yönetimi birikimini yazılıma taşımıştır. Bugün ölçeklenebilir sistem mimarileri, e-ticaret altyapıları ve yapay zeka entegrasyonları geliştirmektedir.</p></div>
+                <div class="faq-a"><p>Gökhan Çitil, yapay zeka ve yazılım geliştirme alanında çalışan bir AI &amp; Software Developer'dır. İnönü Üniversitesi İktisadi ve İdari Bilimler Fakültesi (İİBF) İşletme Bölümü mezunudur. 2023 yılından itibaren yazılım alanında çalışmaktadır. Çok kiracılı SaaS sistemleri, e-ticaret altyapıları, kurumsal web siteleri ve süreç otomasyonları geliştirmektedir.</p></div>
             </div>
             <div class="faq-item">
                 <button class="faq-q">Hangi hizmetleri veriyorsunuz?</button>

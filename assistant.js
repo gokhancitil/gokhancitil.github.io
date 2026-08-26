@@ -4,7 +4,7 @@
 
   var KB = [
     { k:["kimdir","kimsin","kim ","hakkinda","hakkında","tanit","tanıt","ozgecmis","özgeçmiş","biyografi","cv"],
-      a:"<b>Gökhan Çitil</b>, yapay zeka ve yazılım geliştirme alanında çalışan bir AI &amp; Software Developer'dır. İnönü Üniversitesi İİBF İşletme Bölümü mezunudur.<br><br>2019–2022 arasında Jandarma Genel Komutanlığı bünyesinde astsubay olarak görev yaptı; oradaki disiplin ve kriz yönetimi birikimini yazılıma taşıdı. Bugün ölçeklenebilir sistem mimarileri, e-ticaret altyapıları ve yapay zeka entegrasyonları geliştiriyor.",
+      a:"<b>Gökhan Çitil</b>, yapay zeka ve yazılım geliştirme alanında çalışan bir AI &amp; Software Developer'dır. İnönü Üniversitesi İİBF İşletme Bölümü mezunudur.<br><br>2023 yılından itibaren yazılım alanında çalışıyor. Çok kiracılı (multi-tenant) SaaS sistemleri, e-ticaret altyapıları, kurumsal web siteleri ve süreç otomasyonları geliştiriyor; mevcut sistemlere yapay zeka entegrasyonları sağlıyor.",
       l:[["Hakkımda sayfası","hakkimda.html"]] },
 
     { k:["hizmet","neler yap","ne yapiyor","ne yapıyor","yapabil","cozum","çözüm","is yap","iş yap"],
@@ -51,8 +51,8 @@
       a:"Türkiye genelinde ve <b>uzaktan</b> çalışıyorum. Proje süreçlerini çevrim içi yürütüyor, düzenli olarak ilerleme paylaşıyorum.",
       l:[["İletişim","iletisim.html"]] },
 
-    { k:["deneyim","tecrube","tecrübe","kac yil","kaç yıl","referans","proje sayi","proje sayı"],
-      a:"2023'ten bu yana yazılım geliştirme üzerine tam zamanlı çalışıyorum ve bugüne kadar <b>50'den fazla proje</b> tamamladım. Öncesinde kamu görevi ve işletme eğitimi geçmişim var — bu sayede projelere hem teknik hem ticari açıdan bakabiliyorum.",
+    { k:["proje","referans","ornek","örnek","is yapt","iş yapt","portfoy","portföy","deneyim","tecrube","tecrübe"],
+      a:"Geliştirdiğim sistemlerden biri, poliçe yönetimi ve müşteri portföyü süreçlerini tek panelde toplayan <b>çok kiracılı bir sigorta acentesi platformu</b>. Ayrıca bu sitenin kendisi (Three.js WebGL sahnesi, Schema.org altyapısı) ve işletmelere özel süreç otomasyonları geliştirdim.",
       l:[["Hakkımda","hakkimda.html"]] },
 
     { k:["destek","bakim","bakım","sonrasi","sonrası","garanti"],
