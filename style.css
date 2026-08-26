@@ -150,7 +150,7 @@ footer a:hover{color:#fff;}
 #ck-no{background:transparent;border:1px solid rgba(168,179,212,.3);color:#cbd5e1;}
 
 /* İMLEÇ */
-@media (hover:hover) and (pointer:fine){body,a,button,.btn,.logo-link{cursor:none;}}
+@media (hover:hover) and (pointer:fine){body,a,button,.btn{cursor:none;}}
 .cursor-dot,.cursor-ring{position:fixed;top:0;left:0;z-index:9999;pointer-events:none;
     border-radius:50%;transform:translate(-50%,-50%);opacity:0;transition:opacity .3s;}
 .cursor-dot{width:7px;height:7px;background:linear-gradient(100deg,#60a5fa,#a78bfa);box-shadow:0 0 12px rgba(139,92,246,.9);}
