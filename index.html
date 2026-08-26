@@ -759,7 +759,7 @@
         let p=0, ready=false;
         window.__sceneReady=()=>{ready=true;};
         const tick=setInterval(()=>{
-            const cap = ready ? 100 : 92;
+            const cap = ready ? 100 : 97;
             p += Math.max(1.6,(cap-p)*0.17);
             if(p>cap) p=cap;
             num.textContent=Math.floor(p);
@@ -771,7 +771,7 @@
             }
         },26);
         document.body.style.overflow='hidden';
-        setTimeout(()=>{ready=true;},3500); // güvenlik ağı
+        setTimeout(()=>{ready=true;},1800); // güvenlik ağı
     })();
 
     /* ---------- HEADER / MENÜ ---------- */
@@ -967,9 +967,6 @@
 
         core.rotation.y=-t*0.45; core.rotation.x=t*0.22;
         core.scale.setScalar(1+Math.sin(t*1.4)*0.05);
-
-        blueLight.position.set(Math.cos(t*0.5)*8,4,Math.sin(t*0.5)*8);
-        purpleLight.position.set(Math.cos(t*0.5+Math.PI)*8,-3,Math.sin(t*0.5+Math.PI)*8);
 
         renderer.render(scene,camera);
     }
