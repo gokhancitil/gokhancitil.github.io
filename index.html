@@ -165,6 +165,14 @@
             min-height:calc(100vh - 74px);display:grid;grid-template-columns:1fr 1fr;
             align-items:center;gap:40px;padding-top:20px;padding-bottom:60px;max-width:1280px;
         }
+        #hero-title .tc{opacity:0;display:inline;}
+        #hero-title .tc.on{opacity:1;}
+        #hero-title .tcur{
+            display:inline-block;width:.055em;height:.82em;vertical-align:-.08em;
+            margin-left:.04em;background:linear-gradient(180deg,#60a5fa,#a78bfa);
+            box-shadow:0 0 14px rgba(139,92,246,.9);animation:tblink .9s steps(1) infinite;
+        }
+        @keyframes tblink{0%,55%{opacity:1;}56%,100%{opacity:0;}}
         .hero-left h1{font-size:clamp(36px,4.6vw,64px);line-height:1.06;font-weight:900;margin:0 0 22px;letter-spacing:-2px;}
         .hero-left p.lead{font-size:16.5px;line-height:1.8;color:var(--text-soft);font-weight:300;margin:0 0 34px;max-width:540px;}
         .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:44px;}
@@ -487,7 +495,7 @@
     <section id="hero">
         <div class="hero-left">
             <div class="eyebrow"><span class="dot"></span> Yapay Zeka · Yazılım · Otomasyon</div>
-            <h1>Fikirlerinizi <span class="grad">Koda</span><br>Dönüştürüyoruz.</h1>
+            <h1 id="hero-title">Fikirlerinizi <span class="grad">Koda</span><br>Dönüştürüyoruz.</h1>
             <p class="lead">
                 Yapay zeka modelleri, modern yazılım mimarileri ve otomasyon çözümleriyle
                 dijital sistemlerinizi geleceğe hazırlıyorum. Temiz kod ile fikirleriniz gerçeğe dönüşsün.
@@ -767,11 +775,46 @@
             if(p>=99.4){
                 clearInterval(tick);
                 num.textContent=100; fill.style.width='100%';
-                setTimeout(()=>{pl.classList.add('done');document.body.style.overflow='';},220);
+                setTimeout(()=>{pl.classList.add('done');document.body.style.overflow='';if(window.__startTyping)window.__startTyping();},220);
             }
         },26);
         document.body.style.overflow='hidden';
         setTimeout(()=>{ready=true;},1800); // güvenlik ağı
+    })();
+
+    /* ---------- BAŞLIK DAKTİLO EFEKTİ ---------- */
+    (function(){
+        const h=document.getElementById('hero-title');
+        if(!h) return;
+        if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+
+        const chars=[];
+        (function walk(node){
+            [...node.childNodes].forEach(function(n){
+                if(n.nodeType===3){
+                    const frag=document.createDocumentFragment();
+                    [...n.textContent].forEach(function(ch){
+                        const e=document.createElement('i');
+                        e.className='tc'; e.textContent=ch;
+                        frag.appendChild(e); chars.push(e);
+                    });
+                    node.replaceChild(frag,n);
+                }else if(n.tagName!=='BR'){ walk(n); }
+            });
+        })(h);
+
+        const cur=document.createElement('i');
+        cur.className='tcur';
+        h.appendChild(cur);
+
+        let i=0;
+        function step(){
+            // her karede 2 karakter → hızlı ama görünür
+            for(let k=0;k<2 && i<chars.length;k++,i++) chars[i].classList.add('on');
+            if(i<chars.length) requestAnimationFrame(step);
+            else setTimeout(function(){ cur.remove(); },1600);
+        }
+        window.__startTyping=function(){ requestAnimationFrame(step); };
     })();
 
     /* ---------- HEADER / MENÜ ---------- */
@@ -935,10 +978,14 @@
 
     const golden=Math.PI*(3-Math.sqrt(5));
     for(let i=0;i<COUNT;i++){
-        const y=1-(i/(COUNT-1))*2;
-        const r=Math.sqrt(Math.max(0,1-y*y));
-        const th=golden*i;
-        const dir=new THREE.Vector3(Math.cos(th)*r,y,Math.sin(th)*r);
+        // tamamen rastgele küresel dağılım (spiral dikiş bırakmaz)
+        const uu=Math.random(), vv=Math.random();
+        const th2=Math.acos(2*uu-1), ph2=2*Math.PI*vv;
+        const dir=new THREE.Vector3(
+            Math.sin(th2)*Math.cos(ph2),
+            Math.cos(th2),
+            Math.sin(th2)*Math.sin(ph2)
+        );
         const edge=Math.random()<0.16;
         const rOff=edge?(1.03+Math.pow(Math.random(),1.7)*0.30):1;
         seeds.push({ edge, rOff,
@@ -977,6 +1024,20 @@
     }
     addEventListener('resize',resize); resize();
 
+    /* fare etkileşimi */
+    const rayc=new THREE.Raycaster();
+    const plane=new THREE.Plane(new THREE.Vector3(0,0,1),0);
+    const hitPt=new THREE.Vector3();
+    const mouse3=new THREE.Vector3(1e3,1e3,1e3);
+    const pushV=new THREE.Vector3();
+    const INF=1.5, FORCE=1.1;
+    let overCanvas=false, burst=0, breakG=0;
+
+    canvas.style.pointerEvents='auto';
+    canvas.addEventListener('mouseenter',()=>{overCanvas=true;});
+    canvas.addEventListener('mouseleave',()=>{overCanvas=false;});
+    canvas.addEventListener('pointerdown',()=>{ burst=1; breakG=1; });
+
     const clock=new THREE.Clock();
     let visible=true;
     document.addEventListener('visibilitychange',()=>{visible=!document.hidden;});
@@ -994,6 +1055,14 @@
         else if(cyc<15.5) m=1;
         else if(cyc<18) m=1-(cyc-15.5)/2.5;
         m=m*m*(3-2*m);                    // yumuşat
+        if(breakG>0){ breakG*=0.985; m*=(1-breakG); }   // tıklayınca G dağılır
+        burst*=0.94;
+
+        // farenin sahnedeki karşılığı
+        if(overCanvas && !isMobile){
+            rayc.setFromCamera({x:target.x,y:-target.y},camera);
+            if(rayc.ray.intersectPlane(plane,hitPt)) group.worldToLocal(mouse3.copy(hitPt));
+        } else mouse3.set(1e3,1e3,1e3);
 
         mouse.x+=(target.x-mouse.x)*0.07;
         mouse.y+=(target.y-mouse.y)*0.07;
@@ -1009,6 +1078,14 @@
             const pulse=(RADIUS+wave+Math.sin(t*2.2+s.phase)*0.09)*s.rOff;
             dummy.position.copy(s.dir).multiplyScalar(pulse);
             if(m>0.001) dummy.position.lerp(s.g,m);
+
+            // fareden kaç + tıklama dalgası
+            pushV.copy(dummy.position).sub(mouse3);
+            const dd=pushV.length();
+            if(dd<INF+burst*2.4){
+                const f=1-dd/(INF+burst*2.4);
+                dummy.position.addScaledVector(pushV.normalize(), f*f*(FORCE+burst*2.6));
+            }
             dummy.rotation.set(s.rot.x+t*s.spin*(1-m*0.75), s.rot.y+t*s.spin*0.9*(1-m*0.75), s.rot.z+t*s.spin*0.5);
             dummy.scale.setScalar(s.scale*(s.edge?0.7:1));
             dummy.updateMatrix();
