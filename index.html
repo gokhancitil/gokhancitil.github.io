@@ -162,7 +162,7 @@
 
         /* ===== HERO ===== */
         #hero{
-            min-height:calc(100vh - 74px);display:grid;grid-template-columns:0.92fr 1.08fr;
+            min-height:calc(100vh - 74px);display:grid;grid-template-columns:1fr 1fr;
             align-items:center;gap:40px;padding-top:20px;padding-bottom:60px;max-width:1280px;
         }
         .hero-left h1{font-size:clamp(36px,4.6vw,64px);line-height:1.06;font-weight:900;margin:0 0 22px;letter-spacing:-2px;}
@@ -184,7 +184,7 @@
         .social-icons a:hover{color:#fff;}
         .social-icons a:hover svg{fill:#a78bfa;}
 
-        .hero-right{position:relative;height:min(92vh,880px);margin-right:-6vw;}
+        .hero-right{position:relative;height:min(84vh,800px);}
         #webgl{position:absolute;inset:0;width:100%;height:100%;}
 
         /* ===== KARTLAR ===== */
@@ -863,17 +863,17 @@
     const isMobile=matchMedia('(max-width:900px)').matches;
 
     const scene=new THREE.Scene();
-    const camera=new THREE.PerspectiveCamera(48,1,0.1,120);
-    camera.position.set(0,0,isMobile?18:14);
+    const camera=new THREE.PerspectiveCamera(45,1,0.1,140);
+    camera.position.set(0,0,isMobile?26:20.5);
 
     const renderer=new THREE.WebGLRenderer({canvas,antialias:!isMobile,alpha:true,powerPreference:'high-performance'});
     renderer.setPixelRatio(Math.min(devicePixelRatio,isMobile?1.5:2));
     renderer.outputColorSpace=THREE.SRGBColorSpace;
 
     /* ---------- IŞIKLAR: parlak ön + mavi/mor yan ---------- */
-    scene.add(new THREE.AmbientLight(0x2c3596,1.6));
+    scene.add(new THREE.AmbientLight(0x232a78,1.15));
 
-    const keyLight=new THREE.DirectionalLight(0xdfe4ff,3.4);
+    const keyLight=new THREE.DirectionalLight(0xdfe4ff,3.0);
     keyLight.position.set(-5,6,10); scene.add(keyLight);
 
     const blueLight=new THREE.DirectionalLight(0x3d5bff,3.0);
@@ -888,7 +888,7 @@
     const group=new THREE.Group(); scene.add(group);
 
     /* ---------- İÇİ DOLU TETRAHEDRON YIĞINI ---------- */
-    const COUNT=isMobile?1100:3400;
+    const COUNT=isMobile?900:2000;
     const R=6.2;
 
     const geo=new THREE.TetrahedronGeometry(1);
@@ -905,9 +905,10 @@
     for(let i=0;i<COUNT;i++){
         const u=Math.random(), v=Math.random(), w=Math.random();
         const th=Math.acos(2*u-1), ph=2*Math.PI*v;
-        const depth=Math.pow(w,0.28);
-        const noise=1+Math.sin(th*5.1+ph*3.7)*0.06+Math.sin(ph*6.3)*0.05;
-        const rad=R*(0.34+0.66*depth)*noise;
+        const depth=Math.pow(w,0.55);
+        const noise=1+Math.sin(th*5.1+ph*3.7)*0.035+Math.sin(ph*6.3)*0.03;
+        let rad=R*(0.30+0.70*depth)*noise;
+        if(Math.random()<0.035) rad*=1.07+Math.random()*0.13;   // kenara savrulan tekil taşlar
 
         const dir=new THREE.Vector3(
             Math.sin(th)*Math.cos(ph),
@@ -917,7 +918,7 @@
 
         seeds.push({
             dir, rad,
-            scale:(0.17+Math.random()*0.30)*(0.65+depth*0.5),
+            scale:(0.13+Math.random()*0.20)*(0.7+depth*0.45),
             rot:new THREE.Euler(Math.random()*6.283,Math.random()*6.283,Math.random()*6.283),
             spin:(Math.random()-0.5)*0.5,
             phase:Math.random()*6.283
