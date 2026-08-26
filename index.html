@@ -348,6 +348,52 @@
         .code-badge.one{top:14%;right:-26px;color:#93c5fd;animation:codefloat 5.5s ease-in-out infinite;}
         .code-badge.two{bottom:16%;left:-30px;color:#d8b4fe;animation:codefloat 6.5s ease-in-out .8s infinite;}
 
+
+        /* ===== SSS YAN GÖRSEL: AI SOHBET ===== */
+        #sss .faq-wrap{display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:start;}
+        .faq{max-width:none;}
+        .ai-card{
+            position:sticky;top:110px;border-radius:18px;overflow:hidden;
+            border:1px solid rgba(139,92,246,.28);
+            background:linear-gradient(165deg,#0a1030,#060b21 65%);
+            box-shadow:0 40px 90px -34px rgba(0,0,0,.9),0 0 60px -24px rgba(99,102,241,.45);
+            animation:codefloat 8s ease-in-out infinite;
+        }
+        .ai-head{
+            display:flex;align-items:center;gap:11px;padding:15px 18px;
+            background:rgba(255,255,255,.035);border-bottom:1px solid rgba(255,255,255,.06);
+        }
+        .ai-orb{
+            width:32px;height:32px;border-radius:10px;flex:none;display:grid;place-items:center;font-size:15px;
+            background:linear-gradient(140deg,var(--blue),var(--purple));
+            box-shadow:0 0 18px -4px rgba(139,92,246,.9);
+        }
+        .ai-head b{font-size:13.5px;font-weight:600;display:block;letter-spacing:-.2px;}
+        .ai-head small{font-size:11px;color:#22d3ee;display:flex;align-items:center;gap:5px;}
+        .ai-head small::before{content:"";width:5px;height:5px;border-radius:50%;background:#22d3ee;
+            box-shadow:0 0 8px #22d3ee;animation:pulse 1.8s ease-in-out infinite;}
+        .ai-body{padding:20px 18px;display:flex;flex-direction:column;gap:14px;}
+        .msg{max-width:88%;padding:12px 15px;border-radius:14px;font-size:13px;line-height:1.65;font-weight:300;}
+        .msg.me{align-self:flex-end;border-bottom-right-radius:5px;color:#fff;
+            background:linear-gradient(100deg,rgba(59,130,246,.85),rgba(139,92,246,.85));}
+        .msg.ai{align-self:flex-start;border-bottom-left-radius:5px;color:var(--text-soft);
+            background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.07);}
+        .msg.ai b{color:#fff;font-weight:600;}
+        .typing{display:flex;gap:5px;align-self:flex-start;padding:14px 16px;border-radius:14px;
+            border-bottom-left-radius:5px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.07);}
+        .typing i{width:6px;height:6px;border-radius:50%;background:#a78bfa;animation:dot 1.3s ease-in-out infinite;}
+        .typing i:nth-child(2){animation-delay:.18s;} .typing i:nth-child(3){animation-delay:.36s;}
+        @keyframes dot{0%,60%,100%{opacity:.25;transform:translateY(0);}30%{opacity:1;transform:translateY(-4px);}}
+        .ai-foot{padding:12px 18px;font-size:10.5px;letter-spacing:.5px;color:var(--muted);
+            font-family:ui-monospace,Menlo,monospace;background:rgba(255,255,255,.025);
+            border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:8px;}
+        .ai-foot .sp{margin-left:auto;}
+
+        @media (max-width:1080px){
+            #sss .faq-wrap{grid-template-columns:1fr;gap:40px;}
+            .ai-card{position:relative;top:0;max-width:460px;animation:none;}
+        }
+
         @media (max-width:1080px){
             .code-badge.one{right:-10px;} .code-badge.two{left:-10px;}
         }
@@ -616,6 +662,7 @@
             <div class="eyebrow"><span class="dot"></span> Sıkça Sorulan Sorular</div>
             <h2 class="sec-title">Merak <span class="grad">edilenler</span></h2>
         </div>
+        <div class="faq-wrap">
         <div class="faq reveal">
             <div class="faq-item">
                 <button class="faq-q">Gökhan Çitil kimdir?</button>
@@ -637,6 +684,24 @@
                 <button class="faq-q">Nasıl iletişime geçebilirim?</button>
                 <div class="faq-a"><p>gokhancitil@gmail.com adresinden veya <a href="iletisim.html" style="color:#a78bfa">iletişim sayfasındaki</a> formdan bana ulaşabilirsiniz. LinkedIn ve GitHub üzerinde <strong>gokhancitil</strong> kullanıcı adıyla yer alıyorum.</p></div>
             </div>
+        </div>
+
+        <aside class="ai-card reveal" aria-hidden="true">
+            <div class="ai-head">
+                <div class="ai-orb">✦</div>
+                <div><b>AI Asistan</b><small>çevrimiçi</small></div>
+            </div>
+            <div class="ai-body">
+                <div class="msg me">Gökhan Çitil kimdir?</div>
+                <div class="msg ai"><b>Gökhan Çitil</b>, yapay zeka ve yazılım geliştirme alanında çalışan bir AI &amp; Software Developer'dır. SaaS mimarileri, e-ticaret altyapıları ve yapay zeka entegrasyonları geliştirir.</div>
+                <div class="msg me">Benim işletmem için ne yapabilir?</div>
+                <div class="typing"><i></i><i></i><i></i></div>
+            </div>
+            <div class="ai-foot">
+                <span>GEO · AI ARAMALARINDA GÖRÜNÜR</span>
+                <span class="sp">schema.org ✓</span>
+            </div>
+        </aside>
         </div>
     </section>
 
