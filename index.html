@@ -864,7 +864,7 @@
 
     const scene=new THREE.Scene();
     const camera=new THREE.PerspectiveCamera(50,1,0.1,100);
-    camera.position.set(0,0,isMobile?17:15);
+    camera.position.set(0,0,isMobile?11:8);
 
     const renderer=new THREE.WebGLRenderer({canvas,antialias:!isMobile,alpha:true,powerPreference:'high-performance'});
     renderer.setPixelRatio(Math.min(devicePixelRatio,isMobile?1.5:2));
@@ -885,10 +885,11 @@
 
     const group=new THREE.Group(); scene.add(group);
 
-    const COUNT=isMobile?600:1250;
-    const RADIUS=5.2;
+    const COUNT=isMobile?1400:3400;
+    const RADIUS=3.2;
     const geo=new THREE.OctahedronGeometry(1,0);
-    const mat=new THREE.MeshStandardMaterial({color:0xffffff,metalness:0.1,roughness:0.18,flatShading:true});
+    geo.scale(1,1.6,1);   // uzatılmış kristal şard
+    const mat=new THREE.MeshStandardMaterial({color:0xffffff,metalness:0.1,roughness:0.18,flatShading:true,envMapIntensity:1.2});
     const mesh=new THREE.InstancedMesh(geo,mat,COUNT);
     const COL_VIOLET=0x6c3cf0, COL_BLUE=0x386af6, COL_CYAN=0x00d4ff;
     const cTmp=new THREE.Color();
@@ -904,8 +905,8 @@
         const edge=Math.random()<0.16;
         const rOff=edge?(1.03+Math.pow(Math.random(),1.7)*0.30):1;
         seeds.push({ edge, rOff,
-            dir, scale:0.30+Math.random()*0.26,
-            phase:Math.random()*6.283, spin:(Math.random()-0.5)*1.8,
+            dir, scale:0.05+0.09*Math.random()*Math.random(),
+            phase:Math.random()*6.283, spin:0.25+Math.random()*0.55,
             rot:new THREE.Euler(Math.random()*6.283,Math.random()*6.283,Math.random()*6.283)
         });
     }
@@ -957,8 +958,8 @@
 
         for(let i=0;i<COUNT;i++){
             const s=seeds[i];
-            const wave=Math.sin(t*1.6+s.dir.y*4.5)*0.35;
-            const pulse=(RADIUS+wave+Math.sin(t*2.2+s.phase)*0.22)*s.rOff;
+            const wave=Math.sin(t*1.6+s.dir.y*4.5)*0.16;
+            const pulse=(RADIUS+wave+Math.sin(t*2.2+s.phase)*0.09)*s.rOff;
             dummy.position.copy(s.dir).multiplyScalar(pulse);
             dummy.rotation.set(s.rot.x+t*s.spin, s.rot.y+t*s.spin*0.9, s.rot.z+t*s.spin*0.5);
             dummy.scale.setScalar(s.scale*(1+wave*0.25)*(s.edge?0.7:1));
