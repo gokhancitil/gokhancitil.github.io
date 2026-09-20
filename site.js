@@ -20,26 +20,6 @@
     });
   });
 
-  if(matchMedia('(hover:hover) and (pointer:fine)').matches){
-    var dot=document.querySelector('.cursor-dot'), ring=document.querySelector('.cursor-ring');
-    if(dot&&ring){
-      var mx=0,my=0,rx=0,ry=0;
-      addEventListener('mousemove',function(e){
-        mx=e.clientX;my=e.clientY;
-        dot.style.opacity=ring.style.opacity=1;
-        dot.style.transform='translate('+mx+'px,'+my+'px) translate(-50%,-50%)';
-      });
-      addEventListener('mouseout',function(){dot.style.opacity=ring.style.opacity=0;});
-      document.querySelectorAll('a,button,.btn,.card').forEach(function(el){
-        el.addEventListener('mouseenter',function(){ring.classList.add('hot');});
-        el.addEventListener('mouseleave',function(){ring.classList.remove('hot');});
-      });
-      (function loop(){rx+=(mx-rx)*0.18;ry+=(my-ry)*0.18;
-        ring.style.transform='translate('+rx+'px,'+ry+'px) translate(-50%,-50%)';
-        requestAnimationFrame(loop);})();
-    }
-  }
-
   var KEY='gc_consent', box=document.getElementById('cookie');
   function loadGtag(){
     if(window.__gtagLoaded) return; window.__gtagLoaded=true;
@@ -59,3 +39,4 @@
     document.getElementById('ck-no').onclick=function(){try{localStorage.setItem(KEY,'necessary');}catch(e){}box.classList.remove('show');};
   }
 })();
+

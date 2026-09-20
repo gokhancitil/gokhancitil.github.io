@@ -8,6 +8,23 @@
     <meta name="robots" content="noindex, follow">
     <link rel="icon" type="image/png" href="gokhancitil_logo.png">
     <link rel="stylesheet" href="style.css">
+<style id="monochrome-internal">
+html,body{background:#000000!important;color:#f2f2f2!important}
+.bg-glow.a,.bg-glow.b{background:rgba(255,255,255,.035)!important}
+header{background:rgba(8,8,8,.86)!important;border-bottom-color:rgba(255,255,255,.1)!important}
+.brand-mark{filter:drop-shadow(0 0 14px rgba(255,255,255,.22))!important}.brand-text i{background:none!important;-webkit-text-fill-color:#aaa!important;color:#aaa!important}
+.nav-links a{color:#aaa!important}.nav-links a:hover,.nav-links a.active{color:#fff!important}.nav-cta,.btn-primary{background:#f2f2f2!important;color:#080808!important;box-shadow:0 10px 28px -14px rgba(255,255,255,.32)!important}
+.eyebrow{border-color:rgba(255,255,255,.14)!important;background:rgba(255,255,255,.03)!important;color:#aaa!important}.eyebrow .dot{background:#ddd!important;box-shadow:0 0 8px rgba(255,255,255,.4)!important}
+.grad{background:none!important;-webkit-text-fill-color:#f2f2f2!important;color:#f2f2f2!important}
+.card,.cta-box{background:linear-gradient(160deg,rgba(255,255,255,.045),rgba(255,255,255,.012))!important;border-color:rgba(255,255,255,.11)!important;box-shadow:0 24px 60px -30px rgba(0,0,0,.8)!important}
+.card::after{background:radial-gradient(500px circle at var(--mx,50%) var(--my,0%),rgba(255,255,255,.05),transparent 45%)!important}.card:hover{border-color:rgba(255,255,255,.22)!important}
+.card .ico{background:rgba(255,255,255,.05)!important;border-color:rgba(255,255,255,.14)!important}.tags i,.skill-list i{background:rgba(255,255,255,.04)!important;border-color:rgba(255,255,255,.12)!important;color:#d0d0d0!important}
+.btn-ghost{border-color:rgba(255,255,255,.2)!important;background:rgba(255,255,255,.03)!important;color:#ddd!important}.btn-ghost:hover{background:rgba(255,255,255,.09)!important}
+.timeline{border-left-color:rgba(255,255,255,.16)!important}.timeline .tl::before{background:#eee!important;box-shadow:0 0 10px rgba(255,255,255,.3)!important}.timeline .tl b{color:#eee!important}
+footer{border-top-color:rgba(255,255,255,.1)!important}footer a{color:#999!important}footer a:hover{color:#fff!important}
+#cookie{background:rgba(10,10,10,.96)!important;border-color:rgba(255,255,255,.14)!important}#cookie p a{color:#d0d0d0!important}
+</style>
+<style id="internal-assistant-monochrome">#gc-fab{background:#f2f2f2!important;color:#080808!important;box-shadow:0 14px 34px -10px rgba(0,0,0,.65)!important}#gc-fab::after{border-color:rgba(255,255,255,.28)!important}#gc-panel{border-color:rgba(255,255,255,.14)!important;background:linear-gradient(170deg,#121212,#080808 70%)!important;box-shadow:0 40px 90px -26px rgba(0,0,0,.92)!important}#gc-head .orb{background:#f2f2f2!important;color:#080808!important;box-shadow:0 0 18px -4px rgba(255,255,255,.35)!important}#gc-head small{color:#d0d0d0!important}#gc-head small::before{background:#ddd!important;box-shadow:0 0 8px rgba(255,255,255,.35)!important}#gc-close{color:#999!important}#gc-log::-webkit-scrollbar-thumb{background:rgba(255,255,255,.28)!important}.gc-msg.me{background:#1a1a1a!important;color:#f2f2f2!important}.gc-msg.ai{color:#bdbdbd!important}.gc-msg.ai i{color:#aaa!important}.gc-links a{color:#ddd!important;background:rgba(255,255,255,.06)!important;border-color:rgba(255,255,255,.14)!important}.gc-links a:hover{background:rgba(255,255,255,.12)!important}.gc-typing i{background:#ddd!important}#gc-chips button{color:#bbb!important}#gc-chips button:hover{border-color:rgba(255,255,255,.35)!important}#gc-send{background:#f2f2f2!important;color:#080808!important}#gc-in:focus{border-color:rgba(255,255,255,.45)!important}#gc-in::placeholder,#gc-note{color:#777!important}#gc-tip{border-color:rgba(255,255,255,.16)!important;background:rgba(12,12,12,.96)!important;color:#ccc!important}</style>
 </head>
 <body>
 
@@ -20,10 +37,10 @@
             <span class="brand-text"><b>GÖKHAN ÇİTİL</b><i>AI &amp; SOFTWARE</i></span>
         </a>
         <nav class="nav-links" id="nav">
-            <a href="hakkimda.html">Hakkımda</a>
-            <a href="uzmanliklar.html">Uzmanlıklar</a>
-            <a href="hizmetlerimiz.html">Hizmetlerimiz</a>
-            <a href="iletisim.html">İletişim</a>
+            <a href="index.html#projeler">Projeler</a>
+            <a href="index.html#uzmanlik">Uzmanlıklar</a>
+            <a href="index.html#kimdir">Hakkımda</a>
+            <a href="index.html#sss">S.S.S.</a>
             <a href="iletisim.html" class="nav-cta">Projenizi Konuşalım</a>
         </nav>
         <button class="burger" id="burger" aria-label="Menü"><span></span><span></span><span></span></button>
@@ -68,9 +85,6 @@
             <button id="ck-no">Yalnızca gerekli</button>
         </div>
     </div>
-
-    <div class="cursor-ring"></div>
-    <div class="cursor-dot"></div>
     <script src="site.js"></script>
     <script src="assistant.js" defer></script>
 </body>

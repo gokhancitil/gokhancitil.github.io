@@ -151,14 +151,6 @@ footer a:hover{color:#fff;}
 #ck-no{background:transparent;border:1px solid rgba(168,179,212,.3);color:#cbd5e1;}
 
 /* İMLEÇ */
-@media (hover:hover) and (pointer:fine){body,a,button,.btn{cursor:none;}}
-.cursor-dot,.cursor-ring{position:fixed;top:0;left:0;z-index:9999;pointer-events:none;
-    border-radius:50%;transform:translate(-50%,-50%);opacity:0;transition:opacity .3s;}
-.cursor-dot{width:7px;height:7px;background:linear-gradient(100deg,#60a5fa,#a78bfa);box-shadow:0 0 12px rgba(139,92,246,.9);}
-.cursor-ring{width:38px;height:38px;border:1px solid rgba(167,139,250,.55);
-    transition:width .25s,height .25s,border-color .25s,background .25s,opacity .3s;}
-.cursor-ring.hot{width:62px;height:62px;border-color:rgba(96,165,250,.9);background:rgba(139,92,246,.12);}
-
 /* İLETİŞİM FORMU */
 .contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:start;}
 .form-card{padding:34px 32px;border-radius:18px;border:1px solid var(--line);
@@ -199,3 +191,51 @@ footer a:hover{color:#fff;}
     .form-card{padding:26px 20px;}
 }
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;}html{scroll-behavior:auto;}}
+/* Hakkımda monochrome theme conversion: mevcut geometri korunur */
+:root{--navy-900:#050505;--navy-800:#080808;--navy-700:#0b0b0b;--blue:#f5f5f5;--purple:#777;--text-soft:rgba(255,255,255,.62);--muted:rgba(255,255,255,.38);--line:rgba(255,255,255,.10)}
+.bg-glow.a,.bg-glow.b{background:rgba(255,255,255,.035);filter:blur(150px)}
+.brand-mark{filter:grayscale(1) brightness(1.8);}.brand:hover .brand-mark{filter:grayscale(1) brightness(2)}
+.brand-text i{background:none;color:rgba(255,255,255,.55);-webkit-text-fill-color:initial}
+.nav-cta,.btn-primary{background:#f5f5f5;color:#080808!important;box-shadow:0 8px 22px -10px rgba(0,0,0,.8)}
+.eyebrow{border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.04);color:#eaeaea}.eyebrow .dot{background:#eee;box-shadow:0 0 8px rgba(255,255,255,.35)}
+.grad{background:none;color:#f5f5f5;-webkit-text-fill-color:initial}
+.prose a,.card a.more{color:#ddd}.card{background:linear-gradient(160deg,#141414,#0a0a0a);border-color:rgba(255,255,255,.10)}.card::after{background:radial-gradient(500px circle at var(--mx,50%) var(--my,0%),rgba(255,255,255,.05),transparent 45%)}.card:hover{border-color:rgba(255,255,255,.18)}.card .ico{background:#141414;border-color:rgba(255,255,255,.15);filter:grayscale(1)}.card .tags i{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.12);color:#ddd}
+.timeline{border-left-color:rgba(255,255,255,.16)}.timeline .tl::before{background:#f5f5f5;box-shadow:0 0 8px rgba(255,255,255,.25)}.timeline .tl b{color:#f5f5f5}.timeline .tl span{color:rgba(255,255,255,.60)}
+.btn-ghost{border-color:rgba(255,255,255,.18);color:#eee;background:rgba(255,255,255,.02)}
+.cta-box{border-color:rgba(255,255,255,.14);background:radial-gradient(700px circle at 50% 0%,rgba(255,255,255,.06),transparent 65%),#0b0b0b}
+#cookie{background:rgba(10,10,10,.94)}
+
+/* Native pointer: decorative cursor removed; interactive controls keep the browser cursor. */
+@media (hover:hover) and (pointer:fine){
+  body,a,button,.btn,.tech-tab,input,textarea,select{cursor:auto!important}
+  #gc-fab,#gc-close,#gc-send,#gc-chips button,#gc-in,.gc-links a{cursor:auto!important}
+}
+.nav-links a.active{color:#f2f2f2!important;background:transparent!important;box-shadow:none!important}
+.nav-links a:hover{color:#f2f2f2!important}
+
+
+/* Site-wide internal-page consistency with the homepage header. */
+@media (min-width:1024px){
+  body>header#site-header{position:sticky;top:0;z-index:100}
+}
+#site-header .nav-cta,#site-header .btn-primary{background:#f2f2f2!important;background-image:none!important;color:#080808!important;border-color:transparent!important;box-shadow:0 10px 28px -14px rgba(255,255,255,.32)!important}
+#site-header .nav-cta:hover,#site-header .btn-primary:hover{background:#fff!important;color:#080808!important}
+.nav-links a.active{background:transparent!important;box-shadow:none!important;color:#f2f2f2!important}
+.info-list a,.info-list a svg,.info-list svg{color:#aaa!important;fill:#aaa!important}
+.info-list a:hover,.info-list a:hover svg{color:#fff!important;fill:#fff!important}
+#gc-fab{background:#111!important;background-image:none!important;border:1px solid rgba(255,255,255,.2)!important;color:#f5f5f5!important;box-shadow:0 14px 34px -10px rgba(0,0,0,.9)!important}
+
+
+/* Native interaction and fixed desktop header regression fix. */
+a,button,[role="button"],.nav-links a,.nav-cta,.brand{cursor:pointer!important}
+input[type="text"],input[type="email"],input[type="search"],input[type="url"],input[type="tel"],textarea{cursor:text!important}
+@media (min-width:1024px){
+  body>header#site-header{position:fixed;top:0;left:0;right:0;z-index:100}
+  body>main{padding-top:72px}
+}
+
+/* Shared page-end CTA, matching the homepage implementation. */
+.cta-box.box{background:#000!important;border:1px solid rgba(255,255,255,.14)!important;border-radius:20px!important}
+.cta-box .cta-media{display:flex;justify-content:center;align-items:center;margin:0 auto 24px;pointer-events:none}
+.cta-box .cta-media video{display:block;width:148px;height:auto;max-width:100%;object-fit:contain}
+@media(max-width:640px){.cta-box .cta-media{margin-bottom:28px}.cta-box .cta-media video{width:clamp(110px,32vw,125px)}}

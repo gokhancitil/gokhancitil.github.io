@@ -4,28 +4,24 @@
 
   var KB = [
     { k:["kimdir","kimsin","kim ","hakkinda","hakkında","tanit","tanıt","ozgecmis","özgeçmiş","biyografi","cv"],
-      a:"<b>Gökhan Çitil</b>, yapay zeka ve yazılım geliştirme alanında çalışan bir AI &amp; Software Developer'dır. İnönü Üniversitesi İİBF İşletme Bölümü mezunudur.<br><br>2023 yılından itibaren yazılım alanında çalışıyor. Çok kiracılı (multi-tenant) SaaS sistemleri, e-ticaret altyapıları, kurumsal web siteleri ve süreç otomasyonları geliştiriyor; mevcut sistemlere yapay zeka entegrasyonları sağlıyor.",
+      a:"<b>Gökhan Çitil</b>, yapay zeka ve yazılım geliştirme alanında çalışan bir AI &amp; Software Developer'dır. kurumsal web uygulamaları, mobil uygulamalar ve süreç otomasyonları geliştiriyor; mevcut sistemlere yapay zeka entegrasyonları sağlıyor.",
       l:[["Hakkımda sayfası","hakkimda.html"]] },
 
     { k:["hizmet","neler yap","ne yapiyor","ne yapıyor","yapabil","cozum","çözüm","is yap","iş yap"],
-      a:"Şu hizmetleri veriyorum:<br>• <b>Yapay zeka entegrasyonu</b> — chatbot, içerik üretimi, veri analizi<br>• <b>SaaS bulut çözümleri</b> — multi-tenant mimari, abonelik, sanal POS<br>• <b>Mobil uygulama</b> — iOS/Android geliştirme, App Store &amp; Google Play yayını<br>• <b>Kurumsal web tasarım</b> — yönetim panelli, mobil uyumlu<br>• <b>E-ticaret sitesi yapımı</b> — anahtar teslim<br>• <b>SEO &amp; GEO optimizasyonu</b> — AI aramalarında görünürlük<br>• <b>Süreç otomasyonu</b> — tekrarlayan işleri ortadan kaldırma",
+      a:"Şu hizmetleri veriyorum:<br>• <b>Yapay zeka entegrasyonu</b> — chatbot, içerik üretimi, veri analizi<br>• <b>SaaS bulut çözümleri</b> — multi-tenant mimari ve ölçeklenebilir altyapı<br>• <b>Mobil uygulama</b> — iOS/Android geliştirme<br>• <b>Kurumsal web tasarım</b> — yönetim panelli, mobil uyumlu<br>• <b>SEO &amp; GEO optimizasyonu</b> — AI aramalarında görünürlük<br>• <b>Süreç otomasyonu</b> — tekrarlayan işleri ortadan kaldırma",
       l:[["Hizmetler","hizmetlerimiz.html"],["Teklif al","iletisim.html"]] },
 
     { k:["teknoloji","dil","python","javascript","c#","stack","yazilim dili","yazılım dili","laravel","docker","hangi araç"],
-      a:"Ağırlıklı olarak <b>Python, JavaScript ve C#</b> kullanıyorum. Altyapıda Laravel, PostgreSQL, Redis, Docker ve Nginx; ödeme tarafında Stripe, Iyzico ve PayTR entegrasyonları geliştiriyorum.",
+      a:"Ağırlıklı olarak <b>Python, JavaScript ve C#</b> kullanıyorum. Altyapıda Laravel, PostgreSQL, Redis, Docker ve Nginx kullanıyorum.",
       l:[["Uzmanlıklar","uzmanliklar.html"]] },
 
     { k:["yapay zeka","ai ","chatbot","asistan","llm","gpt","otomasyon","robot"],
       a:"İş süreçlerinize yapay zeka entegre ediyorum: <b>7/24 çalışan AI chatbot</b> (soru cevaplama, randevu, sipariş takibi), içerik üretimi, veri analizi ve karar destek sistemleri. Ayrıca tekrarlayan işleri ortadan kaldıran özel otomasyon yazılımları geliştiriyorum.",
       l:[["Hizmetler","hizmetlerimiz.html"],["Konuşalım","iletisim.html"]] },
 
-    { k:["mobil","uygulama","app","android","ios","google play","app store","telefon uygulama","magaza","mağaza"],
-      a:"iOS ve Android için <b>mobil uygulama geliştiriyorum</b>. Sadece kodlama değil; <b>App Store ve Google Play yayın süreçlerini</b> de baştan sona yönetiyorum — geliştirici hesabı kurulumu, mağaza listesi hazırlığı, sürüm yönetimi ve sonraki güncellemeler dahil.",
+    { k:["mobil","uygulama","app","android","ios","telefon uygulama","magaza","mağaza"],
+      a:"iOS ve Android için <b>mobil uygulama geliştiriyorum</b>. Sadece kodlama değil; <b>uygulama geliştirme ve sürüm süreçlerini</b> yönetiyorum.",
       l:[["Hizmetler","hizmetlerimiz.html"],["Konuşalım","iletisim.html"]] },
-
-    { k:["e-ticaret","eticaret","satis sitesi","satış sitesi","magaza","mağaza","online satis","online satış"],
-      a:"Anahtar teslim <b>e-ticaret altyapısı</b> kuruyorum: ürün yönetimi, sanal POS, kargo entegrasyonu, kampanya ve indirim sistemi, sipariş takibi. Iyzico, PayTR ve Stripe ile çalışıyorum.",
-      l:[["Detaylar","hizmetlerimiz.html"],["Teklif al","iletisim.html"]] },
 
     { k:["web site","web tasar","kurumsal site","site yap","internet sitesi"],
       a:"İşletmenize özel <b>kurumsal web sitesi</b> tasarlıyorum. Modern görünüm, hızlı açılma, tam mobil uyumluluk ve SEO/GEO altyapısı standart olarak geliyor. Yönetim paneli ile içeriklerinizi kendiniz güncelleyebilirsiniz.",
@@ -36,7 +32,7 @@
       l:[["SEO/GEO hizmeti","hizmetlerimiz.html"]] },
 
     { k:["saas","bulut","multi-tenant","multi tenant","abonelik","olcek","ölçek"],
-      a:"<b>Multi-tenant SaaS mimarileri</b> kuruyorum: tek sistemden binlerce müşteriye izole ve güvenli hizmet, abonelik ve sanal POS entegrasyonu, fatura otomasyonu, trafik arttığında otomatik ölçekleme.",
+      a:"<b>Multi-tenant SaaS mimarileri</b> kuruyorum: tek sistemden binlerce müşteriye izole ve güvenli hizmet, ölçeklenebilir altyapı ve trafik arttığında otomatik ölçekleme.",
       l:[["Detaylar","hizmetlerimiz.html"]] },
 
     { k:["fiyat","ucret","ücret","maliyet","kac para","kaç para","butce","bütçe","teklif"],
@@ -44,7 +40,7 @@
       l:[["Teklif iste","iletisim.html"]] },
 
     { k:["sure","süre","ne zaman","teslim","kac gun","kaç gün","kac hafta","kaç hafta"],
-      a:"Tipik süreler: <b>kurumsal web sitesi 1–3 hafta</b>, <b>e-ticaret 3–6 hafta</b>, <b>özel SaaS projeleri 2–4 ay</b>. Net süreyi ilk görüşmede kapsamı netleştirerek paylaşıyorum.",
+      a:"Tipik süreler: <b>kurumsal web sitesi 1–3 hafta</b>, <b>özel SaaS projeleri 2–4 ay</b>. Net süreyi ilk görüşmede kapsamı netleştirerek paylaşıyorum.",
       l:[["İletişim","iletisim.html"]] },
 
     { k:["iletisim","iletişim","ulas","ulaş","mail","e-posta","eposta","telefon","yaz"],
@@ -141,7 +137,7 @@
   +'background:linear-gradient(135deg,#3b82f6,#8b5cf6);transition:transform .22s;}'
   +'#gc-send:hover{transform:translateY(-2px);}'
   +'#gc-note{font-size:10px;color:#5d6a91;text-align:center;padding:0 16px 10px;flex:none;}'
-  +'@media (hover:hover) and (pointer:fine){#gc-fab,#gc-close,#gc-send,#gc-chips button,#gc-in,.gc-links a{cursor:none;}}'
+  
   +'#gc-tip{position:fixed;right:92px;bottom:34px;z-index:9450;max-width:230px;padding:12px 15px;border-radius:14px;'
   +'border:1px solid rgba(139,92,246,.4);background:rgba(10,16,48,.96);backdrop-filter:blur(12px);'
   +'box-shadow:0 20px 46px -14px rgba(0,0,0,.9);font-family:Inter,system-ui,sans-serif;font-size:12.8px;'
