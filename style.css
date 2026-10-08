@@ -52,6 +52,7 @@ header.scrolled{border-bottom-color:var(--line);padding:11px 50px;}
 }
 @media (max-width:900px){
     .brand-mark{height:31px;}
+    .brand-text{white-space:nowrap;}
     .brand-text b{font-size:14px;letter-spacing:1.1px;}
     .brand-text i{font-size:8px;letter-spacing:3px;}
 }
@@ -176,7 +177,7 @@ footer a:hover{color:#fff;}
     header{padding:12px 20px;}
     header.scrolled{padding:10px 20px;}
     .nav-links{position:fixed;top:64px;left:0;right:0;flex-direction:column;gap:0;
-        background:rgba(5,10,28,.97);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);
+        background:#000!important;backdrop-filter:none;border-bottom:1px solid var(--line);z-index:110;
         padding:0 20px;max-height:0;overflow:hidden;transition:max-height .45s ease,padding .45s ease;}
     .nav-links.open{max-height:420px;padding:12px 20px 22px;}
     .nav-links a{padding:14px 0;width:100%;border-bottom:1px solid var(--line);font-size:15px;}

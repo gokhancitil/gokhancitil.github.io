@@ -44,8 +44,8 @@
       l:[["İletişim","iletisim.html"]] },
 
     { k:["iletisim","iletişim","ulas","ulaş","mail","e-posta","eposta","telefon","yaz"],
-      a:"Bana <b>gokhancitil@gmail.com</b> adresinden veya iletişim sayfasındaki formdan ulaşabilirsiniz. LinkedIn ve GitHub'da <b>gokhancitil</b> kullanıcı adıyla yer alıyorum.",
-      l:[["İletişim formu","iletisim.html"],["E-posta gönder","mailto:gokhancitil@gmail.com"]] },
+      a:"<a href=\"iletisim.html\" style=\"color:#c4b5fd\">İletişim sayfasındaki formdan</a> bana ulaşabilirsiniz. LinkedIn ve GitHub'da <b>gokhancitil</b> kullanıcı adıyla yer alıyorum.",
+      l:[["İletişim formu","iletisim.html"]] },
 
     { k:["nerede","sehir","şehir","konum","turkiye","türkiye","uzaktan","remote"],
       a:"Türkiye genelinde ve <b>uzaktan</b> çalışıyorum. Proje süreçlerini çevrim içi yürütüyor, düzenli olarak ilerleme paylaşıyorum.",
@@ -64,7 +64,7 @@
   ];
 
   var FALLBACK = "Bunu tam olarak bilmiyorum 🤔 Ama Gökhan'a doğrudan sorabilirsiniz — genelde aynı gün dönüş yapıyor.<br><br>Şunları deneyebilirsiniz: <i>“Gökhan Çitil kimdir?”</i>, <i>“Hangi hizmetleri veriyorsunuz?”</i>, <i>“Bir site ne kadar sürede biter?”</i>";
-  var FALLBACK_L = [["İletişime geç","iletisim.html"],["E-posta gönder","mailto:gokhancitil@gmail.com"]];
+  var FALLBACK_L = [["İletişime geç","iletisim.html"]];
 
   var CHIPS = ["Gökhan Çitil kimdir?","Hangi hizmetleri veriyorsunuz?","Fiyatlar nasıl belirleniyor?","Ne kadar sürede teslim edilir?"];
 
