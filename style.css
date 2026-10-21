@@ -182,7 +182,7 @@ footer a:hover{color:#fff;}
     .nav-links.open{max-height:420px;padding:12px 20px 22px;}
     .nav-links a{padding:14px 0;width:100%;border-bottom:1px solid var(--line);font-size:15px;}
     .nav-links .nav-cta{border-bottom:0;margin-top:14px;text-align:center;}
-    .burger{display:block;}
+    .burger{display:block;width:auto!important;max-width:none!important;flex:0 0 auto!important;}
     section{padding:52px 20px;}
     .btn{flex:1 1 100%;justify-content:center;}
     .cta-box{padding:40px 22px;}
