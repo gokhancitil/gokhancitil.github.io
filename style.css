@@ -28,7 +28,7 @@ header.scrolled{border-bottom-color:var(--line);padding:11px 50px;}
     box-shadow:0 8px 22px -10px rgba(139,92,246,.9);transition:transform .22s;}
 .nav-cta:hover{transform:translateY(-2px);}
 .burger{display:none;background:none;border:1px solid var(--line);border-radius:8px;padding:9px 11px;cursor:pointer;}
-.burger span{display:block;width:18px;height:1.5px;background:#fff;margin:3.5px 0;}
+.burger span{display:block;width:18px;height:1.5px;background:#fff;margin:3.5px auto;}
 
 
 /* ===== MARKA BLOĞU ===== */
