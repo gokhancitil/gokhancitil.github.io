@@ -24,7 +24,10 @@
   const nextW=innerWidth,nextH=innerHeight;
   if(nextW===w&&nextH===h)return;
   w=nextW;h=nextH;dpr=Math.min(devicePixelRatio||1,1.75);
-  for(const [canvas,ctx] of [[rain,rc],[fx,c]]){canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);}
+  for(const [canvas,ctx,scale] of [[rain,rc,dpr],[fx,c,Math.min(devicePixelRatio||1,3)]]){
+   canvas.width=Math.round(w*scale);canvas.height=Math.round(h*scale);
+   ctx.setTransform(scale,0,0,scale,0,0);
+  }
   if(mobile.matches){const cols=Math.ceil(w/18);streams=Array.from({length:cols*2},(_,i)=>stream(i,cols));render(0);}
  }
  function matrix(dt){
@@ -75,8 +78,8 @@
    const rhythm=.52+.22*Math.sin(t*2.1+i*.72)+.16*Math.sin(t*1.37-i*.44)+.1*Math.sin(t*3.11+i*.29);
    const amplitude=1+envelope*Math.min(h*.047,35)*rhythm;
    c.beginPath();c.moveTo(x,cy-amplitude);c.lineTo(x,cy+amplitude);
-   c.strokeStyle='#00eda6';c.lineWidth=4;c.globalAlpha=.2;c.stroke();
-   c.strokeStyle='#77ffcf';c.lineWidth=1.9;c.globalAlpha=.94;c.shadowBlur=5;c.shadowColor='#00ffb3';c.stroke();c.shadowBlur=0;
+   c.shadowBlur=0;c.strokeStyle='#00dca0';c.lineWidth=2.8;c.globalAlpha=.65;c.stroke();
+   c.strokeStyle='#b5ffe4';c.lineWidth=1.5;c.globalAlpha=1;c.stroke();
   }
   c.restore();
   // Subtle horizontal floor reflections, echoing the reference.
