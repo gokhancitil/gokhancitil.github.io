@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#020605">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Zagi</title>
+<style>
+:root{color-scheme:dark;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;background:#020605;color:#edf8f1}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}.app{height:100svh;height:100dvh;position:relative;isolation:isolate;overflow:hidden;background:#020605}canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-3}.shade{position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,#02060530,transparent 12%,transparent 90%,#02060530)}.grain{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.12;background:repeating-linear-gradient(0deg,transparent 0 3px,#000 3px 4px)}header{position:absolute;top:calc(28px + env(safe-area-inset-top));left:28px;right:28px;display:flex;align-items:center;justify-content:space-between}.brand{font-size:34px;font-weight:600;letter-spacing:-1.9px;line-height:1}.live{display:flex;align-items:center;gap:8px;font:9px ui-monospace,SFMono-Regular,monospace;letter-spacing:1.8px;color:#8bba9f}.live i{height:5px;width:5px;border-radius:50%;background:#52f49c;box-shadow:0 0 12px #52f49c80}.hero{position:absolute;left:28px;right:28px;top:25%;text-align:center}.eyebrow{font:8px ui-monospace,SFMono-Regular,monospace;letter-spacing:3px;color:#74aa8c;margin:0 0 17px}.hero h1{font-size:clamp(36px,11vw,54px);font-weight:400;letter-spacing:-2.2px;line-height:1.12;margin:0;text-shadow:0 2px 30px #000}.hero h1 span{display:block;color:#75eaa4}.subtitle{color:#8aab98;font-size:11px;letter-spacing:.2px;margin:18px 0 0}.bottom{position:absolute;bottom:calc(29px + env(safe-area-inset-bottom));left:28px;right:28px;display:flex;align-items:center;justify-content:space-between;font:8px ui-monospace,SFMono-Regular,monospace;letter-spacing:1.5px;color:#688a76}.frequency{display:flex;gap:3px;align-items:center;height:14px}.frequency i{width:2px;background:#6bda96;animation:signal 1.6s ease-in-out infinite alternate;height:var(--h);animation-delay:var(--d)}.desktop{display:none}@keyframes signal{to{transform:scaleY(.3);opacity:.4}}@media(max-height:500px){header{top:18px}.hero{top:28%}.hero h1{font-size:32px}.eyebrow{margin-bottom:10px}.subtitle{margin-top:10px}.bottom{bottom:15px}}@media(min-width:768px){.app{display:none}.desktop{height:100dvh;display:grid;place-content:center;text-align:center;background:radial-gradient(ellipse,#0b2315,#020605 65%)}.desktop .brand{font-size:56px}.desktop p{font-size:13px;color:#8aab98;line-height:1.8;margin-top:25px}.desktop code{font-size:11px;color:#75eaa4}}@media(prefers-reduced-motion:reduce){.frequency i{animation:none}}
+
+header{justify-content:center;z-index:3;top:calc(30px + env(safe-area-inset-top))}.brand{font-size:36px;font-weight:500;letter-spacing:-1.8px;color:#8fa8b5;text-shadow:none}.shade{background:linear-gradient(180deg,#020605ee 0%,#02060560 19%,transparent 40%,#02060530 58%,#020605f5 85%,#020605 100%)}
+.voice{position:absolute;bottom:calc(45px + env(safe-area-inset-bottom));left:24px;right:24px;text-align:center;z-index:3}.voice-bars{height:80px;display:flex;justify-content:center;align-items:center;gap:5px;margin-bottom:23px}.voice-bars i{width:4px;height:var(--height);border-radius:5px;background:#a7ffd0;box-shadow:0 0 15px #39ff8870;transform:scaleY(.16);animation:breathe 2.4s ease-in-out infinite;animation-delay:var(--delay);transition:background .6s}.voice.reply .voice-bars i{animation:talk .65s ease-in-out infinite alternate;animation-delay:var(--delay);background:#50ff9a}.voice-status{font-size:11px;color:#bdd5c6;letter-spacing:1px;margin-bottom:13px}.elapsed{font:24px ui-monospace,SFMono-Regular,monospace;letter-spacing:3px;font-weight:300;color:#edf8f1;font-variant-numeric:tabular-nums}.voice-dot{display:inline-block;width:5px;height:5px;background:#71e9a1;border-radius:50%;margin-right:8px;vertical-align:2px;box-shadow:0 0 9px #71e9a150}@keyframes breathe{0%,100%{transform:scaleY(.13)}50%{transform:scaleY(.36)}}@keyframes talk{0%{transform:scaleY(.2)}100%{transform:scaleY(1)}}@media(prefers-reduced-motion:reduce){.voice-bars i,.voice.reply .voice-bars i{animation:none;transform:scaleY(.4)}}@media(max-height:500px){.voice{bottom:18px}.voice-bars{height:44px;margin-bottom:10px}.voice-status{margin-bottom:7px}.elapsed{font-size:19px}}
+@media (hover:hover) and (pointer:fine){.app{display:none}}
+</style>
+</head>
+<body>
+<main class="app">
+<header><div class="brand">Zagi</div></header>
+<canvas id="rain" aria-hidden="true"></canvas><div class="shade"></div><div class="grain"></div>
+
+
+<section class="voice" id="voice" aria-label="Simüle edilmiş ses etkinliği"><div class="voice-bars" aria-hidden="true"><i style="--height:9px;--delay:-0.00s"></i><i style="--height:17px;--delay:-0.17s"></i><i style="--height:26px;--delay:-0.34s"></i><i style="--height:39px;--delay:-0.51s"></i><i style="--height:54px;--delay:-0.68s"></i><i style="--height:43px;--delay:-0.85s"></i><i style="--height:66px;--delay:-1.02s"></i><i style="--height:78px;--delay:-1.19s"></i><i style="--height:53px;--delay:-1.36s"></i><i style="--height:70px;--delay:-1.53s"></i><i style="--height:47px;--delay:-1.70s"></i><i style="--height:60px;--delay:-1.87s"></i><i style="--height:35px;--delay:-2.04s"></i><i style="--height:25px;--delay:-2.21s"></i><i style="--height:15px;--delay:-2.38s"></i><i style="--height:8px;--delay:-2.55s"></i></div></section>
+</main>
+
+<script>
+(() => {
+ const openedAt=Date.now();
+ const voice=document.getElementById('voice');
+ function updateSession(){
+  const seconds=Math.floor((Date.now()-openedAt)/1000);
+  const reply=seconds%15>=8 && seconds%15<13;
+  voice.classList.toggle('reply',reply);
+
+ }
+ setInterval(updateSession,500);updateSession();
+ const canvas=document.getElementById('rain'),ctx=canvas.getContext('2d');
+ const motion=matchMedia('(prefers-reduced-motion: reduce)');
+ const alphabet='012345789ABCDEFGHIJKLMNOPQRSTUVWXYZアイウエオカキクケコ';
+ let width=0,height=0,streams=[],last=0,frame=0;
+
+ function resize(){
+  width=innerWidth;height=innerHeight;
+  const dpr=Math.min(devicePixelRatio||1,2);
+  canvas.width=width*dpr;canvas.height=height*dpr;
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  streams=Array.from({length:Math.ceil(width/14)*3},(_,i)=>({x:(i%Math.ceil(width/14))*14+2,y:Math.random()*(height+200),speed:45+Math.random()*85,length:18+Math.floor(Math.random()*25),chars:Array.from({length:48},()=>alphabet[Math.floor(Math.random()*alphabet.length)]),alpha:i<Math.ceil(width/14)?.9:.25+Math.random()*.35}));
+  draw(0);
+ }
+ function draw(dt){
+  ctx.clearRect(0,0,width,height);ctx.font='12px ui-monospace, monospace';
+  for(const s of streams){
+   s.y+=dt*s.speed;if(s.y-s.length*17>height)s.y=-30;
+   for(let j=0;j<s.length;j++){
+    const y=s.y-j*17;if(y<0||y>height)continue;
+    ctx.shadowBlur=j<2?8:0;ctx.shadowColor='#40ff88';ctx.fillStyle=j===0?'rgba(220,255,230,'+s.alpha+')':'rgba(35,245,105,'+(s.alpha*Math.pow(1-j/s.length,.7))+')';
+    ctx.fillText(s.chars[j],s.x,y);
+   }
+  }
+ }
+ function tick(now){
+  if(!document.hidden&&innerWidth<768&&now-last>40){draw(last?Math.min((now-last)/1000,.1):0);last=now;}
+  frame=requestAnimationFrame(tick);
+ }
+ function animate(){cancelAnimationFrame(frame);last=0;if(!motion.matches)frame=requestAnimationFrame(tick);else draw(0);}
+ addEventListener('resize',resize);motion.addEventListener('change',animate);
+ document.addEventListener('visibilitychange',()=>{if(document.hidden)cancelAnimationFrame(frame);else animate();});
+ resize();animate();
+
+})();
+</script>
+</body>
+</html>
