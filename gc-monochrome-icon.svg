@@ -1,4 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Gökhan Çitil">
-  <path fill="#f5f5f5" d="M28 128 94 40h58l-66 88 66 88H94z"/>
-  <path fill="#f5f5f5" d="M86 128 152 40h76l-54 58h54v60h-54l54 58h-76z"/>
+  <g fill="none" stroke="#f5f5f5" stroke-width="18" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M78 42 22 128l56 86"/>
+    <path d="M138 42 82 128l56 86"/>
+    <path d="M226 42h-48l-56 86 56 86h48v-58h-48"/>
+  </g>
 </svg>
