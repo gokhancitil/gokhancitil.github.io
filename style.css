@@ -272,4 +272,19 @@ header,footer{background:#000!important;background-image:none!important;}
     overflow-wrap:anywhere !important;
     word-break:break-word !important;
   }
+  section.narrow,
+  section.narrow > .reveal,
+  section.narrow > .prose,
+  section.narrow > .cards,
+  section:not(.narrow) > .reveal:first-child{
+    width:calc(100vw - 32px) !important;
+    max-width:calc(100vw - 32px) !important;
+    margin-left:auto !important;
+    margin-right:auto !important;
+  }
+  section.narrow .prose p,
+  section:not(.narrow) > .reveal:first-child .sec-lead{
+    width:100% !important;
+    max-width:100% !important;
+  }
 }
