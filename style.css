@@ -240,6 +240,7 @@ input[type="text"],input[type="email"],input[type="search"],input[type="url"],in
 .cta-box .cta-media{display:flex;justify-content:center;align-items:center;margin:0 auto 24px;pointer-events:none}
 .cta-box .cta-media video{display:block;width:148px;height:auto;max-width:100%;object-fit:contain}
 @media(max-width:640px){.cta-box .cta-media{margin-bottom:28px}.cta-box .cta-media video{width:clamp(110px,32vw,125px)}}
+.brand-mark,.footer-logo{mix-blend-mode:screen;}
 
 /* Mobile-only visual cleanup: pure black canvas, no fixed sphere or assistant overlays. */
 @media (max-width: 640px){
