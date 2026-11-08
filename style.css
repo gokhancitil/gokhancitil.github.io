@@ -272,6 +272,11 @@ header,footer{background:#000!important;background-image:none!important;}
     overflow-wrap:anywhere !important;
     word-break:break-word !important;
   }
+  .tech-selector .tech-tab{
+    width:max-content !important;
+    max-width:none !important;
+    flex:0 0 auto !important;
+  }
   section.narrow,
   section.narrow > .reveal,
   section.narrow > .prose,
