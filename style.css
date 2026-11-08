@@ -252,4 +252,24 @@ header,footer{background:#000!important;background-image:none!important;}
   .card,.project-feature,.project-showcase,.cta-box,.tech-detail,.form-card{background:#000 !important;background-image:none !important;}
   #gc-fab,#gc-tip,#gc-panel{display:none !important;}
   h1,h2,h3,.page-title,.sec-title{color:#f5f5f5 !important;text-shadow:none !important;}
+  main > section > .reveal,
+  main > section > .reveal:first-child,
+  .prose,
+  .page-title,
+  .sec-title,
+  .sec-lead{
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    box-sizing:border-box !important;
+  }
+  .page-title,.sec-title,.page-title .grad,.sec-title .grad{
+    white-space:normal !important;
+    overflow-wrap:anywhere !important;
+    word-break:break-word !important;
+  }
+  .prose p,.sec-lead{
+    overflow-wrap:anywhere !important;
+    word-break:break-word !important;
+  }
 }
