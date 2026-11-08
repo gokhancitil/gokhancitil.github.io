@@ -242,6 +242,7 @@ input[type="text"],input[type="email"],input[type="search"],input[type="url"],in
 @media(max-width:640px){.cta-box .cta-media{margin-bottom:28px}.cta-box .cta-media video{width:clamp(110px,32vw,125px)}}
 header,footer{background:#000!important;background-image:none!important;}
 .brand-mark,.footer-logo{mix-blend-mode:screen;}
+.brand-mark,.brand:hover .brand-mark{filter:none!important;mix-blend-mode:screen!important;}
 
 /* Mobile-only visual cleanup: pure black canvas, no fixed sphere or assistant overlays. */
 @media (max-width: 640px){
